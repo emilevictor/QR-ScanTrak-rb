@@ -1,0 +1,43 @@
+<h1>Listing tags</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Unique</th>
+    <th>Uniqueurl</th>
+    <th>Qrcode</th>
+    <th>Quizquestion</th>
+    <th>Quizanswer</th>
+    <th>Content</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Address</th>
+    <th>Createdby</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.name %></td>
+    <td><%= tag.unique %></td>
+    <td><%= tag.uniqueUrl %></td>
+    <td><%= tag.QRCode %></td>
+    <td><%= tag.quizQuestion %></td>
+    <td><%= tag.quizAnswer %></td>
+    <td><%= tag.content %></td>
+    <td><%= tag.latitude %></td>
+    <td><%= tag.longitude %></td>
+    <td><%= tag.address %></td>
+    <td><%= tag.createdBy %></td>
+    <td><%= link_to 'Show', tag %></td>
+    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+    <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tag', new_tag_path %>
