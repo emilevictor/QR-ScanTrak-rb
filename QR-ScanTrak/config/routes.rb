@@ -13,6 +13,9 @@ QRScantrak::Application.routes.draw do
 
   match "/tags/error/" => "tags#error_not_admin"
 
+  match "tags/:id/tagFound" => "tags#tagFound"
+  match 'tags/:id/tagFoundQuizAnswered' => "tags#tagFoundQuizAnswered", :via => :post
+
   match 'teams/:id/edit/addUsers' => 'teams#addUsers'
 
   match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post

@@ -1,0 +1,18 @@
+<% if !@tag.quizQuestion.nil? %>
+
+	<%= @tag.teams.count %> teams have scanned this tag before you.<br /><br />
+
+	<%= form_tag("/tags/#{params[:id]}/tagFoundQuizAnswered", :method => "post") do %>
+		Question:<br />
+		<%= @tag.quizQuestion %><br /><br />
+		<%= label_tag(:answer, "Your answer:") %>
+		<%= text_field_tag(:answer) %>
+
+		<%= submit_tag("Answer") %>
+
+	<% end %>
+
+
+<% else %>
+
+<% end %>

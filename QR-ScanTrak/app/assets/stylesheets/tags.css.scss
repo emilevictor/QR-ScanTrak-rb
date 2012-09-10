@@ -18,8 +18,8 @@ table.qrcode{
   width: 10px; 
   height: 10px; 
 }
-td.black { background-color: #000; }
-td.white { background-color: #fff; }
+td.black { background-color: #000; border-width:0px; }
+td.white { background-color: #fff; border-width: 0px;}
 
 
 
@@ -45,6 +45,6 @@ table.qrcodeBig{
   border-collapse: collapse;
 }
 
-td.blackBig { background-color: #000; width:4px; height: 4px;}
-td.whiteBig { background-color: #fff; width: 4px; height: 4px;}
+td.blackBig { background-color: #000; width:4px; height: 4px; border-width:0px}
+td.whiteBig { background-color: #fff; width: 4px; height: 4px; border-width:0px}
 

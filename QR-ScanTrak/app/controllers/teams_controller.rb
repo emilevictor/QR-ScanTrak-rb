@@ -6,44 +6,53 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    if current_user.try(:admin?)
+      @teams = Team.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @teams }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @teams }
+      end
     end
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = Team.find(params[:id])
+    if current_user.try(:admin?)
+      @team = Team.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @team }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @team }
+      end
     end
   end
 
   # GET /teams/new
   # GET /teams/new.json
   def new
-    @team = Team.new
+    if current_user.try(:admin?)
+      @team = Team.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @team }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @team }
+      end
     end
   end
 
   # GET /teams/1/edit
   def edit
+        if current_user.try(:admin?)
     @team = Team.find(params[:id])
+  end
   end
 
   # POST /teams
   # POST /teams.json
   def create
+        if current_user.try(:admin?)
     @team = Team.new(params[:team])
 
     #encrypt provided password
@@ -59,13 +68,16 @@ class TeamsController < ApplicationController
       end
     end
   end
+  end
 
   # GET /teams/1/edit/addUsers
   def addUsers
+        if current_user.try(:admin?)
     @team = Team.find(params[:id])
     @users = User.all
 
     render view: "addUsers"
+  end
   end
 
   # POST /teams/1/edit/addUsers
@@ -91,6 +103,7 @@ class TeamsController < ApplicationController
   # PUT /teams/1
   # PUT /teams/1.json
   def update
+        if current_user.try(:admin?)
     @team = Team.find(params[:id])
 
     respond_to do |format|
@@ -108,10 +121,12 @@ class TeamsController < ApplicationController
       end
     end
   end
+  end
 
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
+        if current_user.try(:admin?)
     @team = Team.find(params[:id])
     @team.destroy
 
@@ -120,4 +135,6 @@ class TeamsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  end
+
 end

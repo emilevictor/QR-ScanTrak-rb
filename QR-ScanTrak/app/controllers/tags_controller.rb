@@ -51,13 +51,35 @@ class TagsController < ApplicationController
 
   end
 
+  #Question page
+
+  def tagFound
+    @tag = Tag.where(:uniqueUrl => params[:id]).first
+
+  end
+
+  def tagFoundQuizAnswered
+    @tag = Tag.where(:uniqueUrl => params[:id]).first
+    if (params[:answer].trim == @tag.quizAnswer)
+      #add to score
+    else
+
+    end
+  end
+
   # GET /tags/new
   # GET /tags/new.json
   def new
     if current_user.try(:admin?)
       @tag = Tag.new
-      @tag.unique = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+      #@tag.unique = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
       @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+
+
+      #Check for uniqueness in the tag url.
+      while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).empty?)
+        @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+      end
 
       respond_to do |format|
         format.html # new.html.erb
@@ -90,6 +112,7 @@ class TagsController < ApplicationController
 
       respond_to do |format|
         if @tag.save
+          current_user.tags << @tag
           format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
           format.json { render json: @tag, status: :created, location: @tag }
         else

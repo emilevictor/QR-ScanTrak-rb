@@ -61,10 +61,11 @@
 </p>
 
 <p>
-  <b>Createdby:</b>
-  <%= @tag.user.emai %>
+  <b>Created by:</b>
+  <%= @tag.user.first_name %>
 </p>
 
-
+<% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>
+<% end %>
