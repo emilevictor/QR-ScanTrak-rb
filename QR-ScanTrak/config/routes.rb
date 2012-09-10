@@ -13,6 +13,10 @@ QRScantrak::Application.routes.draw do
 
   match "/tags/error/" => "tags#error_not_admin"
 
+  match 'teams/:id/edit/addUsers' => 'teams#addUsers'
+
+  match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

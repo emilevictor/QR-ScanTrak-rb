@@ -60,18 +60,31 @@ class TeamsController < ApplicationController
     end
   end
 
-  # GET /teams/addUser/1/edit/addUsers
+  # GET /teams/1/edit/addUsers
   def addUsers
     @team = Team.find(params[:id])
-
     @users = User.all
+
+    render view: "addUsers"
   end
 
   # POST /teams/1/edit/addUsers
   def addUsersToTeam
     @team = Team.find(params[:id])
+    #puts "HELLO?"
+    params.each do |key,value|
+      if (splitKey = key.split(" "))[0] == "USERID"
+        #puts "----------- USER #{splitKey[1]}"
+        @team.users << User.find(splitKey[1.to_i])
+      end
 
-    @usersToBeAdded = params[:usersToBeAdded]
+      #Rails.logger.warn "Param #{key}: #{value}"
+    end
+    if @team.save
+      redirect_to @team, notice: 'Players successfully added to team'
+    else
+      redirect_to @team, error: 'Couldn\'t add players to team'
+    end
   end
 
 

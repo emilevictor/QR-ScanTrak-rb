@@ -1,21 +1,19 @@
-<%= form_for(@usersToBeAdded) %>
+<%= form_tag("/teams/#{@team.id}/edit/addUsersToTeam", :method => "post") do %>
 
 <table>
 	<th>User</th>
-	<th></th>
 
 	<% @users.each do |user| %>
 		<tr>
-		<td>user.email</td>
-
-
-
-
-
-	</tr>
+			<td><%= check_box_tag("USERID #{user.id.to_s}") %>
+				<%= label_tag(user.id.to_s,"#{user.first_name} #{user.last_name} (#{user.email})") %>
+				</td>
+		</tr>
 	<% end %>
 
 
 
 </table>
+
+<%= submit_tag("Add Users to #{@team.name}") %>
 <% end %>
