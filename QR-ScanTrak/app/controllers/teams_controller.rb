@@ -60,12 +60,32 @@ class TeamsController < ApplicationController
     end
   end
 
+  # GET /teams/addUser/1/edit/addUsers
+  def addUsers
+    @team = Team.find(params[:id])
+
+    @users = User.all
+  end
+
+  # POST /teams/1/edit/addUsers
+  def addUsersToTeam
+    @team = Team.find(params[:id])
+
+    @usersToBeAdded = params[:usersToBeAdded]
+  end
+
+
   # PUT /teams/1
   # PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
 
     respond_to do |format|
+      #if the password has been changed, recompute it.
+      if params[:team][:password] != @team.password
+        params[:team][:password] = BCrypt::Password.create(params[:team][:password])
+      end
+
       if @team.update_attributes(params[:team])
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
         format.json { head :no_content }

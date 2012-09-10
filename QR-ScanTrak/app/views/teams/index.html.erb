@@ -5,8 +5,8 @@
     <th>Name</th>
     <th>Description</th>
     <th>Password</th>
-    <th>User</th>
-    <th>Tag</th>
+    <!--<th>User</th>-->
+    <!--<th>Tag</th>-->
     <th></th>
     <th></th>
     <th></th>
@@ -17,11 +17,11 @@
     <td><%= team.name %></td>
     <td><%= team.description %></td>
     <td><%= team.password %></td>
-    <td><%= team.user_id %></td>
-    <td><%= team.tag_id %></td>
+    <!--<td><%= team.user_id %></td>-->
+    <!--<td><%= team.tag_id %></td>-->
     <td><%= link_to 'Show', team %></td>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
