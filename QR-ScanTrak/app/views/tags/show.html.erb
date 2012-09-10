@@ -6,18 +6,28 @@
 </p>
 
 <p>
-  <b>Unique:</b>
-  <%= @tag.unique %>
-</p>
-
-<p>
   <b>Uniqueurl:</b>
   <%= @tag.uniqueUrl %>
 </p>
 
 <p>
   <b>Qrcode:</b>
-  <%= @tag.QRCode %>
+  <!--<%= @tag.QRCode %>-->
+
+  <table class="qrcodeBig">
+        <% @indivQR.modules.each_index do |x| %>
+          <tr>  
+          <% @indivQR.modules.each_index do |y| %>
+           <% if @indivQR.dark?(x,y) %>
+
+            <td class="blackBig"/>
+           <% else %>
+            <td class="whiteBig"/>
+           <% end %>
+          <% end %>
+          </tr>
+        <% end %>
+    </table>
 </p>
 
 <p>
@@ -52,7 +62,7 @@
 
 <p>
   <b>Createdby:</b>
-  <%= @tag.createdBy %>
+  <%= @tag.user.emai %>
 </p>
 
 

@@ -1,14 +1,17 @@
 QRScantrak::Application.routes.draw do
 
+  resources :teams
+
   resources :tags
 
   get "home/index"
 
-  devise_for :admins
 
   devise_for :users
 
   root :to => "home#index"
+
+  match "/tags/error/" => "tags#error_not_admin"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

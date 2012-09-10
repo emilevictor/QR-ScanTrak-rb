@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @team.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @team.description %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @team.password %>
+</p>
+
+<p>
+  <b>Users:</b>
+  <%= @team.users.each do |user|
+    user.email
+
+  end %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%= @team.tag_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

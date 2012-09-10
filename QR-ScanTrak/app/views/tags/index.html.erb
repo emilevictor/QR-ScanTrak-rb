@@ -1,10 +1,9 @@
 <h1>Listing tags</h1>
 
-<table>
+<table class="tagsTable">
   <tr>
     <th>Name</th>
-    <th>Unique</th>
-    <th>Uniqueurl</th>
+    <th>Identifier</th>
     <th>Qrcode</th>
     <th>Quizquestion</th>
     <th>Quizanswer</th>
@@ -17,23 +16,40 @@
     <th></th>
     <th></th>
   </tr>
-
+<% currentQr = 0 %>
 <% @tags.each do |tag| %>
   <tr>
-    <td><%= tag.name %></td>
-    <td><%= tag.unique %></td>
-    <td><%= tag.uniqueUrl %></td>
-    <td><%= tag.QRCode %></td>
-    <td><%= tag.quizQuestion %></td>
-    <td><%= tag.quizAnswer %></td>
-    <td><%= tag.content %></td>
-    <td><%= tag.latitude %></td>
-    <td><%= tag.longitude %></td>
-    <td><%= tag.address %></td>
-    <td><%= tag.createdBy %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="indivTD"><%= tag.name %></td>
+    <td class="indivTD"><input type="text" value="<%= tag.uniqueUrl %>"></td>
+    <td class="indivTD"><table class="qrcode">
+        <% @qrCodes[currentQr].modules.each_index do |x| %>
+          <tr>  
+          <% @qrCodes[currentQr].modules.each_index do |y| %>
+           <% if @qrCodes[currentQr].dark?(x,y) %>
+
+            <td class="black"/>
+           <% else %>
+            <td class="white"/>
+           <% end %>
+          <% end %>
+          </tr>
+        <% end %>
+    </table>
+    </td>
+    <td class="indivTD"><%= tag.quizQuestion %></td>
+    <td class="indivTD"><%= tag.quizAnswer %></td>
+    <td class="indivTD"><%= tag.content %></td>
+    <td class="indivTD"><%= tag.latitude %></td>
+    <td class="indivTD"><%= tag.longitude %></td>
+    <td class="indivTD"><%= tag.address %></td>
+    <td class="indivTD">
+      <%= if (!tag.user_id.nil?)
+        tag.user.email
+            #User.find(tag.user_id).email 
+          end%></td>
+    <td class="indivTD"><%= link_to 'Show', tag.uniqueUrl %></td>
+    <td class="indivTD"><%= link_to 'Edit', edit_tag_path(tag) %></td>
+    <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
