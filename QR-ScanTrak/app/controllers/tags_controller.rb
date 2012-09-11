@@ -11,12 +11,11 @@ class TagsController < ApplicationController
   def index
     if current_user.try(:admin?)
       @qrCodes = []
-      @tags = Tag.all
+      @tags = Tag.paginate(:page => params[:page])
 
       host = request.host_with_port
-
       @tags.each do |tag|
-        qrCodeString = "http://" + host.to_s + "/tags/" + tag.uniqueUrl
+        qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
         @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
         @qrCodes.push(@indivQR)
 
@@ -40,44 +39,132 @@ class TagsController < ApplicationController
   # GET /tags/1.json
   def show
       @tag = Tag.where(:uniqueUrl => params[:id]).first
+      if not @tag.nil?
+        qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
+        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
 
-      qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl
-      @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render json: @tag }
+        end
 
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @tag }
+      else
+        flash[:alert] = "There was a problem getting the tag which you specified.
+         Maybe it doesn't exist?"
+        redirect_to :controller => "home", :action => "index"
+
       end
+
+
 
   end
 
-  #Question page
+  #The page a user sees when they scan a tag
 
   def tagFound
-    @tag = Tag.where(:uniqueUrl => params[:id]).first
-
+    if user_signed_in?
+      @tag = Tag.where(:uniqueUrl => params[:id]).first
+      @numberOfTeams = Scan.where(:tag_id => @tag.id).count
+      respond_to do |format|
+        format.html
+        format.json {render tag: @tag, numberOfTeams: @numberOfTeams}
+      end
+    else
+      redirect_to :controller => "devise/sessions", :action => "create"
+    end
   end
 
   def tagFoundQuizAnswered
-    @tag = Tag.where(:uniqueUrl => params[:id]).first
-    if (params[:answer].trim == @tag.quizAnswer)
-      #add to score
-    else
 
+    if user_signed_in?
+      #Check that the user hasn't scanned this yet.
+      @user = User.find(current_user.id)
+      #Team of the current user.
+      @team = Team.find(@user.team_id)
+
+      @tag = Tag.where(:uniqueUrl => params[:id]).first
+
+      #Check that tag hasn't been scanned yet.
+      if !Scan.where(:team_id => @team.id, :tag_id => @tag).first.nil?
+        
+        if (params[:answer] == @tag.quizAnswer) or (@tag.quizQuestion.empty?)
+          #cool... They got the answer correct or there was no question.
+          #Now we can create a scan,
+          #add it to their team.
+
+
+
+          @scan = Scan.new
+          
+          @scan.save
+
+          @team.scans << @scan
+
+          @tag.scans << @scan
+
+
+          flash[:notice] = "You successfully scanned the tag"
+          redirect_to :controller => "tags", :action => "scanSuccess", :id => @tag.uniqueUrl
+
+        else
+          flash[:alert] = "You got the answer wrong!"
+          redirect_to :controller => "tags", :action => "tagFound", :id => @tag.uniqueUrl
+        end
+
+      elsif current_user.admin?
+        if (params[:answer].rstrip.lstrip == @tag.quizAnswer)
+          #cool... They got the answer correct, now we can create a scan,
+          #add it to their team.
+
+
+
+          @scan = Scan.new
+          
+          @scan.save
+
+          @team.scans << @scan
+
+          @tag.scans << @scan
+
+          flash[:notice] = "You successfully scanned the tag"
+          redirect_to :controller => "tags", :action => "scanSuccess", :id => @tag.uniqueUrl
+
+        else
+          flash[:alert] = "You got the answer wrong!"
+          redirect_to :controller => "tags", :action => "tagFound", :id => @tag.uniqueUrl
+        end
+
+      else
+        flash[:notice] = "You have already scanned that tag"
+        redirect_to :controller => "home", :action => "index"
+
+      end
+    else
+      #user isn't signed in
+      redirect_to sign_in_path
     end
+    
+    
   end
+
+  #Successfully scanned tag
+
+  def scanSuccess
+
+
+  end
+
 
   # GET /tags/new
   # GET /tags/new.json
   def new
     if current_user.try(:admin?)
       @tag = Tag.new
-      #@tag.unique = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
       @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
 
 
       #Check for uniqueness in the tag url.
-      while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).empty?)
+      while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.empty?)
         @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
       end
 
@@ -108,7 +195,6 @@ class TagsController < ApplicationController
       @tag = Tag.new(params[:tag])
       @tag.user_id = current_user.id
       #Pngqr.encode 
-
 
       respond_to do |format|
         if @tag.save

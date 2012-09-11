@@ -1,5 +1,7 @@
 <h1>Listing tags</h1>
 
+<%= link_to 'New Tag', new_tag_path %>
+
 <table class="tagsTable">
   <tr>
     <th>Name</th>
@@ -11,6 +13,7 @@
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Address</th>
+    <th>Points</th>
     <th>Createdby</th>
     <th></th>
     <th></th>
@@ -42,12 +45,13 @@
     <td class="indivTD"><%= tag.latitude %></td>
     <td class="indivTD"><%= tag.longitude %></td>
     <td class="indivTD"><%= tag.address %></td>
+    <td class="indivTD"><%= tag.points %>
     <td class="indivTD">
       <%= if (!tag.user_id.nil?)
         tag.user.email
             #User.find(tag.user_id).email 
           end%></td>
-    <td class="indivTD"><%= link_to 'Show', tag.uniqueUrl %></td>
+    <td class="indivTD"><%= link_to 'Show', :controller => "tags", :action => "show", :id => tag.uniqueUrl %></td>
     <td class="indivTD"><%= link_to 'Edit', edit_tag_path(tag) %></td>
     <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -56,4 +60,4 @@
 
 <br />
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= will_paginate @posts %>

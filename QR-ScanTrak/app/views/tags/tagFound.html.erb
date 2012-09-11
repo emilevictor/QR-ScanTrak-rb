@@ -1,6 +1,12 @@
-<% if !@tag.quizQuestion.nil? %>
+<% if !@tag.quizQuestion.empty? %>
 
-	<%= @tag.teams.count %> teams have scanned this tag before you.<br /><br />
+	<% if @numberOfTeams == 0 %>
+		You are the first team to find this tag!
+	<% else %>
+		You are the <%= (@numberOfTeams+1).ordinalize %> team to find this tag.
+	<% end %>
+
+	 <br /><br />
 
 	<%= form_tag("/tags/#{params[:id]}/tagFoundQuizAnswered", :method => "post") do %>
 		Question:<br />
@@ -14,5 +20,11 @@
 
 
 <% else %>
+	<% if @numberOfTeams == 0 %>
+		You are the first team to find this tag!
+	<% else %>
+		You are the <%= (@numberOfTeams+1).ordinalize %> team to find this tag.
+	<% end %>
 
+	<%= button_to "Claim your Points", {:action => "tagFoundQuizAnswered", :noQuiz => true} %>
 <% end %>

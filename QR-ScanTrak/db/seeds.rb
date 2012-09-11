@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+for i in 0..2000
+	@newTag = Tag.new
+	@newTag.name = RandomWord.adjs.next + ' ' + RandomWord.nouns.next
+	@newTag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+	@newTag.content = (RandomWord.adjs.next + ' ' + RandomWord.nouns.next)*32
+	@newTag.latitude = -150+rand(300)
+	@newTag.longitude = -150+rand(300)
+	@newTag.createdBy = 1
+	@newTag.points = -100 + rand(500)
+	@newTag.user_id = 1
+	@newTag.save
+end

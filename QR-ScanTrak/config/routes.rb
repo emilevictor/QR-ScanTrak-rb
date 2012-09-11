@@ -1,5 +1,7 @@
 QRScantrak::Application.routes.draw do
 
+  match 'teams/checkScore' => 'teams#checkTeamScore'
+
   resources :teams
 
   resources :tags
@@ -16,9 +18,13 @@ QRScantrak::Application.routes.draw do
   match "tags/:id/tagFound" => "tags#tagFound"
   match 'tags/:id/tagFoundQuizAnswered' => "tags#tagFoundQuizAnswered", :via => :post
 
+  match 'tags/:id/scanSuccess' => 'tags#scanSuccess'
+
   match 'teams/:id/edit/addUsers' => 'teams#addUsers'
 
   match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

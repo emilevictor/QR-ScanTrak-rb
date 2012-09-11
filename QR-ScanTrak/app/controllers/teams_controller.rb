@@ -13,6 +13,9 @@ class TeamsController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @teams }
       end
+    else
+      flash[:alert] = "You are not logged in as an admin"
+      redirect_to :controller => "home", :action => "index"
     end
   end
 
@@ -72,12 +75,12 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit/addUsers
   def addUsers
-        if current_user.try(:admin?)
-    @team = Team.find(params[:id])
-    @users = User.all
+    if current_user.try(:admin?)
+      @team = Team.find(params[:id])
+      @users = User.all
 
-    render view: "addUsers"
-  end
+      render view: "addUsers"
+    end
   end
 
   # POST /teams/1/edit/addUsers
@@ -97,6 +100,21 @@ class TeamsController < ApplicationController
     else
       redirect_to @team, error: 'Couldn\'t add players to team'
     end
+  end
+
+  #Check team score
+  def checkTeamScore
+    if user_signed_in?
+      @user = current_user
+      @team = Team.find(@user.team_id)
+      @leaderboard = Team.getLeaderboard
+      @scans = Scan.where(:team_id => @team.id)
+      #@placement = @team.getPlacement(@leaderboard)
+    else
+      flash[:alert] = "You are not logged in!"
+
+    end
+
   end
 
 

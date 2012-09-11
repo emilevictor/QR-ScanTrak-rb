@@ -66,6 +66,7 @@
 </p>
 
 <% if current_user.try(:admin?) %>
+<%= link_to 'Scan me', :controller => "tags", :action => "tagFound", :id => @tag.uniqueUrl %> |
 <%= link_to 'Edit', edit_tag_path(@tag) %> |
 <%= link_to 'Back', tags_path %>
 <% end %>
