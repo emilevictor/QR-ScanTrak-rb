@@ -3,6 +3,7 @@ class Team < ActiveRecord::Base
 
   has_many :users
   has_many :scans
+  has_many :tags, :through => :scans
   #has_and_belongs_to_many :tags
 
   validates :name, :presence => true

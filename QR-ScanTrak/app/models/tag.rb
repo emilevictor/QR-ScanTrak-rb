@@ -6,6 +6,7 @@ class Tag < ActiveRecord::Base
 
 	#has_and_belongs_to_many :teams
 	has_many :scans, :dependent => :destroy
+	has_many :teams, :through => :scans
 
  	validates :uniqueUrl, :uniqueness => true
  	validates :points, :presence => true

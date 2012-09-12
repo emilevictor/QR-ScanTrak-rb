@@ -110,6 +110,13 @@ class TeamsController < ApplicationController
       @leaderboard = Team.getLeaderboard
       @scans = Scan.where(:team_id => @team.id)
       @placement = @team.getPlacement(@leaderboard)
+      @tags = @team.tags.paginate(:page => params[:page])
+
+      respond_to do |format|
+        format.json {render json: {placement: @placement, scans: @scans, team:@team, tags: @tags}}
+        format.html { render action: "checkTeamScore" }
+      end
+
     else
       flash[:alert] = "You are not logged in!"
 

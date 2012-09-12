@@ -1,10 +1,13 @@
 <h1>QR ScanTrak</h1>
-<p>Find me in app/views/home/index.html.erb</p>
 
 <% if user_signed_in? %>
-  
-  <%= link_to('Edit registration', edit_user_registration_path) %><br />
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  <ul>
+  	<% if not @team.nil? %>
+  	<li><%= link_to 'Check Team Score', :controller => "teams", :action => "checkTeamScore" %></li>
+  	<% end %>
+  <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+  <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+</ul>
   
 <% else %>
   
