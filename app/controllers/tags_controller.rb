@@ -76,15 +76,21 @@ class TagsController < ApplicationController
   #The page a user sees when they scan a tag
 
   def tagFound
-    if user_signed_in?
-      @tag = Tag.where(:uniqueUrl => params[:id]).first
+    @tag = Tag.where(:uniqueUrl => params[:id]).first
+    @user = User.find(current_user.id)
+    #Team of the current user.
+    @team = Team.find(@user.team_id)
+
+    if user_signed_in? and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
+      
       @numberOfTeams = Scan.where(:tag_id => @tag.id).count
       respond_to do |format|
         format.html
         format.json {render tag: @tag, numberOfTeams: @numberOfTeams}
       end
     else
-      redirect_to :controller => "devise/sessions", :action => "create"
+      flash[:alert] = "You have already scanned that tag!"
+      redirect_to :controller => "home", :action => "index"
     end
   end
 
