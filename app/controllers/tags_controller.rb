@@ -16,7 +16,7 @@ class TagsController < ApplicationController
       host = request.host_with_port
       @tags.each do |tag|
         if Rails.env.production?
-          qrCodeString = "http://" + request.host_with_port + "/qrscantrak/tags/" + tag.uniqueUrl + "/tagFound"
+          qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
 
         else
           qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
@@ -50,7 +50,7 @@ class TagsController < ApplicationController
 
 
         if Rails.env.production?
-          qrCodeString = "http://" + request.host_with_port + "/qrscantrak/tags/" + tag.uniqueUrl + "/tagFound"
+          qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
 
         else
           qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
