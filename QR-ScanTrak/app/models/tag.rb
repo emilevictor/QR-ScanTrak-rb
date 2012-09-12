@@ -9,8 +9,6 @@ class Tag < ActiveRecord::Base
 
  	validates :uniqueUrl, :uniqueness => true
  	validates :points, :presence => true
- 	validates :quizQuestion, :presence => true
- 	validates :quizAnswer, :presence => true
 
  	after_validation :geocode
 end

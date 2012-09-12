@@ -11,21 +11,39 @@ Team.delete_all
 Tag.delete_all
 User.delete_all
 
-for i in 0..2000
-	@newTag = Tag.new
-	@newTag.name = RandomWord.adjs.next + ' ' + RandomWord.nouns.next
-	@newTag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
-	@newTag.latitude = -150+rand(300)
-	@newTag.longitude = -150+rand(300)
-	@newTag.createdBy = 1
-	@newTag.points = -100 + rand(500)
-	@newTag.user_id = 1
-	@newTag.save
-end
-
 emile = User.create!(:email => "emilevictor@gmail.com", :password => "password", :password_confirmation => "password", :first_name => "Emile", :last_name => "Victor", :admin => true)
 
 emile.save
+
+for i in 0..2000
+	@newTag = Tag.new
+	@newTag.name = "#{RandomWord.adjs.next} #{RandomWord.nouns.next}"
+	@newTag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
+
+    while (!Tag.where(:uniqueUrl => @newTag.uniqueUrl).first.nil?)
+    	@newTag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+    end
+
+    @newTag.quizQuestion = ""
+    @newTag.quizAnswer = ""
+
+	#@newTag.latitude = -150+rand(300)
+	#@newTag.longitude = -150+rand(300)
+	#@newTag.createdBy = 1
+	@newTag.points = -100 + rand(500)
+	#@newTag.user_id = 1
+
+	@newTag.address = ""
+
+	if @newTag.valid?
+		@newTag.save
+		emile.tags << @newTag
+	else
+		print @newTag.errors
+	end
+end
+
+
 
 for i in 0..500
 

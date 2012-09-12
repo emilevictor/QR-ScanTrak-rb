@@ -109,7 +109,7 @@ class TeamsController < ApplicationController
       @team = Team.find(@user.team_id)
       @leaderboard = Team.getLeaderboard
       @scans = Scan.where(:team_id => @team.id)
-      #@placement = @team.getPlacement(@leaderboard)
+      @placement = @team.getPlacement(@leaderboard)
     else
       flash[:alert] = "You are not logged in!"
 

@@ -104,7 +104,7 @@ class TagsController < ApplicationController
 
 
           flash[:notice] = "You successfully scanned the tag"
-          redirect_to :controller => "tags", :action => "scanSuccess", :id => @tag.uniqueUrl
+          redirect_to :controller => "teams", :action => "checkTeamScore"
 
         else
           flash[:alert] = "You got the answer wrong!"
@@ -112,8 +112,9 @@ class TagsController < ApplicationController
         end
 
       elsif current_user.admin?
-        if (params[:answer].rstrip.lstrip == @tag.quizAnswer)
-          #cool... They got the answer correct, now we can create a scan,
+        if (params[:answer] == @tag.quizAnswer) or (@tag.quizQuestion.empty?)
+          #cool... They got the answer correct or there was no question.
+          #Now we can create a scan,
           #add it to their team.
 
 
@@ -126,8 +127,9 @@ class TagsController < ApplicationController
 
           @tag.scans << @scan
 
+
           flash[:notice] = "You successfully scanned the tag"
-          redirect_to :controller => "tags", :action => "scanSuccess", :id => @tag.uniqueUrl
+          redirect_to :controller => "teams", :action => "checkTeamScore"
 
         else
           flash[:alert] = "You got the answer wrong!"
@@ -164,7 +166,8 @@ class TagsController < ApplicationController
 
 
       #Check for uniqueness in the tag url.
-      while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.empty?)
+
+      while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.nil?)
         @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
       end
 
