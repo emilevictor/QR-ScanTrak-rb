@@ -1,0 +1,436 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"password",
+				"password_confirmation"
+			],
+			[
+				"leaderBoard",
+				"leaderboardArray"
+			],
+			[
+				"doll",
+				"DollarVelocityPerSecond"
+			],
+			[
+				"total",
+				"totalAnHourAgo"
+			],
+			[
+				"percentageLength",
+				"percentageLengthForGreen"
+			],
+			[
+				"new",
+				"newEnevt"
+			],
+			[
+				"perce",
+				"percentageLengthForGreen"
+			],
+			[
+				"percentage",
+				"percentageLengthForGreen"
+			],
+			[
+				"estimated",
+				"estimatedAmountRaised"
+			],
+			[
+				"Perceen",
+				"percentageLengthForRed"
+			],
+			[
+				"percentageLEngth",
+				"percentageLengthForRed"
+			],
+			[
+				"triathlo",
+				"triathlonDonation"
+			],
+			[
+				"triath",
+				"triathlonDonation"
+			],
+			[
+				"amountDonate",
+				"amountDonatedIntegerCents"
+			],
+			[
+				"current_",
+				"current_charity_context"
+			],
+			[
+				"totalSum",
+				"totalSumAllSquares"
+			],
+			[
+				"convert",
+				"convertToInt"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 518.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/layouts/application.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/models/user.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120911031655_create_scans.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/Gemfile",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/controllers/teams_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/controllers/tags_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/_form.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/tagFound.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/helpers/application_helper.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/assets/stylesheets/teams.css.scss",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/helpers/teams_helper.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/models/scan.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/models/team.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/new.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/edit.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/routes.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/models/tag.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120911032009_add_points_to_tag.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/scanSuccess.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/edit.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/home/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/addUsers.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/_addUsersForm.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/tagFoundQuizAnswered.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/assets/stylesheets/tags.css.scss",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/_form.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/assets/stylesheets/application.css",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/assets/stylesheets/scaffolds.css.scss",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/addUsersToTeam.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910064902_add_name_to_user.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/devise/registrations/new.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/devise/registrations/edit.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910070706_remove_name_and_add_first_last_names.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/teams/new.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910054001_create_join_between_teams_and_tags.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910051115_create_teams.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910051243_add_team_id_to_users.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/schema.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910050342_remove_admins_table.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910041536_remove_unique_from_tags.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910034146_add_user_to_tags.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120909123716_remove_qrcode_from_tag.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120910034621_remove_old_user_ref.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/views/tags/error.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/db/migrate/20120909110918_add_admin_to_users.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/models/admin.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/controllers/home_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/database.yml",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/environments/development.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/initializers/devise.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/public/index.html",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/charities_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/config/routes.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/events/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/charities/index.js.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/notifications_controller",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/events_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/migrate/20120713002303_add_state_to_donations.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/migrate/20120710003013_add_description_to_donation.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/migrate/20120906024352_adding_charity_id_to_donation.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/config/database.yml",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/profile/charities/_form.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/profile/charities/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/profile/users/edit.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/profile/users/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/profile/charities/edit.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/models/user_context.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/context_switching_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/migrate/20120812105259_add_attachment_logo_to_charities.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/migrate/20120709091838_remove_devise_from_charities.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/migrate/20120727040838_create_event_images.rb",
+		"/Users/emilevictor/Dropbox/Uni/DECO4500/groupProject/output/locationGuessed/beaconFoundFirstGuess.html",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/profile_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/stylesheets/application.css.scss",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/stylesheets/events.css.scss",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/application_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/global.js",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/layouts/application.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/models/donation.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/layouts/home.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/layouts/_header.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/stylesheets/home.css.scss",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/models/user.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/models/charity.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/events.js",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/donations_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/home/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/application.js",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/home.js.coffee",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/home/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/global.js.coffee",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/models/event.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/seeds.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/profile.js.coffee",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/events/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/users_controller.js.coffee",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/numberSpinner.js",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/profile/show.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/events/_form.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/assets/javascripts/events.js.coffee",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/views/events/_event.erb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/db/schema.rb",
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/helpers/application_helper.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/.gitignore",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/app/assets/stylesheets/application.css",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/QKMLGenerator.cpp",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/QHistoryChanger.cpp",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/QDepthAverager.h",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/QDepthAverager.cpp",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/QComparator.h",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/QComparator.cpp",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/nuiIncludes.h",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/miscIncludes.h",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/KinectMaster.h",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/KinectInstance.cpp",
+		"/Users/emilevictor/Dropbox/Uni/Thesis/Boeing-Thesis/src/KinectInstance.h",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/app/controllers/members_controller.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/db/migrate/20120628085719_create_models.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/app/controllers/models_controller.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/app/views/home/index.html.erb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/app/controllers/application_controller.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/app/controllers/tests_controller.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/config/routes.rb",
+		"/Users/emilevictor/Dropbox/WEB DESIGN/SGAC/sgacdbadmin/Gemfile"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"paginate",
+			"Paginate",
+			"rstrip",
+			"tag.user.first_name",
+			"first_name",
+			"empty?",
+			"Bcrypt",
+			"where",
+			"Url",
+			"request.host",
+			"host",
+			"http",
+			"to scan this",
+			"pluralize",
+			"unique",
+			"valides",
+			"flash",
+			"flash[:error",
+			"unique",
+			"unique ",
+			"unique",
+			"exists",
+			"error",
+			"unique",
+			"hide",
+			"UserContext",
+			".nil?",
+			"link_to",
+			"console.log",
+			"setTimeout",
+			"javascript_tag",
+			"events.js",
+			"progress-bar",
+			"generic-area",
+			"edit",
+			"header_bg.jpg",
+			"javascript_include_tag",
+			"javascript",
+			"latitude",
+			"attr_accessor",
+			"alert",
+			"flash",
+			"d4fe66",
+			"data",
+			"yield",
+			"charity_id",
+			"explain",
+			"charity_id",
+			"id",
+			"charity_id",
+			"current_context",
+			"redirect_if_not_charity",
+			"localize",
+			"post_path",
+			".build"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.470037242767,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 172.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"readme",
+				"README.rdoc"
+			],
+			[
+				"schema",
+				"db/schema.rb"
+			],
+			[
+				"seeds.",
+				"db/seeds.rb"
+			],
+			[
+				"event_con",
+				"app/controllers/events_controller.rb"
+			],
+			[
+				"global.",
+				"app/assets/javascripts/global.js.coffee"
+			],
+			[
+				"global.js",
+				"app/assets/javascripts/global.js.coffee"
+			],
+			[
+				"routes",
+				"config/routes.rb"
+			],
+			[
+				"events",
+				"app/controllers/events_controller.rb"
+			],
+			[
+				"",
+				"Gemfile"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 252.0,
+	"status_bar_visible": true
+}
