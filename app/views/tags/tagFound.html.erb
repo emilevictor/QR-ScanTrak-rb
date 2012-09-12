@@ -1,0 +1,30 @@
+<% if !@tag.quizQuestion.empty? %>
+
+	<% if @numberOfTeams == 0 %>
+		You are the first team to find this tag!
+	<% else %>
+		You are the <%= (@numberOfTeams+1).ordinalize %> team to find this tag.
+	<% end %>
+
+	 <br /><br />
+
+	<%= form_tag("/tags/#{params[:id]}/tagFoundQuizAnswered", :method => "post") do %>
+		Question:<br />
+		<%= @tag.quizQuestion %><br /><br />
+		<%= label_tag(:answer, "Your answer:") %>
+		<%= text_field_tag(:answer) %>
+
+		<%= submit_tag("Answer") %>
+
+	<% end %>
+
+
+<% else %>
+	<% if @numberOfTeams == 0 %>
+		You are the first team to find this tag!
+	<% else %>
+		You are the <%= (@numberOfTeams+1).ordinalize %> team to find this tag.
+	<% end %>
+
+	<%= button_to "Claim your Points", {:action => "tagFoundQuizAnswered", :noQuiz => true} %>
+<% end %>

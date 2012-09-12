@@ -1,0 +1,26 @@
+<h1><%= @team.name %></h1>
+
+<span class="largeNumber"><%= if not @placement.nil? 
+	@placement.ordinalize 
+	end %></span><span class="pointsTxt"> place</span>
+
+<br /><br />
+
+<span class="largeNumber"><%= @team.getTotalScore %></span> <span class="pointsTxt">points total</span>
+
+<br /><br />
+
+
+<span class="largeNumber">
+<%= @team.getNumberOfScans %> <span class="pointsTxt">tags scanned</span>
+</span>
+
+<hr>
+<span class="pointsTxt">Tags scanned:</span>
+<ol>
+<% @tags.each do |tag| %>
+	<li><%= tag.id.to_s + ' ' + tag.name%></li>
+<% end %>
+</ol>
+
+<%= will_paginate @tags %>
