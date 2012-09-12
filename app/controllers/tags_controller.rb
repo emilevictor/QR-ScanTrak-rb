@@ -23,7 +23,7 @@ class TagsController < ApplicationController
 
 
         end
-        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
+        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 8)
         @qrCodes.push(@indivQR)
 
         #tag.createdByUser = User.find(tag.createdBy).email
@@ -55,7 +55,7 @@ class TagsController < ApplicationController
         else
           qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
         end
-        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
+        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 8)
 
         respond_to do |format|
           format.html # show.html.erb
