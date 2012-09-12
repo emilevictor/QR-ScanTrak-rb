@@ -15,7 +15,14 @@ class TagsController < ApplicationController
 
       host = request.host_with_port
       @tags.each do |tag|
-        qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
+        if Rails.env.production?
+          qrCodeString = "http://" + request.host_with_port + "/qrscantrak/tags/" + tag.uniqueUrl + "/tagFound"
+
+        else
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
+
+
+        end
         @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
         @qrCodes.push(@indivQR)
 
@@ -40,7 +47,14 @@ class TagsController < ApplicationController
   def show
       @tag = Tag.where(:uniqueUrl => params[:id]).first
       if not @tag.nil?
-        qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
+
+
+        if Rails.env.production?
+          qrCodeString = "http://" + request.host_with_port + "/qrscantrak/tags/" + tag.uniqueUrl + "/tagFound"
+
+        else
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
+        end
         @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 7)
 
         respond_to do |format|
