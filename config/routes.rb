@@ -1,5 +1,7 @@
 QRScantrak::Application.routes.draw do
 
+  match '/scantrak/' => 'home#index'
+
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
   resources :teams
