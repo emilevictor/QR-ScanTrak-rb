@@ -99,7 +99,7 @@ class TagsController < ApplicationController
       @tag = Tag.where(:uniqueUrl => params[:id]).first
 
       #Check that tag hasn't been scanned yet.
-      if !Scan.where(:team_id => @team.id, :tag_id => @tag).first.nil?
+      if !Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
         
         if (params[:answer] == @tag.quizAnswer) or (@tag.quizQuestion.empty?)
           #cool... They got the answer correct or there was no question.
