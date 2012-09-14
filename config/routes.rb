@@ -9,6 +9,8 @@ QRScantrak::Application.routes.draw do
   match 'tags/print' => 'tags#printTags'
   match 'tags/getPDF' => 'tags#genPDFofTags'
 
+  match '/scantrak/tags/print' => 'tags#printTags'
+
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
   resources :teams
