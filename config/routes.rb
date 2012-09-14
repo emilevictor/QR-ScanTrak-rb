@@ -1,9 +1,13 @@
 QRScantrak::Application.routes.draw do
 
+
+  #must be first line for production environment to work
+  match '/scantrak/' => 'home#index'
+
+
+
   match 'tags/print' => 'tags#printTags'
   match 'tags/getPDF' => 'tags#genPDFofTags'
-
-  match '/scantrak/' => 'home#index'
 
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
