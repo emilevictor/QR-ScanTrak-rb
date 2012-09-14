@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120912114032) do
+ActiveRecord::Schema.define(:version => 20120912135449) do
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20120912114032) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "scans", ["tag_id", "team_id"], :name => "index_scans_on_tag_id_and_team_id", :unique => true
 
   create_table "tags", :force => true do |t|
     t.string   "name"

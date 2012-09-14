@@ -55,9 +55,11 @@
     <td class="indivTD"><%= link_to 'Edit', edit_tag_path(tag) %></td>
     <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+  <% currentQr = currentQr + 1 %>
+
 <% end %>
 </table>
 
 <br />
 
-<%= will_paginate @posts %>
+<% #= will_paginate @tags %>

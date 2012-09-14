@@ -1,3 +1,11 @@
 == QR-ScanTrak-RB
 
 This is a ruby on rails port of my original PHP QR-Scantrak application. The aim is to clean up the codebase and make further development much easier.
+
+=== Requirements not handled by rubygems
+
+You will need to install wkhtmltopdf as well, in order to generate tags:
+
+1. brew install wkhtmltopdf (mac)
+2. apt-get install wkhtmltopdf (linux)
+3. Windows: https://github.com/pdfkit/pdfkit/wiki/Installing-WKHTMLTOPDF

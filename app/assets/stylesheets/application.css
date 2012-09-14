@@ -15,3 +15,15 @@
 #notice {
   color: green;
 }
+
+#alert {
+	color: red;
+}
+
+@media all {
+  .page-break  { display: none; }
+}
+
+@media print {
+  .page-break  { display: block; page-break-before: always; }
+}

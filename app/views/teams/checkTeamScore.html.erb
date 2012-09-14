@@ -11,16 +11,31 @@
 <br /><br />
 
 
-<span class="largeNumber">
-<%= @team.getNumberOfScans %> <span class="pointsTxt">tags scanned</span>
-</span>
+<span class="pointsTxt">
+<%= pluralize(@team.getNumberOfScans, 'tag') %>  scanned</span>
 
 <hr>
 <span class="pointsTxt">Tags scanned:</span>
-<ol>
-<% @tags.each do |tag| %>
-	<li><%= tag.id.to_s + ' ' + tag.name%></li>
-<% end %>
-</ol>
 
-<%= will_paginate @tags %>
+
+<br />
+
+<table>
+	<tr>
+<th>Tag name</th>
+<th>Points</th>
+<th>Time scanned</th>
+</tr>
+
+<% @scans.each do |scan| %>
+	<tr>
+	<td><%= scan.tag.name %></td>
+	<td><%= scan.tag.points %></td>
+	<td><%= time_ago_in_words(scan.created_at) %> ago</td>
+</tr>
+<% end %>
+
+
+</table>
+
+<%= will_paginate @scans %>

@@ -38,6 +38,9 @@ gem "random-word", "~> 1.3.0"
 gem 'execjs'
 gem 'therubyracer' 
 
+#pdfkit - requires the wkhtmltopdf library to be installed separately (instructions: https://github.com/pdfkit/PDFKit)
+gem 'pdfkit'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

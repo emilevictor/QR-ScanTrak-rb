@@ -273,6 +273,47 @@ class TagsController < ApplicationController
     end
   end
 
+  def genPDFofTags
+    kit = PDFKit.new(File.new('/tags/print'))
+    file = kit.to_file('/')
+  end
+
+
+    #PrintTags option
+  def printTags
+    #if the current user is an admin
+    if current_user.try(:admin?)
+      @qrCodes = []
+      @tags = Tag.paginate(:page => params[:page])
+
+      host = request.host_with_port
+      @tags.each do |tag|
+        if Rails.env.production?
+          qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
+
+        else
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
+
+
+        end
+        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 10)
+        @qrCodes.push(@indivQR)
+
+        #tag.createdByUser = User.find(tag.createdBy).email
+
+      end
+      
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @tags }
+      end
+
+    else
+      flash[:notice] = 'You need admin privileges to go there.'
+      redirect_to :controller => "home", :action => "index"
+    end
+  end
+
 
 
 end
