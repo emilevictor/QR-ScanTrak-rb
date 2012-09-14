@@ -3,7 +3,6 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 require 'pdfkit'
-config.middleware.use PDFKit::Middleware
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -46,6 +45,8 @@ module QRScantrak
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
+
+    config.middleware.use PDFKit::Middleware
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
