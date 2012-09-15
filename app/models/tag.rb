@@ -1,4 +1,7 @@
 class Tag < ActiveRecord::Base
+	image_accessor :qr_code
+
+	
  	attr_accessible :address, :content, :createdBy, :latitude, :longitude,
  	 :name, :quizAnswer, :points, :quizQuestion, :uniqueUrl
 	geocoded_by :address
@@ -12,4 +15,6 @@ class Tag < ActiveRecord::Base
  	validates :points, :presence => true
 
  	after_validation :geocode
+
+
 end

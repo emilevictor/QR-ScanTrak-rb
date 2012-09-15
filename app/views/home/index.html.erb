@@ -4,6 +4,8 @@
   <ul>
   	<% if not @team.nil? %>
   	<li><%= link_to 'Check Team Score', :controller => "teams", :action => "checkTeamScore" %></li>
+    <% else %>
+      Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam" %><br /><br />
   	<% end %>
   <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
   <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -17,14 +19,15 @@
 <% end %>
 <br /><br />
 <% if current_user.try(:admin?) %>
+  <div id="adminPanel">
+  	Welcome, <%= current_user.first_name %>
 
-	Welcome, <%= current_user.first_name %>
+  	<ul>
+  		<li><%= link_to "Teams", teams_path %></li>
+  		<li><%= link_to "Tags", :controller => "tags", :action => "index" %></li>
 
-	<ul>
-		<li><%= link_to "Teams", teams_path %></li>
-		<li><%= link_to "Tags", :controller => "tags", :action => "index" %></li>
-
-	</ul>
+  	</ul>
+  </div>
 
 
 <% end %>

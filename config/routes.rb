@@ -2,14 +2,20 @@ QRScantrak::Application.routes.draw do
 
 
   #must be first line for production environment to work
-  match '/scantrak/' => 'home#index'
+  if Rails.env.production?
+
+    match '/scantrak/' => 'home#index'
+    match '/scantrak/tags/print' => 'tags#printTags'
+
+
+  end
 
 
 
   match 'tags/print' => 'tags#printTags'
   match 'tags/getPDF' => 'tags#genPDFofTags'
 
-  match '/scantrak/tags/print' => 'tags#printTags'
+  
 
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
@@ -23,6 +29,12 @@ QRScantrak::Application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
+
+  #Home teams creation
+  match '/createTeam' => "home#createTeam"
+
+
+
 
   match "/tags/error/" => "tags#error_not_admin"
 

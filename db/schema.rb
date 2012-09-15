@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120912135449) do
+ActiveRecord::Schema.define(:version => 20120915022223) do
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20120912135449) do
     t.datetime "updated_at",   :null => false
     t.integer  "user_id"
     t.integer  "points"
+    t.string   "qr_code_uid"
+    t.string   "qr_code_name"
   end
 
   create_table "tags_teams", :id => false, :force => true do |t|

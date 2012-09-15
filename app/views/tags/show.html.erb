@@ -12,22 +12,8 @@
 
 <p>
   <b>Qrcode:</b>
-  <!--<%= @tag.QRCode %>-->
-
-  <table class="qrcodeBig">
-        <% @indivQR.modules.each_index do |x| %>
-          <tr>  
-          <% @indivQR.modules.each_index do |y| %>
-           <% if @indivQR.dark?(x,y) %>
-
-            <td class="blackBig"/>
-           <% else %>
-            <td class="whiteBig"/>
-           <% end %>
-          <% end %>
-          </tr>
-        <% end %>
-    </table>
+  <!--<%= @tag.QRCode %>--><br />
+  <%= image_tag @tag.qr_code.url %>
 </p>
 
 <p>

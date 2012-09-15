@@ -3,20 +3,7 @@
 <% @tags.each do |tag| %>
 	<div class="indivTag">
 		<div class="qrcodePrintTag">
-			<table class="qrcodeMedium">
-		        <% @qrCodes[currentQr].modules.each_index do |x| %>
-		          <tr>  
-		          <% @qrCodes[currentQr].modules.each_index do |y| %>
-		           <% if @qrCodes[currentQr].dark?(x,y) %>
-
-		            <td class="blackMedium"/>
-		           <% else %>
-		            <td class="whiteMedium"/>
-		           <% end %>
-		          <% end %>
-		          </tr>
-		        <% end %>
-		    </table>
+			 <%= image_tag tag.qr_code.url %>
 		</div>
 
 		<h1 class="tagTitle">

@@ -7,9 +7,6 @@ gem 'rails', '3.2.8'
 
 gem "pg", "~> 0.14.1"
 
-#For generation of QR codes
-gem "rqrcode"
-
 # Devise - used for authentication
 
 gem 'devise'
@@ -40,6 +37,12 @@ gem 'therubyracer'
 
 #pdfkit - requires the wkhtmltopdf library to be installed separately (instructions: https://github.com/pdfkit/PDFKit)
 gem 'pdfkit'
+
+
+#For qr code generation
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.12'
+gem 'rqrcode_png'
 
 
 # To use ActiveModel has_secure_password

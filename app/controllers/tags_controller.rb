@@ -191,6 +191,19 @@ class TagsController < ApplicationController
         @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
       end
 
+      if Rails.env.production?
+        qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + @tag.uniqueUrl + "/tagFound"
+
+      else
+        qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
+      end
+
+
+      #Generate the QR code with rqrcode_png
+      qr_code_img = RQRCode::QRCode.new(qrCodeString, :size => 10, :level => :h ).to_img
+      qr_code_img = qr_code_img.resize(320,320)
+      @tag.update_attribute :qr_code, qr_code_img.to_string
+
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @tag }
@@ -274,15 +287,33 @@ class TagsController < ApplicationController
   end
 
   def genPDFofTags
-    kit = PDFKit.new(File.new('/tags/print'))
-    file = kit.to_file('/')
+    
+    tagsLocation = ""
+    if Rails.env.production?
+      tagsLocation = "http://" + request.host_with_port + "/scantrak/tags/print"
+    else
+      tagsLocation = "http://" + request.host_with_port + "/tags/print"
+    end
+
+    if (tagsLocation != "")
+      kit = PDFKit.new(tagsLocation)
+
+      file = kit.to_file('scanTrakTags.pdf')
+
+      #redirect_to 'scanTrakTags.pdf'
+
+    else
+      puts "ERROR ERROR ERROR ERROR TAGSLOCATION EMPTY"
+    end
+
+
   end
 
 
     #PrintTags option
   def printTags
     #if the current user is an admin
-    if current_user.try(:admin?)
+
       @qrCodes = []
       @tags = Tag.paginate(:page => params[:page])
 
@@ -307,11 +338,6 @@ class TagsController < ApplicationController
         format.html # index.html.erb
         format.json { render json: @tags }
       end
-
-    else
-      flash[:notice] = 'You need admin privileges to go there.'
-      redirect_to :controller => "home", :action => "index"
-    end
   end
 
 

@@ -1,6 +1,9 @@
 <h1>Listing tags</h1>
 
-<%= link_to 'New Tag', new_tag_path %>
+<ul id="tagsMenu">
+<li><%= link_to 'New Tag', new_tag_path %></li>
+<li><%= link_to 'Print All Tags', :controller => 'tags', :action => 'printTags' %></li>
+</ul>
 
 <table class="tagsTable">
   <tr>
@@ -24,20 +27,7 @@
   <tr>
     <td class="indivTD"><%= tag.name %></td>
     <td class="indivTD"><input type="text" value="<%= tag.uniqueUrl %>"></td>
-    <td class="indivTD"><table class="qrcode">
-        <% @qrCodes[currentQr].modules.each_index do |x| %>
-          <tr>  
-          <% @qrCodes[currentQr].modules.each_index do |y| %>
-           <% if @qrCodes[currentQr].dark?(x,y) %>
-
-            <td class="black"/>
-           <% else %>
-            <td class="white"/>
-           <% end %>
-          <% end %>
-          </tr>
-        <% end %>
-    </table>
+    <td class="indivTD"><%= image_tag tag.qr_code.url, :size => "100x100" %>
     </td>
     <td class="indivTD"><%= tag.quizQuestion %></td>
     <td class="indivTD"><%= tag.quizAnswer %></td>

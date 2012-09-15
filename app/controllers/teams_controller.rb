@@ -23,12 +23,22 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     if current_user.try(:admin?)
+      @user = current_user
       @team = Team.find(params[:id])
+      @leaderboard = Team.getLeaderboard
+      @scans = Scan.where(:team_id => @team.id)
+      @placement = @team.getPlacement(@leaderboard)
+      @scans = @team.scans.paginate(:page => params[:page])
 
       respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @team }
+        format.json {render json: {placement: @placement, scans: @scans, team:@team, tags: @tags}}
+        format.html { render action: "checkTeamScore" }
       end
+
+    else
+      flash[:alert] = "That's not your team, here's your team's score"
+      redirect_to :controller => 'teams', :action => 'checkTeamScore', :id => current_user.team_id
+
     end
   end
 
@@ -55,22 +65,38 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-        if current_user.try(:admin?)
-    @team = Team.new(params[:team])
+    #Keeping in mind that this can be accessed by normal users
+    #Ensure that they are not in a team already.
+    @user = current_user
 
-    #encrypt provided password
-    @team.password = BCrypt::Password.create(@team.password)
+    if (not @user.nil? and @user.team_id.nil?) or current_user.try(:admin?)
 
-    respond_to do |format|
-      if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render json: @team, status: :created, location: @team }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+
+      @team = Team.new(params[:team])
+
+      if not current_user.try(:admin?)
+
+        @team.users << current_user
       end
+
+      #encrypt provided password
+      @team.password = BCrypt::Password.create(@team.password)
+
+      respond_to do |format|
+        if @team.save
+          format.html { redirect_to @team, notice: 'Team was successfully created.' }
+          format.json { render json: @team, status: :created, location: @team }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
+      end
+
+    else 
+      flash[:alert] = "You are already in a team, and you are trying to create a new one!"
+      redirect_to :controller => "home", :action => "index"
     end
-  end
+  
   end
 
   # GET /teams/1/edit/addUsers
@@ -104,7 +130,7 @@ class TeamsController < ApplicationController
 
   #Check team score
   def checkTeamScore
-    if user_signed_in?
+    if user_signed_in? and not current_user.team_id.nil?
       @user = current_user
       @team = Team.find(@user.team_id)
       @leaderboard = Team.getLeaderboard
@@ -118,7 +144,8 @@ class TeamsController < ApplicationController
       end
 
     else
-      flash[:alert] = "You are not logged in!"
+      flash[:alert] = "You are not logged in, or you aren't in a team."
+      redirect_to :controller => 'home', :action => 'index'
 
     end
 

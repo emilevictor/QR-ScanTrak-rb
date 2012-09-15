@@ -10,12 +10,33 @@ require 'bcrypt'
 Team.delete_all
 Tag.delete_all
 User.delete_all
+Scan.delete_all
+
+
+# move cursor to beginning of line
+cr = "\r"           
+
+
+# ANSI escape code to clear line from cursor to end of line
+# "\e" is an alternative to "\033"
+# cf. http://en.wikipedia.org/wiki/ANSI_escape_code
+clear = "\e[0K"     
+
+# reset lines
+reset = cr + clear
 
 emile = User.create!(:email => "emilevictor@gmail.com", :password => "password", :password_confirmation => "password", :first_name => "Emile", :last_name => "Victor", :admin => true)
 
 emile.save
 
-for i in 0..2000
+puts "********* NOW GENERATING 110 TAGS, STAND BY ***********"
+print "          "
+for i in 0..110
+	percentage = ((i.to_f/110)*100).to_i
+    string = "="*((i.to_f/110)*60).to_i.abs + " "*(60-((i.to_f/110)*60)).abs
+    print "#{reset}|#{string}| #{percentage}%"
+
+
 	@newTag = Tag.new
 	@newTag.name = "#{RandomWord.adjs.next} #{RandomWord.nouns.next}"
 	@newTag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
@@ -26,6 +47,19 @@ for i in 0..2000
 
     @newTag.quizQuestion = ""
     @newTag.quizAnswer = ""
+
+	if Rails.env.production?
+		qrCodeString = "http://" + "emilevictor.com" + "/scantrak/tags/" + @newTag.uniqueUrl + "/tagFound"
+
+	else
+		qrCodeString = "http://" + "localhost:3000" + "/tags/" + @newTag.uniqueUrl + "/tagFound"
+	end
+
+
+    qr_code_img = RQRCode::QRCode.new(qrCodeString, :size => 10, :level => :h ).to_img
+	qr_code_img = qr_code_img.resize(320,320)
+    @newTag.update_attribute :qr_code, qr_code_img.to_string
+
 
 	#@newTag.latitude = -150+rand(300)
 	#@newTag.longitude = -150+rand(300)
