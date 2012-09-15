@@ -102,9 +102,10 @@ class TeamsController < ApplicationController
       @team = Team.new(params[:team])
 
       if not current_user.try(:admin?) or params[:public] == "true"
-
         @team.users << current_user
       end
+
+      puts "\n\n\n\n\n\n\n\n#{params[:public]}\n\n\n\n\n\n\n"
 
       #encrypt provided password
       @team.password = BCrypt::Password.create(@team.password)
