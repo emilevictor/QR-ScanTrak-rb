@@ -101,7 +101,7 @@ class TeamsController < ApplicationController
 
       @team = Team.new(params[:team])
 
-      if not current_user.try(:admin?) or params[:public] == true
+      if not current_user.try(:admin?) or params[:public] == "true"
 
         @team.users << current_user
       end
