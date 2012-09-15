@@ -35,27 +35,17 @@ gem "random-word", "~> 1.3.0"
 gem 'execjs'
 gem 'therubyracer' 
 
-#pdfkit - requires the wkhtmltopdf library to be installed separately (instructions: https://github.com/pdfkit/PDFKit)
-gem 'pdfkit'
-
 
 #For qr code generation
 gem 'rack-cache', :require => 'rack/cache'
-gem 'dragonfly', '~>0.9.12'
+gem 'dragonfly', '~>0.9.12'	
 gem 'rqrcode_png'
 
+#Global settings!
+gem "rails_config"
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
