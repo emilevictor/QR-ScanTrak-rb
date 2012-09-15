@@ -103,8 +103,7 @@ class TeamsController < ApplicationController
 
       if params[:public] == "true"
         @team.users << current_user
-      else
-        flash[:alert] = "#{params[:public]} <-- params[:public]"
+
       end
 
 
@@ -113,7 +112,7 @@ class TeamsController < ApplicationController
 
       respond_to do |format|
         if @team.save
-          format.html { redirect_to @team, notice: 'Team was successfully created.' }
+          format.html { redirect_to @team, notice: 'Team was successfully created. #{params[:public]}' }
           format.json { render json: @team, status: :created, location: @team }
         else
           format.html { render action: "new" }
