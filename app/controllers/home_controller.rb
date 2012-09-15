@@ -5,6 +5,10 @@ class HomeController < ApplicationController
 		if not @user.nil? and not @user.team_id.nil?
 
 			@team = Team.find(@user.team_id)
+
+      
+
+
 		
 		elsif @user.team_id.nil? and not @user.nil?
 

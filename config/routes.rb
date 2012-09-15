@@ -10,14 +10,21 @@ QRScantrak::Application.routes.draw do
 
   end
 
+  match '/tags/manualScan' => 'tags#manualScan'
+  match '/tags/processScans' => 'tags#manualScanProcess'
 
 
   match 'tags/print' => 'tags#printTags'
-  match 'tags/getPDF' => 'tags#genPDFofTags'
 
-  
+  #Home teams creation
+  match '/createTeam' => "home#createTeam"
+  match 'teams/AddPlayersToMyTeam' => 'teams#publicAddNewUsersToTeam'
+
+  match 'teams/addPlayerToMyTeam' => 'teams#publicAddNewUsersToTeamProcessor'
 
   match 'teams/checkScore' => 'teams#checkTeamScore'
+
+  match 'teams/leaderboard' => 'teams#leaderboard'
 
   resources :teams
 
@@ -30,10 +37,6 @@ QRScantrak::Application.routes.draw do
 
   root :to => "home#index"
 
-  #Home teams creation
-  match '/createTeam' => "home#createTeam"
-
-
 
 
   match "/tags/error/" => "tags#error_not_admin"
@@ -44,6 +47,8 @@ QRScantrak::Application.routes.draw do
   match 'tags/:id/scanSuccess' => 'tags#scanSuccess'
 
   match 'teams/:id/edit/addUsers' => 'teams#addUsers'
+
+
 
   match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
 

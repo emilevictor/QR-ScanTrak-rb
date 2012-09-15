@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
       end
 
     else
-      flash[:alert] = "That's not your team, here's your team's score"
+      flash[:alert] = "Here's your team's score"
       redirect_to :controller => 'teams', :action => 'checkTeamScore', :id => current_user.team_id
 
     end
@@ -55,6 +55,14 @@ class TeamsController < ApplicationController
     end
   end
 
+
+  #Current leaderboard, static
+
+  def leaderboard
+    @leaderboard = Team.getLeaderboard
+
+  end
+
   # GET /teams/1/edit
   def edit
         if current_user.try(:admin?)
@@ -68,6 +76,8 @@ class TeamsController < ApplicationController
     #Keeping in mind that this can be accessed by normal users
     #Ensure that they are not in a team already.
     @user = current_user
+    flash[:alert] = ""
+
 
     if (not @user.nil? and @user.team_id.nil?) or current_user.try(:admin?)
 
@@ -109,6 +119,76 @@ class TeamsController < ApplicationController
     end
   end
 
+  #Adding new members to the team, for public players
+  def publicAddNewUsersToTeam
+    #Check that the user is logged in, is in a team, and that the
+    #team has less then Settings.maxTeamMembers players.
+    if user_signed_in?
+      @team = Team.find(current_user.team_id)
+
+      if @team.users.count < Settings.maxTeamMembers
+
+        @numberLeft = Settings.maxTeamMembers - @team.users.count
+
+        render view: "publicAddNewUsersToTeam"
+
+      else
+        flash[:alert] = "Your team is full, therefore you cannot add more players!"
+        redirect_to :controller => 'home', :action => 'index'
+      end
+
+
+    else
+      #User is not signed in
+      flash[:alert] = "You are not signed in."
+      redirect_to :controller => 'devise/sessions', :action => 'new'
+    end
+
+  end
+
+  def publicAddNewUsersToTeamProcessor
+    @user = User.where(:email => params[:email]).first
+
+    #if that user doesn't exist, bounce back with error
+    if @user.nil?
+
+      flash[:notice] = "There is no user with the email address #{params[:email]}"
+      redirect_to :controller => 'teams', :action => 'publicAddNewUsersToTeam'
+    else
+      #user exists, let's just add them to the team.
+      if @user.team.nil?
+        #If user is not already in a team
+        @team = Team.find(params[:team_id])
+        if @team.users.count >= Settings.maxTeamMembers
+            #If the team is already full
+          flash[:alert] = "Your team is full, you can't add more members."
+          redirect_to :controller => 'teams', :action => 'checkTeamScore'
+
+
+        end
+
+        if not @team.nil?
+          #If the team exists (i.e. there was no error in the form)
+          @team.users << @user
+          flash[:notice] = "Added player #{@user.first_name} #{@user.last_name} to your team."
+          redirect_to :controller => 'teams', :action => 'checkTeamScore'
+        else
+          flash[:notice] = "There was an error getting the team ID, let the admin know."
+          redirect_to :controller => 'teams', :action => 'publicAddNewUsersToTeam'
+        end
+
+      else
+        #If the user is already in a team
+        flash[:notice] = "That user is already in a team! Tell them to leave their existing team first."
+        redirect_to :controller => 'teams', :action => 'publicAddNewUsersToTeam'
+      end
+      
+
+    end
+  end
+
+  #The processing function
+
   # POST /teams/1/edit/addUsers
   def addUsersToTeam
     @team = Team.find(params[:id])
@@ -127,6 +207,8 @@ class TeamsController < ApplicationController
       redirect_to @team, error: 'Couldn\'t add players to team'
     end
   end
+
+
 
   #Check team score
   def checkTeamScore

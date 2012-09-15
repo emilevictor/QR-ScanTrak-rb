@@ -1,13 +1,26 @@
 <%= form_tag("/teams/#{@team.id}/edit/addUsersToTeam", :method => "post") do %>
 
+<%= link_to 'Back to Main Menu', :controller => 'teams', :action => 'index' %>
+
+
+Press Ctrl+F (or Cmd+F) to search!
+
 <table>
 	<th>User</th>
+	<th>Team ID</th>
+	<th>Team</th>
 
 	<% @users.each do |user| %>
 		<tr>
 			<td><%= check_box_tag("USERID #{user.id.to_s}") %>
 				<%= label_tag(user.id.to_s,"#{user.first_name} #{user.last_name} (#{user.email})") %>
 				</td>
+				
+					<% if not user.team.nil? %>
+						<td><%= user.team.id %></td> <td><%= user.team.name %></td>
+
+					<% end %>
+				
 		</tr>
 	<% end %>
 

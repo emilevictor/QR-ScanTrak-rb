@@ -340,6 +340,62 @@ class TagsController < ApplicationController
       end
   end
 
+  def manualScan
+    if user_signed_in?
+
+      if not current_user.team.nil?
+        #user is in a team
+        @team = current_user.team
+        render view: "manualScan"
+      else
+        flash[:alert] = "You are not a member of a team!"
+        redirect_to :controller => 'home', :action => 'index'
+      end
+    else
+      #User is not signed in
+      flash[:notice] = "Please sign in before scanning a tag"
+      redirect_to :controller => 'devise/sessions', :action => 'new'
+    end
+
+  end
+
+  def manualScanProcess
+    #puts "\n\n\n\n\n\nI GOT HERE\n\n\n\n\n\n\n\n\n"
+
+    @failedScans = Array.new
+    @duplicateScans = Array.new
+    @successfulScans = Array.new
+    @team = Team.find(params[:team_id])
+    params.each do |key,value|
+      if (splitKey = key.split(" "))[0] == "tagCode"
+        tempValue = value.gsub("-","")
+
+        @tag = Tag.where(:uniqueUrl => tempValue).first
+        if @tag.nil?
+          @failedScans.push(value)
+          next
+        end
+
+        if @team.tags.where(:uniqueUrl => tempValue).empty?
+          @scan = Scan.new
+          @scan.save
+          @team.scans << @scan
+          @tag.scans << @scan
+          @successfulScans.push(value)
+
+        else
+          @duplicateScans.push(value)
+        end
+
+
+
+
+
+      end
+    end
+
+  end
+
 
 
 end

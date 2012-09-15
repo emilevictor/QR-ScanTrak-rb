@@ -4,6 +4,15 @@
   <ul>
   	<% if not @team.nil? %>
   	<li><%= link_to 'Check Team Score', :controller => "teams", :action => "checkTeamScore" %></li>
+
+    <% if @team.users.count < Settings.maxTeamMembers%>
+
+      <li><%= link_to 'Add new Team Members', :controller => 'teams', :action => 'publicAddNewUsersToTeam' %></li>
+    <% end %>
+
+    <li><%= link_to 'Manually enter tag codes', :controller => 'tags', :action => 'manualScan' %></li>
+
+
     <% else %>
       Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam" %><br /><br />
   	<% end %>

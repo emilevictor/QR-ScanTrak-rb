@@ -2,3 +2,8 @@
 
 This is a ruby on rails port of my original PHP QR-Scantrak application. The aim is to clean up the codebase and make further development much easier.
 
+=== How-to
+
+==== Set maximum number of members per team
+
+Modify config/settings.yml's maxTeamMembers variable.

@@ -1,5 +1,8 @@
 <h1><%= @team.name %></h1>
 
+<%= link_to 'Back to Main Menu', :controller => 'home', :action => 'index' %>
+<br />
+<br />
 <span class="largeNumber"><%= if not @placement.nil? 
 	@placement.ordinalize 
 	end %></span><span class="pointsTxt"> place</span>
@@ -18,6 +21,13 @@
 
 <div class="pointsTxt">
 Your team members:
+<ul>
+	<% @team.users.each do |user| %>
+		<li><%= user.first_name.capitalize %> <%= user.last_name.capitalize %> (<%=user.email %>)</li>
+
+
+	<% end %>
+</ul>
 </div>
 
 <hr>
