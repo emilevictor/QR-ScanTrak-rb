@@ -1,0 +1,12 @@
+<h1>Leaderboard</h1>
+<table>
+	<th>Team Name</th>
+	<th>Score</th>
+<% @leaderboard.each do |team| %>
+	<tr>
+		<td><%=Team.find(team[:id]).name%></td>
+		<td><%=team[:score]%></td>
+
+	</tr>
+<% end %>
+</table>
