@@ -19,6 +19,8 @@ QRScantrak::Application.routes.draw do
 
   match 'teams/staticLeaderboard' => 'teams#staticLeaderboard'
 
+  match 'teams/leaderboard' => 'teams#liveLeaderboard'
+
   resources :teams
 
   resources :tags

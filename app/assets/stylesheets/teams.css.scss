@@ -22,3 +22,37 @@ td {
 	
 	font-size:20px;
 }
+
+// Live Leaderboard
+
+#liveLeaderboard {
+	border: none;
+}
+
+td.teamID {
+	border:none;
+	width:200px;
+	margin-right:100px;
+	text-align:center;
+}
+
+td.teamName {
+	border:none;
+	width:200px;
+	margin-right:100px;
+	text-align:center;
+
+}
+
+td.points {
+	border:none;
+	width: 200px;
+	text-align:center;
+
+}
+
+td.placement {
+	border:none;
+	text-align:center;
+	size:16px;
+}

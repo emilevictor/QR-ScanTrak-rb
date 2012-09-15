@@ -67,6 +67,19 @@ class TeamsController < ApplicationController
 
   end
 
+  def liveLeaderboard
+    if current_user.try(:admin?)
+    #nothing here right now, just in case we need extra information later.
+      respond_to do |format|
+        format.html
+
+      end
+    else
+      flash[:alert] = "You must be an administrator to view the leaderboard."
+      redirect_to home_index_path
+    end
+  end
+
   # GET /teams/1/edit
   def edit
         if current_user.try(:admin?)
