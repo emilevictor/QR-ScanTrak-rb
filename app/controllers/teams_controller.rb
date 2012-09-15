@@ -103,9 +103,10 @@ class TeamsController < ApplicationController
 
       if params[:public] == "true"
         @team.users << current_user
+      else
+        flash[:alert] = "#{params[:public]} <-- params[:public]"
       end
 
-      puts "\n\n\n\n\n\n\n\n#{params[:public]}\n\n\n\n\n\n\n"
 
       #encrypt provided password
       @team.password = BCrypt::Password.create(@team.password)
