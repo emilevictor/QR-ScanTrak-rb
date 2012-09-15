@@ -17,7 +17,7 @@ QRScantrak::Application.routes.draw do
 
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
-  match 'teams/leaderboard' => 'teams#leaderboard'
+  match 'teams/staticLeaderboard' => 'teams#staticLeaderboard'
 
   resources :teams
 

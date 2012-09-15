@@ -58,8 +58,12 @@ class TeamsController < ApplicationController
 
   #Current leaderboard, static
 
-  def leaderboard
+  def staticLeaderboard
     @leaderboard = Team.getLeaderboard
+    respond_to do |format|
+      format.html
+      format.json {render json: @leaderboard}
+    end
 
   end
 

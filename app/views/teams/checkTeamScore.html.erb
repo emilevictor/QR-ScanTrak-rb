@@ -45,8 +45,14 @@ Your team members:
 
 <% @scans.each do |scan| %>
 	<tr>
-	<td><%= scan.tag.name %></td>
-	<td><%= scan.tag.points %></td>
+	<td><% if not scan.tag.nil? %>
+	<%= scan.tag.name %>
+<% end %></td>
+	<td>
+		<% if not scan.tag.nil? %>
+		<%= scan.tag.points %>
+		<%end%>
+	</td>
 	<td><%= time_ago_in_words(scan.created_at) %> ago</td>
 </tr>
 <% end %>

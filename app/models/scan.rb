@@ -4,4 +4,5 @@ class Scan < ActiveRecord::Base
   has_many :users, :through => :team
   belongs_to :tag #requires has_many :scans on tag
 
+
 end

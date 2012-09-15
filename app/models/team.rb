@@ -15,7 +15,9 @@ def getTotalScore
 	@scans = Scan.where(:team_id => self.id)
 	scanSum = 0
 	@scans.each do |scan|
-		scanSum += scan.tag.points
+		if not scan.tag.nil?
+			scanSum += scan.tag.points
+		end
 	end
 
 	return scanSum
@@ -40,11 +42,11 @@ end
 
 		index = 0
 		Team.all.each do |team|
-			leaderboardArray[index] = {:id => team.id, :score => team.getTotalScore}
+			leaderboardArray[index] = {:id => team.id, :name => team.name, :score => team.getTotalScore}
 			index += 1
 		end
 
-		leaderboardArray = leaderboardArray.sort_by {|hsh| hsh[:score]}
+		leaderboardArray = leaderboardArray.sort_by {|hsh| hsh[:score]}.reverse
 
 		#leaderboardArray = Array.new(leaderboardHash.size)
 
