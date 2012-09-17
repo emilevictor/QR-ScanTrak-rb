@@ -1,6 +1,8 @@
 tmp/
-./log/*
+log/*
 public/system/
+*.log
+
 
 config/settings.local.yml
 config/settings/*.local.yml

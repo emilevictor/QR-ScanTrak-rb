@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915022223) do
+ActiveRecord::Schema.define(:version => 20120917132949) do
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
     t.integer  "tag_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "comment"
+    t.integer  "madeBy"
   end
 
   add_index "scans", ["tag_id", "team_id"], :name => "index_scans_on_tag_id_and_team_id", :unique => true
