@@ -1,13 +1,7 @@
 QRScantrak::Application.routes.draw do
 
 
-  #must be first line for production environment to work
-
-  match '/tags/manualScan' => 'tags#manualScan'
-  match '/tags/processScans' => 'tags#manualScanProcess'
-
-
-  match 'tags/print' => 'tags#printTags'
+  get "home/index"
 
   #Home teams creation
   match '/createTeam' => "home#createTeam"
@@ -15,20 +9,36 @@ QRScantrak::Application.routes.draw do
 
   match 'teams/addPlayerToMyTeam' => 'teams#publicAddNewUsersToTeamProcessor'
 
+  devise_for :users
+  
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
-  match 'teams/staticLeaderboard' => 'teams#staticLeaderboard'
+  match '/tags/manualScan' => 'tags#manualScan'
+  match '/tags/processScans' => 'tags#manualScanProcess'
 
-  match 'teams/leaderboard' => 'teams#liveLeaderboard'
+  scope "/admin" do
+    #must be first line for production environment to work
 
-  resources :teams
-
-  resources :tags
-
-  get "home/index"
+    match 'tags/print' => 'tags#printTags'
 
 
-  devise_for :users
+    match 'teams/staticLeaderboard' => 'teams#staticLeaderboard'
+
+    match 'teams/leaderboard' => 'teams#liveLeaderboard'
+
+    match 'teams/:id/edit/addUsers' => 'teams#addUsers'
+
+    match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
+    resources :users
+    resources :teams
+
+    resources :tags
+  end
+
+  # Administration access to modify users.
+
+
+
 
   root :to => "home#index"
 
@@ -41,10 +51,6 @@ QRScantrak::Application.routes.draw do
 
   match 'tags/:id/scanSuccess' => 'tags#scanSuccess'
 
-  match 'teams/:id/edit/addUsers' => 'teams#addUsers'
 
-
-
-  match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
 
 end

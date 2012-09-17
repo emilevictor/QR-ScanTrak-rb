@@ -14,4 +14,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :admin, :password_confirmation,
    :remember_me, :first_name, :last_name, :team
   # attr_accessible :title, :body
+
+
+  def self.search(search)
+    if search
+      where('email LIKE ?', "%#{search}")
+    else
+      scoped
+    end
+
+  end
 end

@@ -101,16 +101,15 @@ class TeamsController < ApplicationController
 
       @team = Team.new(params[:team])
 
-      if params[:public] == "yes"
-        @team.users << current_user
-      end
-
 
       #encrypt provided password
       @team.password = BCrypt::Password.create(@team.password)
 
       respond_to do |format|
         if @team.save
+          if not current_user.try(:admin?)
+            @team.users << @user
+          end
           format.html { redirect_to @team, notice: 'Team was successfully created. #{params[:public]}' }
           format.json { render json: @team, status: :created, location: @team }
         else
