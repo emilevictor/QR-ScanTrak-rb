@@ -76,28 +76,46 @@ class TagsController < ApplicationController
   #The page a user sees when they scan a tag
 
   def tagFound
-    @tag = Tag.where(:uniqueUrl => params[:id]).first
-    @user = User.find(current_user.id)
-    #Team of the current user.
-    if not @user.team_id.nil?
-      @team = Team.find(@user.team_id)
+    if user_signed_in?
+      @tag = Tag.where(:uniqueUrl => params[:id]).first
+      @user = User.find(current_user.id)
+      #Team of the current user.
+      if not @user.team_id.nil?
+        @team = Team.find(@user.team_id)
+      else
+        flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
+        #redirect_to :controller => "home", :action => "index"
+      end
+
+      if not @team.nil?
+
+        if user_signed_in? and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
+        
+          @numberOfTeams = Scan.where(:tag_id => @tag.id).count
+          respond_to do |format|
+            format.html
+            format.json {render tag: @tag, numberOfTeams: @numberOfTeams}
+          end
+        else
+          flash[:alert] = "You have already scanned that tag!"
+          redirect_to :controller => "home", :action => "index"
+        end
+
+
+      else
+        flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
+        
+          redirect_to :controller => "home", :action => "index"
+
+      end
+
+      
+
     else
-      flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
-      redirect_to home_index_path
+      redirect_to sign_in_path
+
     end
     
-
-    if user_signed_in? and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
-      
-      @numberOfTeams = Scan.where(:tag_id => @tag.id).count
-      respond_to do |format|
-        format.html
-        format.json {render tag: @tag, numberOfTeams: @numberOfTeams}
-      end
-    else
-      flash[:alert] = "You have already scanned that tag!"
-      redirect_to :controller => "home", :action => "index"
-    end
   end
 
   def tagFoundQuizAnswered

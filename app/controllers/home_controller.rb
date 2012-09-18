@@ -1,23 +1,12 @@
 class HomeController < ApplicationController
   def index
   	if user_signed_in?
-		@user = current_user
-		if not @user.nil? and not @user.team_id.nil?
+  		@user = current_user
+  		if not @user.nil? and not @user.team_id.nil?
 
-			@team = Team.find(@user.team_id)
+  			@team = Team.find(@user.team_id)
 
-      
-
-
-		
-		elsif @user.team_id.nil? and not @user.nil?
-
-			flash[:notice] = "You are not yet in a team. This needs to be rectified immediately!"
-
-		else
-			flash[:alert] = "There didn't seem to be a user signed in"
-
-		end
+  		end
   	end
   end
 
