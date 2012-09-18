@@ -82,7 +82,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-        if current_user.try(:admin?)
+      if current_user.try(:admin?)
     @team = Team.find(params[:id])
   end
   end

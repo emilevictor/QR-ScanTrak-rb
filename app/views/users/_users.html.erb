@@ -6,6 +6,7 @@
     <th><%= sortable "id"%> </th>
     <th><%= sortable "name" %> </th>
     <th><%= sortable "email", "Email" %></th>
+    <th>Admin</th>
   </tr>
 
 <!-- TODO: set the whole tab to be a link to the charity -->
@@ -14,7 +15,9 @@
     <td><%= user.id %>
     <td><%= link_to user.first_name + " " + user.last_name, user, :class => "userName" %></td>
     <td><%= user.email %></td>
-    <td><%= user.admin.to_s %></td>
+    <td style="text-align:center;"><% if user.admin? %>
+        •
+      <% end %></td>
   </tr>
 <% end %>
 </table>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918003314) do
+ActiveRecord::Schema.define(:version => 20120918014908) do
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20120918003314) do
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "admin",                  :default => false
+    t.text     "comments"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
