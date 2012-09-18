@@ -49,7 +49,7 @@ for i in 0..110
     @newTag.quizAnswer = ""
 
 	if Rails.env.production?
-		qrCodeString = "http://" + "emilevictor.com" + "/scantrak/tags/" + @newTag.uniqueUrl + "/tagFound"
+		qrCodeString = "http://" + "qrscantrak.com" + "/tags/" + @newTag.uniqueUrl + "/tagFound"
 
 	else
 		qrCodeString = "http://" + "localhost:3000" + "/tags/" + @newTag.uniqueUrl + "/tagFound"
