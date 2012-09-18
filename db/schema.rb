@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917132949) do
+ActiveRecord::Schema.define(:version => 20120918003314) do
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
@@ -54,8 +54,9 @@ ActiveRecord::Schema.define(:version => 20120917132949) do
     t.string   "password"
     t.integer  "user_id"
     t.integer  "tag_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "team_creator_id"
   end
 
   create_table "users", :force => true do |t|

@@ -13,8 +13,15 @@ QRScantrak::Application.routes.draw do
   
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
+  match 'teams/removeTeamMembers' => 'teams#removeTeamMembers'
+
+  #Removing team members
+  match '/teams/remove_user_from_team/:teamID' => 'teams#remove_user_from_team'
+
   match '/tags/manualScan' => 'tags#manualScan'
   match '/tags/processScans' => 'tags#manualScanProcess'
+
+  match '/admin' => 'admin#index'
 
   scope "/admin" do
     #must be first line for production environment to work

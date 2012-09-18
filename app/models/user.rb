@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   belongs_to :team
   has_many :scans
 
+  has_many :created_teams, :class_name => "Team"
+
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :admin, :password_confirmation,

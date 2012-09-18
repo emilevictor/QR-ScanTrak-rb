@@ -6,7 +6,7 @@ var gData = null
 */
 function hitStaticLeaderboard()
 {
-	$.getJSON('staticLeaderboard.json', function(data)
+	$.getJSON('admin/teams/staticLeaderboard.json', function(data)
 	{
 
 		//console.log(data);

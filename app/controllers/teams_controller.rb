@@ -110,6 +110,9 @@ class TeamsController < ApplicationController
           if not current_user.try(:admin?)
             @team.users << @user
           end
+          
+          current_user.created_teams << @team
+          current_user.save
           format.html { redirect_to @team, notice: 'Team was successfully created. #{params[:public]}' }
           format.json { render json: @team, status: :created, location: @team }
         else
@@ -272,6 +275,65 @@ class TeamsController < ApplicationController
     end
   end
   end
+
+  # Allows those who created teams to administer those who are in those teams.
+  def removeTeamMembers
+    @team = current_user.team
+    #If the user is signed in, AND is in a team, AND created the team.
+    if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).first.nil?
+
+
+
+      respond_to do |format|
+        format.html #removeTeamMembers.html.erb
+      end
+
+
+
+    elsif @team.creator != current_user
+
+      flash[:alert] = "You didn't create the team, as a result you don't have the right to remove people from it."
+      redirect_to home_index_path
+
+    elsif @team.nil?
+      flash[:alert] = "You aren't in a team, therefore you can't remove team members."
+
+
+    else
+      flash[:alert] = "You aren't signed in!"
+      redirect_to home_index_path
+
+    end
+  end
+
+  #TODO: make this safe so that people can't just willy nilly delete people from other teams.
+  # POST TO ME!
+  def remove_user_from_team
+   team = Team.find(params[:teamID])
+     
+    numberRemoved = 0
+    params.each do |key,value|
+      if (splitKey = key.split(" "))[0] == "USERID"
+        user = team.users.find(splitKey[1].to_i)
+        #puts "----------- USER #{splitKey[1]}"
+        if user and team and not current_user.created_teams.where(:id => team.id).nil?
+          team.users.delete(user)
+          numberRemoved = numberRemoved + 1
+        end
+      end
+    end
+
+    flash[:notice] = "Successfully removed members from team."
+    redirect_to teams_removeTeamMembers_path
+
+    #Rails.logger.warn "Param #{key}: #{value}"
+    
+
+
+     
+
+  end
+
 
   # DELETE /teams/1
   # DELETE /teams/1.json

@@ -1,6 +1,8 @@
 class Team < ActiveRecord::Base
   attr_accessible :description, :name, :password
 
+
+
   has_many :users
   has_many :scans
   has_many :tags, :through => :scans

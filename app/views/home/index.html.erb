@@ -5,9 +5,20 @@
   	<% if not @team.nil? %>
   	<li><%= link_to 'Check Team Score', :controller => "teams", :action => "checkTeamScore" %></li>
 
-    <% if @team.users.count < Settings.maxTeamMembers%>
+    <% if @team.users.count < Settings.maxTeamMembers %>
 
-      <li><%= link_to 'Add new Team Members', :controller => 'teams', :action => 'publicAddNewUsersToTeam' %></li>
+      <ul>
+        <li><%= link_to 'Add new Team Members', :controller => 'teams', :action => 'publicAddNewUsersToTeam' %></li>
+      </ul>
+
+    <% end %>
+
+    <% if @team.users.count > 1 and not current_user.created_teams.where(:id => @team.id).nil?%>
+    <ul>
+      <li>
+        <%= link_to 'Remove Team Members', teams_removeTeamMembers_path %>
+      </li>
+    </ul>
     <% end %>
 
     <li><%= link_to 'Manually enter tag codes', :controller => 'tags', :action => 'manualScan' %></li>
@@ -17,7 +28,12 @@
       Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam", :public => "yes" %><br /><br />
   	<% end %>
   <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+    <% if current_user.try(:admin?) %>
+    <li><%= link_to('Administrator Panel', admin_path) %></li>
+
+  <% end %>
   <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+
 </ul>
   
 <% else %>
@@ -27,18 +43,3 @@
   
 <% end %>
 <br /><br />
-<% if current_user.try(:admin?) %>
-  <div id="adminPanel">
-  	Welcome, <%= current_user.first_name %>
-
-  	<ul>
-  		<li><%= link_to "Teams", teams_path %></li>
-  		<li><%= link_to "Tags", :controller => "tags", :action => "index" %></li>
-      <li><%= link_to "Live Leaderboard", teams_leaderboard_path %></li>
-      <li><%= link_to "View/Edit Players", users_path %></li>
-
-  	</ul>
-  </div>
-
-
-<% end %>
