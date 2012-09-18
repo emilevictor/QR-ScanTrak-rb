@@ -79,7 +79,13 @@ class TagsController < ApplicationController
     @tag = Tag.where(:uniqueUrl => params[:id]).first
     @user = User.find(current_user.id)
     #Team of the current user.
-    @team = Team.find(@user.team_id)
+    if not @user.team_id.nil?
+      @team = Team.find(@user.team_id)
+    else
+      flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
+      redirect_to home_index_path
+    end
+    
 
     if user_signed_in? and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
       
