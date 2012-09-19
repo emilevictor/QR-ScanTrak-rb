@@ -280,7 +280,7 @@ class TeamsController < ApplicationController
   def removeTeamMembers
     @team = current_user.team
     #If the user is signed in, AND is in a team, AND created the team.
-    if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).first.nil?
+    if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).first.empty?
 
 
 
@@ -289,19 +289,19 @@ class TeamsController < ApplicationController
       end
 
 
-
-    elsif @team.creator != current_user
-
-      flash[:alert] = "You didn't create the team, as a result you don't have the right to remove people from it."
-      redirect_to home_index_path
-
     elsif @team.nil?
       flash[:alert] = "You aren't in a team, therefore you can't remove team members."
 
 
+    elsif current_user.created_teams.where(:id => @team.id).empty?
+
+      flash[:alert] = "You didn't create the team, as a result you don't have the right to remove people from it."
+      redirect_to home_index_path
+
+
     else
       flash[:alert] = "You aren't signed in!"
-      redirect_to home_index_path
+      redirect_to new_user_session_path
 
     end
   end
@@ -315,8 +315,8 @@ class TeamsController < ApplicationController
     params.each do |key,value|
       if (splitKey = key.split(" "))[0] == "USERID"
         user = team.users.find(splitKey[1].to_i)
-        #puts "----------- USER #{splitKey[1]}"
-        if user and team and not current_user.created_teams.where(:id => team.id).nil?
+        #puts "----------- USER #{splitlitKey[1]}"
+        if user and team and not current_user.created_teams.where(:id => team.id).empty?
           team.users.delete(user)
           numberRemoved = numberRemoved + 1
         end
@@ -327,26 +327,22 @@ class TeamsController < ApplicationController
     redirect_to teams_removeTeamMembers_path
 
     #Rails.logger.warn "Param #{key}: #{value}"
-    
-
-
-     
-
   end
 
 
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
-        if current_user.try(:admin?)
-    @team = Team.find(params[:id])
-    @team.destroy
+        #If the user has either created or the team or is an admin
+        if current_user.try(:admin?) or not current_user.created_teams.where(:id => params[:id]).empty?
+          @team = Team.find(params[:id])
+          @team.destroy
 
-    respond_to do |format|
-      format.html { redirect_to teams_url }
-      format.json { head :no_content }
-    end
-  end
+          respond_to do |format|
+            format.html { redirect_to teams_url }
+            format.json { head :no_content }
+          end
+        end
   end
 
 end

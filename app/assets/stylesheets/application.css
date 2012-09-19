@@ -28,11 +28,16 @@
   .page-break  { display: block; page-break-before: always; }
 }
 
+html {
+	height:100%;
+}
+
 body {
 	background-color:#333300;
 	margin:0px;
 	padding:0px;
 	font-family: 'Orienta', sans-serif;
+	height:100%;
 }
 
 #blueHeader {
@@ -62,22 +67,35 @@ body {
 }
 
 #logo {
+	display:block;
 	position:relative;
-	height:157px;
+	height:179px;
 	width:500px;
-	top:-94px;
+	top:-124px;
 	left:0px;
 	background-image:url('/images/QRScanTrakLogo.jpg');
+}
+
+#logo:hover, #logo.hover
+{
+	background-image:url('../images/QRScanTrakLogoRollover.jpg');
 }
 
 #rightHandMenu {
 	width:205px;
 	position:relative;
-	top:-57px;
+	top:-79px;
 	float:right;
 	padding:none;
 	height:100%;
 	background-color:#669933;
+	color:#FFFFFF;
+	margin:0px;
+	padding:0px;
+}
+
+#rightHandMenu.a {
+	color:#FFFFFF;
 }
 
 p, ol, ul, td {
@@ -90,4 +108,41 @@ p, ol, ul, td {
 
 li {
 	padding:0px;
+
+}
+
+#whatIsScanTrakButton {
+	display:block;
+	width:205px;
+	height:50px;
+	margin: 0px auto;
+	text-align:center;
+	padding-top:15px;
+	background-image:url('../images/WhatIsScanTrak.png');
+	text-decoration: none;
+}
+
+#loginForm {
+	font-size: 10pt;
+}
+
+#whatIsScanTrakButton:hover, #whatIsScanTrakButton.hover
+{
+	background-image:url('../images/WhatIsScanTrakRollover.png');
+}
+
+#pricingButton {
+	display:block;
+	width:205px;
+	height:50px;
+	margin: 0px auto;
+	text-align:center;
+	padding-top:15px;
+	background-image:url('../images/Pricing.png');
+	text-decoration: none;
+}
+
+#pricingButton:hover, #pricingButton.hover
+{
+	background-image:url('../images/PricingRollover.png');
 }

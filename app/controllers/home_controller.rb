@@ -14,19 +14,19 @@ class HomeController < ApplicationController
 
   	@user = current_user
 
-  	if not @user.nil? and @user.team_id.nil?
+	if not @user.nil? and @user.team_id.nil?
 
-  	@team = Team.new
+    	@team = Team.new
 
-  	respond_to do |format|
-  		format.html
-  		format.json
-  	end
+    	respond_to do |format|
+    		format.html
+    		format.json
+    	end
 
-  else
-  	flash[:alert] = "You are trying to create a team, but you are already in one!"
-  	redirect_to :controller => "home", :action => "index"
-  end
+    else
+    	flash[:alert] = "You are trying to create a team, but you are already in one!"
+    	redirect_to :controller => "home", :action => "index"
+    end
 
   end
 

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree ./global
+//= require_tree ./home
 
 $(document).ready(function() {
   $("#users th a, #users .pagination a").live("click", function() {
@@ -24,5 +25,10 @@ $(document).ready(function() {
     console.log("I am doing something.")
     return false;
   });
+
+  $("#logo").blend(250,function() {});
+  $("#whatIsScanTrakButton").blend(250,function() {});
+  $("#pricingButton").blend(250,function() {});
+
 
 })

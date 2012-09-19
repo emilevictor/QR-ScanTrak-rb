@@ -88,84 +88,10 @@
 			}
 		},
 		{
-			"file": "app/controllers/users_controller.rb",
+			"file": "app/controllers/home_controller.rb",
 			"settings":
 			{
-				"buffer_size": 2480,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/users/edit.html.erb",
-			"settings":
-			{
-				"buffer_size": 188,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 7080 files for \"f.check_box\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/sessions/new.html.erb:\n    9  \n   10    <% if devise_mapping.rememberable? -%>\n   11:     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>\n   12    <% end -%>\n   13  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/_form.html.erb:\n   31    <div class=\"field\">\n   32      <%= f.label :admin %><br />\n   33:     <%= f.check_box :password %>\n   34    </div>\n   35  \n\n2 matches across 2 files\n\n\nSearching 7302 files for \"user_edit\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/show.html.erb:\n    1  <h1><%= @user.first_name %> <%= @user.last_name %></h1>\n    2  \n    3: <%= link_to 'Edit this user', user_edit_path %>\n    4  \n    5  <p id=\"emailAddress\">\n\n1 match in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 843,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "app/models/team.rb",
-			"settings":
-			{
-				"buffer_size": 1332,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/teams_controller.rb",
-			"settings":
-			{
-				"buffer_size": 9575,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/users/_form.html.erb",
-			"settings":
-			{
-				"buffer_size": 912,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/users/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 240,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/users/_users.html.erb",
-			"settings":
-			{
-				"buffer_size": 662,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/models/user.rb",
-			"settings":
-			{
-				"buffer_size": 751,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/routes.rb",
-			"settings":
-			{
-				"buffer_size": 1445,
+				"buffer_size": 571,
 				"line_ending": "Unix"
 			}
 		}
@@ -242,17 +168,28 @@
 	},
 	"file_history":
 	[
+		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.sublime-project",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/home_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/createTeam.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/_form.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/tags_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/user.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/team.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/routes.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/users_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/_form.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/teams_controller.rb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/_createTeamForm.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/edit.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/index.html.erb",
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/_users.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config.ru",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/db/migrate/20120918014908_add_comments_to_user.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/routes.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/teams_controller.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/removeTeamMembers.html.erb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/user.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/index.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/db/seeds.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/show.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/db/migrate/20120918003314_add_team_creator.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/team.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/tagFound.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/_addUsersForm.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/admin_controller.rb",
@@ -261,7 +198,6 @@
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/javascripts/leaderboard/liveLeaderboard.js",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/javascripts/liveLeaderboard.js",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/helpers/application_helper.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/index.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/javascripts/application.js",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/show.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/db/migrate/20120917132949_add_comments_to_scans.rb",
@@ -270,10 +206,7 @@
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/javascripts/users/index.js.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/javascripts/users/show.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/show.html.erb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/tags_controller.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/layouts/application.html.erb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/users_controller.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/_users.html.erb",
 		"/Users/emilevictor/Downloads/psim_dist/java/run.bat",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/manualScan.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/stylesheets/teams.css.scss",
@@ -285,18 +218,15 @@
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/_publicAddUsersForm.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/publicAddNewUsersToTeam.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/README.rdoc",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/home_controller.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/leaderboard.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/addUsersToTeam.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/stylesheets/tags.css.scss",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/application.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/.gitignore",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/new.html.erb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/createTeam.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/_form.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/stylesheets/home.css.scss",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/tag.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/_createTeamForm.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/index.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/db/migrate/20120915022223_add_qr_code_png.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/printTags.html.erb",
@@ -365,11 +295,7 @@
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/models/admin.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/app/controllers/home_controller.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/database.yml",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/environments/development.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/initializers/devise.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/public/index.html",
-		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/app/controllers/charities_controller.rb",
-		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.com.au/config/routes.rb"
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak/config/environments/development.rb"
 	],
 	"find":
 	{
@@ -388,6 +314,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"adminAdd",
+			"confirm",
+			"current_user.created_teams.where",
+			"created_teams",
+			"new_user_se",
+			"new_user_",
+			"sign_in_path",
+			"team",
 			"user_edit",
 			"f.check_box",
 			"team",
@@ -502,7 +436,6 @@
 	"groups":
 	[
 		{
-			"selected": 8,
 			"sheets":
 			[
 				{
@@ -511,60 +444,6 @@
 					"settings":
 					{
 						"buffer_size": 512,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								353,
-								353
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/controllers/users_controller.rb",
-					"settings":
-					{
-						"buffer_size": 2480,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1288,
-								1288
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/users/edit.html.erb",
-					"settings":
-					{
-						"buffer_size": 188,
 						"regions":
 						{
 						},
@@ -584,242 +463,27 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"settings":
-					{
-						"buffer_size": 843,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										207,
-										218
-									],
-									[
-										464,
-										475
-									],
-									[
-										769,
-										778
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								774,
-								774
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/models/team.rb",
-					"settings":
-					{
-						"buffer_size": 1332,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								259,
-								259
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/controllers/teams_controller.rb",
-					"settings":
-					{
-						"buffer_size": 9575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9101,
-								9101
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4399.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/users/_form.html.erb",
-					"settings":
-					{
-						"buffer_size": 912,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								284,
-								284
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/views/users/index.html.erb",
-					"settings":
-					{
-						"buffer_size": 240,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								179,
-								179
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/users/_users.html.erb",
-					"settings":
-					{
-						"buffer_size": 662,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								662,
-								662
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 6,
-					"file": "app/views/users/_form.html.erb",
-					"settings":
-					{
-						"buffer_size": 912,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								381,
-								381
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 1,
-					"file": "app/controllers/users_controller.rb",
+					"file": "app/controllers/home_controller.rb",
 					"settings":
 					{
-						"buffer_size": 2480,
+						"buffer_size": 571,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								459,
-								459
+								232,
+								232
 							]
 						],
 						"settings":
@@ -830,62 +494,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/models/user.rb",
-					"settings":
-					{
-						"buffer_size": 751,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								560,
-								560
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "config/routes.rb",
-					"settings":
-					{
-						"buffer_size": 1445,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								756,
-								761
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 80.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -921,7 +529,7 @@
 		"cols":
 		[
 			0.0,
-			0.552521008403,
+			0.411764705882,
 			1.0
 		],
 		"rows":
@@ -945,6 +553,30 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"home",
+				"app/controllers/home_controller.rb"
+			],
+			[
+				"team.rb",
+				"app/models/team.rb"
+			],
+			[
+				"user.rb",
+				"app/models/user.rb"
+			],
+			[
+				"home_con",
+				"app/controllers/home_controller.rb"
+			],
+			[
+				"index.",
+				"app/views/home/index.html.erb"
+			],
+			[
+				"teams_",
+				"app/controllers/teams_controller.rb"
+			],
 			[
 				"routes",
 				"config/routes.rb"
@@ -988,10 +620,6 @@
 			[
 				"user",
 				"app/models/user.rb"
-			],
-			[
-				"team.rb",
-				"app/models/team.rb"
 			],
 			[
 				"leaderboard.",
@@ -1058,10 +686,6 @@
 				"app/views/teams/checkTeamScore.html.erb"
 			],
 			[
-				"user.rb",
-				"app/models/user.rb"
-			],
-			[
 				"gemfil",
 				"Gemfile"
 			],
@@ -1082,10 +706,6 @@
 				"app/views/teams/publicAddNewUsersToTeam.html.erb"
 			],
 			[
-				"home_con",
-				"app/controllers/home_controller.rb"
-			],
-			[
 				"teams_contr",
 				"app/controllers/teams_controller.rb"
 			],
@@ -1103,14 +723,6 @@
 			],
 			[
 				"home_contr",
-				"app/controllers/home_controller.rb"
-			],
-			[
-				"index.",
-				"app/views/home/index.html.erb"
-			],
-			[
-				"home",
 				"app/controllers/home_controller.rb"
 			],
 			[

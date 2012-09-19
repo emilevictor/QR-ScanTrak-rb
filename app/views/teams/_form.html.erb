@@ -31,6 +31,15 @@
     <%= f.label :tag_id %><br />
     <%= f.number_field :tag_id %>
   </div>-->
+
+  <% if current_user.try(:admin?) %>
+    <div class="field">
+      If you are an admin, you can tick the following box to add yourself to this team:<br />
+      
+
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

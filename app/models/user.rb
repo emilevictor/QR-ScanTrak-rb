@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
 
   has_many :tags
-  belongs_to :team
+  belongs_to :team, :inverse_of => :users
   has_many :scans
 
   has_many :created_teams, :class_name => "Team"

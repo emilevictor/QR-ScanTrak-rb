@@ -112,7 +112,7 @@ class TagsController < ApplicationController
       
 
     else
-      redirect_to sign_in_path
+      redirect_to new_user_session_path
 
     end
     
@@ -187,7 +187,7 @@ class TagsController < ApplicationController
       end
     else
       #user isn't signed in
-      redirect_to sign_in_path
+      redirect_to new_user_session_path
     end
     
     
