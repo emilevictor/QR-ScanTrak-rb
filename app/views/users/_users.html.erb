@@ -1,0 +1,26 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table id="usersTable">
+  <tr>
+    <th><%= sortable "id"%> </th>
+    <th><%= sortable "name" %> </th>
+    <th><%= sortable "email", "Email" %></th>
+    <th>Admin</th>
+  </tr>
+
+<!-- TODO: set the whole tab to be a link to the charity -->
+<% for user in @users %>
+  <tr>
+    <td><%= user.id %>
+    <td><%= link_to user.first_name + " " + user.last_name, user, :class => "userName" %></td>
+    <td><%= user.email %></td>
+    <td style="text-align:center;"><% if user.admin? %>
+        •
+      <% end %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= will_paginate @users %>

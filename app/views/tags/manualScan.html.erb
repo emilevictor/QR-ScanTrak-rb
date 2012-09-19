@@ -1,0 +1,26 @@
+<h1>Manual Tag Entry</h1>
+
+<%= link_to 'Back to Main Menu', :controller => 'home', :action => 'index' %>
+
+<br /><br />
+
+You are currently logged in as <font color="red"><b><%= current_user.first_name %> <%=current_user.last_name %></b></font>. If this is not you, <%= link_to 'Logout', :controller=> 'devise/sessions', :action => 'destroy' %>.<br /><br />
+
+
+<%= form_tag("/tags/processScans", :method => "post") do %>
+<%= label_tag(:tagCode, "Enter up to 10 tag codes at a time, with or without hyphens.") %><br />
+<%= text_field_tag("tagCode 1") %><br />
+<%= text_field_tag("tagCode 2") %><br />
+<%= text_field_tag("tagCode 3") %><br />
+<%= text_field_tag("tagCode 4") %><br />
+<%= text_field_tag("tagCode 5") %><br />
+<%= text_field_tag("tagCode 6") %><br />
+<%= text_field_tag("tagCode 7") %><br />
+<%= text_field_tag("tagCode 8") %><br />
+<%= text_field_tag("tagCode 9") %><br />
+<%= text_field_tag("tagCode 10") %><br />
+
+<%= hidden_field_tag(:team_id, @team.id) %>
+
+<%= submit_tag("Claim tags for #{@team.name}") %>
+<% end %>

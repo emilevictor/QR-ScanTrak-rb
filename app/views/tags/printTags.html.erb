@@ -1,0 +1,37 @@
+<% currentQr = 0 %>
+
+<% @tags.each do |tag| %>
+	<div class="indivTag">
+		<div class="qrcodePrintTag">
+			 <%= image_tag tag.qr_code.url %>
+		</div>
+
+		<h1 class="tagTitle">
+			<%= tag.name %>
+		</h1>
+
+		<p class="instructional">
+			Don't have a phone? Write this down:<br />
+			<p class="key">
+				<%= tag.uniqueUrl.insert(4,"-").insert(9,"-").insert(14,"-").insert(19,"-") %>
+			</p>
+		</p>
+
+
+
+
+
+	</div>
+
+<% if (currentQr+1)%2 == 0%>
+<!-- Page break inserted for printing purposes -->
+<div class="page-break"></div>
+
+<% end %>
+<% currentQr = currentQr + 1 %>
+<br />
+<% end %>
+
+
+
+<%= will_paginate @tags %>

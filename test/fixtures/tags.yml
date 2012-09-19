@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  unique: MyString
+  uniqueUrl: MyString
+  QRCode: MyString
+  quizQuestion: MyText
+  quizAnswer: MyString
+  content: MyText
+  latitude: 9.99
+  longitude: 9.99
+  address: MyString
+  createdBy: 1
+
+two:
+  name: MyString
+  unique: MyString
+  uniqueUrl: MyString
+  QRCode: MyString
+  quizQuestion: MyText
+  quizAnswer: MyString
+  content: MyText
+  latitude: 9.99
+  longitude: 9.99
+  address: MyString
+  createdBy: 1

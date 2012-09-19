@@ -1,0 +1,55 @@
+<h1>Listing tags</h1>
+
+<ul id="tagsMenu">
+<li><%= link_to 'New Tag', new_tag_path %></li>
+<li><%= link_to 'Print All Tags', :controller => 'tags', :action => 'printTags' %></li>
+</ul>
+
+<table class="tagsTable">
+  <tr>
+    <th>Name</th>
+    <th>Identifier</th>
+    <th>Qrcode</th>
+    <th>Quizquestion</th>
+    <th>Quizanswer</th>
+    <th>Content</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Address</th>
+    <th>Points</th>
+    <th>Createdby</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% currentQr = 0 %>
+<% @tags.each do |tag| %>
+  <tr>
+    <td class="indivTD"><%= tag.name %></td>
+    <td class="indivTD"><input type="text" value="<%= tag.uniqueUrl %>"></td>
+    <td class="indivTD"><%= image_tag tag.qr_code.url, :size => "100x100" %>
+    </td>
+    <td class="indivTD"><%= tag.quizQuestion %></td>
+    <td class="indivTD"><%= tag.quizAnswer %></td>
+    <td class="indivTD"><%= tag.content %></td>
+    <td class="indivTD"><%= tag.latitude %></td>
+    <td class="indivTD"><%= tag.longitude %></td>
+    <td class="indivTD"><%= tag.address %></td>
+    <td class="indivTD"><%= tag.points %>
+    <td class="indivTD">
+      <%= if (!tag.user_id.nil?)
+        tag.user.email
+            #User.find(tag.user_id).email 
+          end%></td>
+    <td class="indivTD"><%= link_to 'Show', :controller => "tags", :action => "show", :id => tag.uniqueUrl %></td>
+    <td class="indivTD"><%= link_to 'Edit', edit_tag_path(tag) %></td>
+    <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% currentQr = currentQr + 1 %>
+
+<% end %>
+</table>
+
+<br />
+
+<%= will_paginate @tags %>

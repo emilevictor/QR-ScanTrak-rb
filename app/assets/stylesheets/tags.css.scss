@@ -1,0 +1,89 @@
+// Place all the styles related to the Tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.qrcode{
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+ td.qrcodetd {
+  border-width: 0; 
+  border-style: none;
+  border-color: #0000ff; 
+  border-collapse: collapse; 
+  padding: 0; 
+  margin: 0; 
+  width: 10px; 
+  height: 10px; 
+}
+td.black { background-color: #000; border-width:0px; }
+td.white { background-color: #fff; border-width: 0px;}
+
+
+
+
+table {
+	border-width: 1px;
+	border-color:#000000;
+  border-style: solid;
+}
+
+td.indivTD {
+  border-width: 1px;
+  border-color: #000000;
+  border-style: solid;
+}
+
+/********** QR CODE BIG ***********/
+
+table.qrcodeBig{
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+
+td.blackBig { background-color: #000; width:4px; height: 4px; border-width:0px}
+td.whiteBig { background-color: #fff; width: 4px; height: 4px; border-width:0px}
+
+
+
+/************** PRINT TAGS PAGE ***************/
+.indivTag {
+    width:500px;
+    background-color:cccccc;
+    border: 3px solid;
+    margin:5px;
+    text-align:center;
+    padding: 0px auto;
+}
+
+.qrcodePrintTag {
+  padding:10px;
+}
+
+.tagTitle {
+  margin:20px auto;
+}
+
+.instructional {
+  margin:0px auto;
+}
+
+.key {
+  size:18px;
+  margin: 0px auto;
+}
+
+table.qrcodeMedium{
+  margin: 0px auto;
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+
+td.blackMedium { background-color: #000; width:2px; height: 2px; border-width:0px}
+td.whiteMedium { background-color: #fff; width: 2px; height: 2px; border-width:0px}

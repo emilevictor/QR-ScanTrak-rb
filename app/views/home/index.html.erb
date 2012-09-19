@@ -1,0 +1,76 @@
+<% content_for :rightMenu do %>
+
+    <% if not user_signed_in? %>
+      <a href="#" id="whatIsScanTrakButton">
+        
+      </a>
+
+      <a href="#" id="pricingButton">
+        
+      </a>
+      <br />
+      <div id="loginForm">
+        Sign in:
+        <%= form_for("user", :url => user_session_path) do |f| %>
+          <%= f.text_field :email %>
+          <%= f.password_field :password %><br />
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %><br />
+          <%= f.submit 'Sign in' %><br />
+          <%= link_to "Forgot your password?", new_password_path('user') %><br />
+          <%= link_to 'Register', new_user_registration_path %>
+        <% end %>
+
+    </div>
+
+    <% end %>
+
+
+    <% if user_signed_in? %>
+    <ul class="rightMenuGame">
+      <% if not @team.nil? %>
+      <li><%= link_to 'Check Team Score', :controller => "teams", :action => "checkTeamScore" %></li>
+
+      <% if @team.users.count < Settings.maxTeamMembers %>
+
+        <ul>
+          <li><%= link_to 'Add new Team Members', :controller => 'teams', :action => 'publicAddNewUsersToTeam' %></li>
+        </ul>
+
+      <% end %>
+
+      <% if @team.users.count > 1 and not current_user.created_teams.where(:id => @team.id).empty?%>
+      <ul>
+        <li>
+          <%= link_to 'Remove Team Members', teams_removeTeamMembers_path %>
+        </li>
+        <li>
+          <%= link_to 'Delete Team', :controller => 'teams', :action => 'destroy', :id => @team.id, :confirm => "Are you ABSOLUTELY sure you want to delete your team?" %>
+        </li>
+      </ul>
+      <% end %>
+
+      <li><%= link_to 'Manually enter tag codes', :controller => 'tags', :action => 'manualScan' %></li>
+
+      <% end %>
+    <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+      <% if current_user.try(:admin?) %>
+      <li><%= link_to('Administrator Panel', admin_path) %></li>
+
+    <% end %>
+    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+
+  </ul>
+    
+  <% end %>
+<% end %>
+
+<% if @team.nil? %>
+
+        Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam", :public => "yes" %><br /><br />
+
+<% end %>
+
+
+
+<br /><br />

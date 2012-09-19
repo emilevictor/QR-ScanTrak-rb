@@ -1,0 +1,30 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+
+<%= link_to 'Edit this user', edit_user_path %>
+
+<p id="emailAddress">
+	<%= @user.email %>
+</p>
+
+<p id="ipAddress">
+ Last logged in from: <%= @user.last_sign_in_ip %>
+	</p>
+
+<% if @user.admin? %>
+<p id="adminText">This user is currently a global administrator.</p>
+
+<% end %>
+
+<h2>Comments:</h2>
+
+<%= @user.comments %>
+
+<h2>Tags Scanned</h2>
+<ul id="tagsList">
+<% @user.tags.each do |tag| %>
+	
+	<li><%=tag.name %> (<%=tag.points %>)</li>
+
+<% end %>
+
+</ul>
