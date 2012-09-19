@@ -3,6 +3,6 @@
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
-  <div id="usersDiv"><%= render view: 'users' %></div>
+  <div id="usersDiv"><%= render "usersList" %></div>
 <% end %>
 
