@@ -2,11 +2,11 @@
 <html>
 
 <head>
-	<title>QR ScanTrak: Printable Version</title>
+	<title>QR ScanTrak</title>
 	  <link href='http://fonts.googleapis.com/css?family=Orienta' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "printable", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Orienta' rel='stylesheet' type='text/css'>
-
+  <%= javascript_include_tag('application') %>
   <%= csrf_meta_tags %>
   <%= yield(:head) %> 
 

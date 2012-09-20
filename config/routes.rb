@@ -31,6 +31,9 @@ QRScantrak::Application.routes.draw do
   match '/tags/processScans' => 'tags#manualScanProcess'
 
   match '/admin' => 'admin#index'
+  match '/admin/mapOfTags' => 'admin#mapOfTags'
+  match '/admin/liveScanMap' => 'admin#liveScanMap'
+  match '/admin/last30Scans' => 'scans#last30Scans'
 
   match 'teams/:id/edit/addUsers' => 'teams#addUsers'
 

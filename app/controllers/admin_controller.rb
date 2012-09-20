@@ -9,5 +9,17 @@ class AdminController < ApplicationController
 	end
 
 
+	def mapOfTags
+      respond_to do |format|
+        format.html {render :layout => "printable"}
+      end
+	end
+
+	def liveScanMap
+      respond_to do |format|
+        format.html {render :layout => "printable"}# index.html.erb
+      end
+
+	end
 
 end

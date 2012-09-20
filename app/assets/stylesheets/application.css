@@ -47,10 +47,9 @@ body {
 }
 
 #wrapper {
-	overflow: hidden;
 	margin:0px auto;
 	padding:0px;
-	min-height:1024px;
+	min-height:1900px;
 	width:1200px;
 	background-color:#82d435;
 	height:100%;
@@ -205,7 +204,6 @@ li {
 	width:1200px;
 	background-color:#82d435;
 	text-align:center;
-	overflow: hidden;
 	margin:0px auto;
 	padding:0px;
 }
