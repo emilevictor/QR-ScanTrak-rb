@@ -23,6 +23,10 @@ QRScantrak::Application.routes.draw do
 
   match '/admin' => 'admin#index'
 
+  match 'teams/:id/edit/addUsers' => 'teams#addUsers'
+
+  match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
+
   scope "/admin" do
     #must be first line for production environment to work
 
@@ -33,9 +37,7 @@ QRScantrak::Application.routes.draw do
 
     match 'teams/leaderboard' => 'teams#liveLeaderboard'
 
-    match 'teams/:id/edit/addUsers' => 'teams#addUsers'
 
-    match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
     resources :users
     resources :teams
 

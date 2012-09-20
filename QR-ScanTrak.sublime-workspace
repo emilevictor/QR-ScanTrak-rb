@@ -88,10 +88,127 @@
 			}
 		},
 		{
+			"file": "config/application.rb",
+			"settings":
+			{
+				"buffer_size": 2818,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Gemfile",
+			"settings":
+			{
+				"buffer_size": 923,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/admin_controller.rb",
+			"settings":
+			{
+				"buffer_size": 75,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/application.css",
+			"settings":
+			{
+				"buffer_size": 2427,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/application.js",
+			"settings":
+			{
+				"buffer_size": 1150,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 1156,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/home/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 2231,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/users/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 244,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/users/usersList.html.erb",
+			"settings":
+			{
+				"buffer_size": 662,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "$(\"#usersDiv\").html(\"<%= escape_javascript(render(\"users\")) %>\");",
+			"file": "app/assets/javascripts/users/index.js.erb",
+			"file_size": 65,
+			"file_write_time": 1348061351000000,
+			"settings":
+			{
+				"buffer_size": 65,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/teams/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 726,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "app/controllers/home_controller.rb",
 			"settings":
 			{
 				"buffer_size": 571,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 7398 files for \"register\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/user.rb:\n    3    # :token_authenticatable, :confirmable,\n    4    # :lockable, :timeoutable and :omniauthable\n    5:   devise :database_authenticatable, :registerable,\n    6           :recoverable, :rememberable, :trackable, :validatable\n    7  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/shared/_links.erb:\n    3  <% end -%>\n    4  \n    5: <%- if devise_mapping.registerable? && controller_name != 'registrations' %>\n    6    <%= link_to \"Sign up\", new_registration_path(resource_name) %><br />\n    7  <% end -%>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/index.html.erb:\n   42      \n   43      <%= link_to('Login', new_user_session_path)  %><br />\n   44:     <%= link_to('Register', new_user_registration_path)  %>\n   45      \n   46    <% end %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/_publicAddUsersForm.html.erb:\n    3  \n    4  <%= form_tag(\"/teams/addPlayerToMyTeam\", :method => \"post\") do %>\n    5: <%= label_tag(:email, \"Enter the email address of a registered player\") %><br />\n    6  <%= text_field_tag(:email) %>\n    7  <%= hidden_field_tag(:team_id, @team.id) %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/environments/production.rb:\n   61    config.i18n.fallbacks = true\n   62  \n   63:   # Send deprecation notices to registered listeners\n   64    config.active_support.deprecation = :notify\n   65  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/initializers/devise.rb:\n   63    # It will change confirmation, password recovery and other workflows\n   64    # to behave the same regardless if the e-mail provided was right or wrong.\n   65:   # Does not affect registerable.\n   66    # config.paranoid = true\n   67  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/initializers/mime_types.rb:\n    2  \n    3  # Add new mime types for use in respond_to blocks:\n    4: # Mime::Type.register \"text/richtext\", :rtf\n    5: # Mime::Type.register_alias \"text/html\", :iphone\n    6  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/tmp/dragonfly/cache/body/5f/fd50d853b1280dc6168fe38966d2661de8c143:\n  404        if (!rails.allowAction(button)) return rails.stopEverything(event);\n  405  \n  406:       // register the pressed submit button\n  407        var name = button.attr('name'),\n  408          data = name ? {name:name, value:button.val()} : null;\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/tmp/dragonfly/cache/body/60/235935ff9a359b3172cb4681b7c1a58fd88f61:\n 9288  // in a page that all might call define(). The loader will indicate\n 9289  // they have special allowances for multiple jQuery versions by\n 9290: // specifying define.amd.jQuery = true. Register as a named module,\n 9291  // since jQuery can be concatenated with other files that may use define,\n 9292  // but not use a proper concatenation script that understands anonymous\n 9293: // AMD modules. A named AMD is safest and most robust way to register.\n 9294  // Lowercase jquery is used because AMD module names are derived from\n 9295  // file names, and jQuery is normally delivered in a lowercase file name.\n\n11 matches across 9 files\n\n\nSearching 7398 files for \"register RailsConfig\"\n\n0 matches across 0 files\n\n\nSearching 7431 files for \"adminAdd\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak.sublime-workspace:\n  315  		\"find_history\":\n  316  		[\n  317: 			\"adminAdd\",\n  318  			\"confirm\",\n  319  			\"current_user.created_teams.where\",\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/_form.html.erb:\n   36      <div class=\"field\">\n   37        If you are an admin, you can tick the following box to add yourself to this team:<br />\n   38:       <%= f.check_box :adminAdd, :default => 0%>\n   39  \n   40      </div>\n\n2 matches across 2 files\n\n\nSearching 166 files for \"render\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak.sublime-workspace:\n  354  			\"@scan <<\",\n  355  			\"params\",\n  356: 			\"render\",\n  357  			\"pluralize\",\n  358  			\"signed_in\",\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/assets/javascripts/users/index.js.erb:\n    1: $(\"#usersDiv\").html(\"<%= escape_javascript(render(\"users\")) %>\");\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/tags_controller.rb:\n   33        respond_to do |format|\n   34          format.html # index.html.erb\n   35:         format.json { render json: @tags }\n   36        end\n   37  \n   ..\n   60          respond_to do |format|\n   61            format.html # show.html.erb\n   62:           format.json { render json: @tag }\n   63          end\n   64  \n   ..\n   95            respond_to do |format|\n   96              format.html\n   97:             format.json {render tag: @tag, numberOfTeams: @numberOfTeams}\n   98            end\n   99          else\n  ...\n  231        respond_to do |format|\n  232          format.html # new.html.erb\n  233:         format.json { render json: @tag }\n  234        end\n  235      else\n  ...\n  261            current_user.tags << @tag\n  262            format.html { redirect_to @tag, notice: 'Tag was successfully created.' }\n  263:           format.json { render json: @tag, status: :created, location: @tag }\n  264          else\n  265:           format.html { render action: \"new\" }\n  266:           format.json { render json: @tag.errors, status: :unprocessable_entity }\n  267          end\n  268        end\n  ...\n  284            format.json { head :no_content }\n  285          else\n  286:           format.html { render action: \"edit\" }\n  287:           format.json { render json: @tag.errors, status: :unprocessable_entity }\n  288          end\n  289        end\n  ...\n  361        respond_to do |format|\n  362          format.html # index.html.erb\n  363:         format.json { render json: @tags }\n  364        end\n  365    end\n  ...\n  371          #user is in a team\n  372          @team = current_user.team\n  373:         render view: \"manualScan\"\n  374        else\n  375          flash[:alert] = \"You are not a member of a team!\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/teams_controller.rb:\n   12        respond_to do |format|\n   13          format.html # index.html.erb\n   14:         format.json { render json: @teams }\n   15        end\n   16      else\n   ..\n   32  \n   33        respond_to do |format|\n   34:         format.json {render json: {placement: @placement, scans: @scans, team:@team, tags: @tags}}\n   35:         format.html { render action: \"checkTeamScore\" }\n   36        end\n   37  \n   ..\n   51        respond_to do |format|\n   52          format.html # new.html.erb\n   53:         format.json { render json: @team }\n   54        end\n   55      end\n   ..\n   63      respond_to do |format|\n   64        format.html\n   65:       format.json {render json: @leaderboard}\n   66      end\n   67  \n   ..\n  115            current_user.save\n  116            format.html { redirect_to @team, notice: 'Team was successfully created. #{params[:public]}' }\n  117:           format.json { render json: @team, status: :created, location: @team }\n  118          else\n  119:           format.html { render action: \"new\" }\n  120:           format.json { render json: @team.errors, status: :unprocessable_entity }\n  121          end\n  122        end\n  ...\n  135        @users = User.all\n  136  \n  137:       render view: \"addUsers\"\n  138      end\n  139    end\n  ...\n  150          @numberLeft = Settings.maxTeamMembers - @team.users.count\n  151  \n  152:         render view: \"publicAddNewUsersToTeam\"\n  153  \n  154        else\n  ...\n  241  \n  242        respond_to do |format|\n  243:         format.json {render json: {placement: @placement, scans: @scans, team:@team, tags: @tags}}\n  244:         format.html { render action: \"checkTeamScore\" }\n  245        end\n  246  \n  ...\n  270          format.json { head :no_content }\n  271        else\n  272:         format.html { render action: \"edit\" }\n  273:         format.json { render json: @team.errors, status: :unprocessable_entity }\n  274        end\n  275      end\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/users_controller.rb:\n   28          format.html { redirect_to users_path, notice: 'User was successfully created.' }\n   29        else\n   30:         format.html { render action: \"new\" }\n   31        end\n   32      end\n   ..\n   39        respond_to do |format|\n   40            format.html # show.html.erb\n   41:           format.json { render json: @user }\n   42        end\n   43  \n   ..\n   71          else\n   72            #format.html { redirect_to @user, alert: 'Error: user not successfully updated.' }\n   73:           #format.json { render json: @user.errors, status: :unprocessable_entity }\n   74            flash[:alert] = \"There was an error while updating the player. Notify an administrator.\"\n   75            redirect_to :controller => 'users', :action => 'show', :id => @user.id\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/confirmations/new.html.erb:\n   10  <% end %>\n   11  \n   12: <%= render \"devise/shared/links\" %>\n   13  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/passwords/edit.html.erb:\n   14  <% end %>\n   15  \n   16: <%= render \"devise/shared/links\" %>\n   17  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/passwords/new.html.erb:\n   10  <% end %>\n   11  \n   12: <%= render \"devise/shared/links\" %>\n   13  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/registrations/new.html.erb:\n   22  <% end %>\n   23  \n   24: <%= render \"devise/shared/links\" %>\n   25  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/sessions/new.html.erb:\n   15  <% end %>\n   16  \n   17: <%= render \"devise/shared/links\" %>\n   18  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/devise/unlocks/new.html.erb:\n   10  <% end %>\n   11  \n   12: <%= render \"devise/shared/links\" %>\n   13  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/createTeam.html.erb:\n    1  <h1>Create a team</h1>\n    2  \n    3: <%= render 'teams/form' %>\n    4  \n    5  <%= link_to 'Back', :controller => \"home\", :action => \"index\" %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/edit.html.erb:\n    1  <h1>Editing tag</h1>\n    2  \n    3: <%= render 'form' %>\n    4  \n    5  <%= link_to 'Show', @tag %> |\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/tags/new.html.erb:\n    1  <h1>New tag</h1>\n    2  \n    3: <%= render 'form' %>\n    4  \n    5  <%= link_to 'Back', tags_path %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/addUsers.html.erb:\n    1: <%= render 'addUsersForm' %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/edit.html.erb:\n    1  <h1>Editing team</h1>\n    2  \n    3: <%= render 'form' %>\n    4  \n    5  <%= link_to 'Add Players', :controller => \"teams\", :action => \"addUsers\" %> |\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/new.html.erb:\n    1  <h1>New team</h1>\n    2  \n    3: <%= render 'form' %>\n    4  \n    5  <%= link_to 'Back', teams_path %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/publicAddNewUsersToTeam.html.erb:\n    1: <%= render 'publicAddUsersForm' %>\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/edit.html.erb:\n    1  <h1>Editing team</h1>\n    2  \n    3: <%= render 'form' %>\n    4  \n    5  <%= link_to 'Add Players', :controller => \"teams\", :action => \"addUsers\" %> |\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/index.html.erb:\n    4      <%= submit_tag \"Search\", :name => nil %>\n    5    </p>\n    6:   <div id=\"usersDiv\"><%= render 'users' %></div>\n    7  <% end %>\n    8  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/users/index.js.erb:\n    1: $(\"#usersDiv\").html(\"<%= escape_javascript(render(\"users\")) %>\");\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/environments/test.rb:\n   19    config.action_controller.perform_caching = false\n   20  \n   21:   # Raise exceptions instead of rendering exception templates\n   22    config.action_dispatch.show_exceptions = false\n   23  \n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/initializers/devise.rb:\n  176  \n  177    # ==> Scopes configuration\n  178:   # Turn scoped views on. Before rendering \"sessions/new\", it will first check for\n  179    # \"users/sessions/new\". It's turned off by default because it's slower if you\n  180    # are using only default views.\n\n48 matches across 23 files\n\n\nSearching 203 files for \"team was succ\"\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/QR-ScanTrak.sublime-workspace:\n  342  			\"paginate\",\n  343  			\"try\",\n  344: 			\"Team was succ\",\n  345  			\"team successfully created\",\n  346  			\"validates\",\n\n/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/teams_controller.rb:\n  114            current_user.created_teams << @team\n  115            current_user.save\n  116:           format.html { redirect_to @team, notice: 'Team was successfully created. #{params[:public]}' }\n  117            format.json { render json: @team, status: :created, location: @team }\n  118          else\n  ...\n  267  \n  268        if @team.update_attributes(params[:team])\n  269:         format.html { redirect_to @team, notice: 'Team was successfully updated.' }\n  270          format.json { head :no_content }\n  271        else\n\n3 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 13500,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "app/controllers/teams_controller.rb",
+			"settings":
+			{
+				"buffer_size": 9758,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/teams/_form.html.erb",
+			"settings":
+			{
+				"buffer_size": 1090,
 				"line_ending": "Unix"
 			}
 		}
@@ -168,12 +285,12 @@
 	},
 	"file_history":
 	[
+		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/index.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/townsqr/townsqr.sublime-project",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/home_controller.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/createTeam.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/teams/_form.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/controllers/tags_controller.rb",
-		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/views/home/index.html.erb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/user.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/app/models/team.rb",
 		"/Users/emilevictor/Dropbox/Projects/QR-ScanTrak-rb/config/routes.rb",
@@ -303,7 +420,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -314,6 +431,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"team was succ",
+			"render",
+			"adminAdd",
+			"register RailsConfig",
+			"register",
 			"adminAdd",
 			"confirm",
 			"current_user.created_teams.where",
@@ -436,6 +558,7 @@
 	"groups":
 	[
 		{
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -463,15 +586,339 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "config/application.rb",
+					"settings":
+					{
+						"buffer_size": 2818,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								670,
+								670
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Gemfile",
+					"settings":
+					{
+						"buffer_size": 923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								538,
+								538
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/controllers/admin_controller.rb",
+					"settings":
+					{
+						"buffer_size": 75,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								68
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/assets/stylesheets/application.css",
+					"settings":
+					{
+						"buffer_size": 2427,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1311,
+								1311
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 695.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/assets/javascripts/application.js",
+					"settings":
+					{
+						"buffer_size": 1150,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								645,
+								645
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/layouts/application.html.erb",
+					"settings":
+					{
+						"buffer_size": 1156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								680,
+								680
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/home/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 2231,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/views/users/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 244,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								222,
+								222
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/views/users/usersList.html.erb",
+					"settings":
+					{
+						"buffer_size": 662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/assets/javascripts/users/index.js.erb",
+					"settings":
+					{
+						"buffer_size": 65,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/JavaScript (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/views/teams/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								572,
+								572
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
-					"buffer": 1,
+					"buffer": 7,
+					"file": "app/views/home/index.html.erb",
+					"settings":
+					{
+						"buffer_size": 2231,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								202
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
 					"file": "app/controllers/home_controller.rb",
 					"settings":
 					{
@@ -489,6 +936,383 @@
 						"settings":
 						{
 							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Gemfile",
+					"settings":
+					{
+						"buffer_size": 923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								885,
+								849
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"settings":
+					{
+						"buffer_size": 13500,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										254,
+										262
+									],
+									[
+										489,
+										497
+									],
+									[
+										824,
+										832
+									],
+									[
+										1136,
+										1144
+									],
+									[
+										1425,
+										1433
+									],
+									[
+										1779,
+										1787
+									],
+									[
+										2008,
+										2016
+									],
+									[
+										2059,
+										2067
+									],
+									[
+										2328,
+										2336
+									],
+									[
+										2790,
+										2798
+									],
+									[
+										3046,
+										3054
+									],
+									[
+										3485,
+										3493
+									],
+									[
+										3809,
+										3817
+									],
+									[
+										4058,
+										4064
+									],
+									[
+										4258,
+										4264
+									],
+									[
+										4478,
+										4484
+									],
+									[
+										4644,
+										4650
+									],
+									[
+										4800,
+										4806
+									],
+									[
+										5003,
+										5009
+									],
+									[
+										5227,
+										5233
+									],
+									[
+										5332,
+										5338
+									],
+									[
+										5386,
+										5392
+									],
+									[
+										5587,
+										5593
+									],
+									[
+										5642,
+										5648
+									],
+									[
+										5851,
+										5857
+									],
+									[
+										5998,
+										6004
+									],
+									[
+										6305,
+										6311
+									],
+									[
+										6438,
+										6444
+									],
+									[
+										6545,
+										6551
+									],
+									[
+										6717,
+										6723
+									],
+									[
+										6861,
+										6867
+									],
+									[
+										7095,
+										7101
+									],
+									[
+										7202,
+										7208
+									],
+									[
+										7256,
+										7262
+									],
+									[
+										7409,
+										7415
+									],
+									[
+										7563,
+										7569
+									],
+									[
+										7706,
+										7712
+									],
+									[
+										7813,
+										7819
+									],
+									[
+										7973,
+										7979
+									],
+									[
+										8026,
+										8032
+									],
+									[
+										8349,
+										8355
+									],
+									[
+										8522,
+										8528
+									],
+									[
+										8726,
+										8732
+									],
+									[
+										9112,
+										9118
+									],
+									[
+										9282,
+										9288
+									],
+									[
+										9451,
+										9457
+									],
+									[
+										9624,
+										9630
+									],
+									[
+										9792,
+										9798
+									],
+									[
+										9959,
+										9965
+									],
+									[
+										10136,
+										10142
+									],
+									[
+										10368,
+										10374
+									],
+									[
+										10554,
+										10560
+									],
+									[
+										10717,
+										10723
+									],
+									[
+										10873,
+										10879
+									],
+									[
+										11109,
+										11115
+									],
+									[
+										11288,
+										11294
+									],
+									[
+										11450,
+										11456
+									],
+									[
+										11742,
+										11748
+									],
+									[
+										11923,
+										11929
+									],
+									[
+										12132,
+										12138
+									],
+									[
+										12393,
+										12399
+									],
+									[
+										12774,
+										12787
+									],
+									[
+										13088,
+										13101
+									],
+									[
+										13374,
+										13387
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								13098,
+								13098
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 5,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6705.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/controllers/teams_controller.rb",
+					"settings":
+					{
+						"buffer_size": 9758,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2788,
+								2788
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1284.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/views/teams/_form.html.erb",
+					"settings":
+					{
+						"buffer_size": 1090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								925,
+								925
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -529,7 +1353,7 @@
 		"cols":
 		[
 			0.0,
-			0.411764705882,
+			0.354245995273,
 			1.0
 		],
 		"rows":
@@ -553,6 +1377,30 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"index",
+				"app/views/users/index.html.erb"
+			],
+			[
+				"application.html",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"application.",
+				"app/assets/javascripts/application.js"
+			],
+			[
+				"css",
+				"app/assets/stylesheets/application.css"
+			],
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"application",
+				"config/application.rb"
+			],
 			[
 				"home",
 				"app/controllers/home_controller.rb"
@@ -612,10 +1460,6 @@
 			[
 				"seeds.",
 				"db/seeds.rb"
-			],
-			[
-				"index",
-				"app/views/home/index.html.erb"
 			],
 			[
 				"user",
@@ -710,10 +1554,6 @@
 				"app/controllers/teams_controller.rb"
 			],
 			[
-				"gemfile",
-				"Gemfile"
-			],
-			[
 				"teamscore",
 				"app/views/teams/checkTeamScore.html.erb"
 			],
@@ -759,10 +1599,6 @@
 			],
 			[
 				"applic",
-				"config/application.rb"
-			],
-			[
-				"application",
 				"config/application.rb"
 			],
 			[

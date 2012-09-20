@@ -1,3 +1,7 @@
+<% content_for :head do %>
+    <%= javascript_include_tag 'tags/tagsChangeWidth.js' %>
+<% end %>
+
 <h1>Listing tags</h1>
 
 <ul id="tagsMenu">
@@ -5,11 +9,10 @@
 <li><%= link_to 'Print All Tags', :controller => 'tags', :action => 'printTags' %></li>
 </ul>
 
-<table class="tagsTable">
+<table id="tagsTable">
   <tr>
     <th>Name</th>
     <th>Identifier</th>
-    <th>Qrcode</th>
     <th>Quizquestion</th>
     <th>Quizanswer</th>
     <th>Content</th>
@@ -27,8 +30,6 @@
   <tr>
     <td class="indivTD"><%= tag.name %></td>
     <td class="indivTD"><input type="text" value="<%= tag.uniqueUrl %>"></td>
-    <td class="indivTD"><%= image_tag tag.qr_code.url, :size => "100x100" %>
-    </td>
     <td class="indivTD"><%= tag.quizQuestion %></td>
     <td class="indivTD"><%= tag.quizAnswer %></td>
     <td class="indivTD"><%= tag.content %></td>

@@ -28,6 +28,7 @@ $(document).ready(function() {
   $("#logo").blend(250,function() {});
   $("#whatIsScanTrakButton").blend(250,function() {});
   $("#pricingButton").blend(250,function() {});
+  $(".rightMenuGame a").blend(250,function() {});
 
 
 })

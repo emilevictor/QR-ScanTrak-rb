@@ -37,7 +37,7 @@ body {
 	margin:0px;
 	padding:0px;
 	font-family: 'Orienta', sans-serif;
-	height:100%;
+	min-height:100%;
 }
 
 #blueHeader {
@@ -50,7 +50,8 @@ body {
 	overflow: hidden;
 	margin:0px auto;
 	padding:0px;
-	width:900px;
+	min-height:1024px;
+	width:1200px;
 	background-color:#82d435;
 	height:100%;
 }
@@ -87,6 +88,7 @@ body {
 	top:-79px;
 	float:right;
 	padding:none;
+	min-height:100%;
 	height:100%;
 	background-color:#669933;
 	color:#FFFFFF;
@@ -98,7 +100,7 @@ body {
 	color:#FFFFFF;
 }
 
-p, ol, ul, td {
+p, td {
 
   font-size: 13px;
   line-height: 18px;
@@ -145,4 +147,43 @@ li {
 #pricingButton:hover, #pricingButton.hover
 {
 	background-image:url('../images/PricingRollover.png');
+}
+
+.rightMenuGame {
+	list-style: none;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+	color:#000000;
+}
+
+.rightMenuGame ul {
+	list-style:none;
+	list-style-type: none;
+	padding:0px;
+	margin: 0px;
+	text-align:center;
+	background-color:#ff6600;
+}
+
+.rightMenuGame a {
+	margin:0px;
+	display:block;
+	width:205px;
+	height:50px;
+	padding-top:26px;
+	background-color:#ff6600;
+	color: #000000;
+	text-decoration:none;
+}
+
+.rightMenuGame a:hover, .rightMenuGame a.hover {
+	background-color:#ff9900;
+	color:#FFFFFF;
+}
+
+#loginForm {
+	margin-left:10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

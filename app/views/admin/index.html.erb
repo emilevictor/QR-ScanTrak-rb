@@ -2,22 +2,17 @@
 	<%= javascript_include_tag 'leaderboard/liveLeaderboard.js' %>
 	<% end %>
 
+  <% content_for :head do %>
+    <%= javascript_include_tag 'admin/admin.js' %>
+  <% end %>
+
+
 <h1>Admin Panel</h1>
 
-<%= link_to 'Back to Home', home_index_path %><br /><br />
-
 <% if current_user.try(:admin?) %>
-  <div id="adminPanel">
-    Welcome, <%= current_user.first_name %>
 
-    <ul>
-      <li><%= link_to "Teams", teams_path %></li>
-      <li><%= link_to "Tags", :controller => "tags", :action => "index" %></li>
-      <li><%= link_to "Live Leaderboard", teams_leaderboard_path %></li>
-      <li><%= link_to "View/Edit Players", users_path %></li>
 
-    </ul>
-  </div>
+
 
 
 <% end %>
@@ -31,4 +26,4 @@
 	</table>
 
 
-<div 
+<%= render "admin/menu" %>

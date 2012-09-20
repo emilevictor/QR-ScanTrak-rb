@@ -1,13 +1,14 @@
 <% content_for :rightMenu do %>
 
     <% if not user_signed_in? %>
-      <a href="#" id="whatIsScanTrakButton">
-        
-      </a>
+      <ul class="rightMenuGame">
+        <li><a href="#">What is ScanTrak?</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Arrange a Demo</a></li>
 
-      <a href="#" id="pricingButton">
-        
-      </a>
+
+      </ul>
+
       <br />
       <div id="loginForm">
         Sign in:
@@ -33,14 +34,14 @@
 
       <% if @team.users.count < Settings.maxTeamMembers %>
 
-        <ul>
+        <ul class="rightMenuGame">
           <li><%= link_to 'Add new Team Members', :controller => 'teams', :action => 'publicAddNewUsersToTeam' %></li>
         </ul>
 
       <% end %>
 
       <% if @team.users.count > 1 and not current_user.created_teams.where(:id => @team.id).empty?%>
-      <ul>
+      <ul class="rightMenuGame">
         <li>
           <%= link_to 'Remove Team Members', teams_removeTeamMembers_path %>
         </li>
@@ -65,9 +66,13 @@
   <% end %>
 <% end %>
 
-<% if @team.nil? %>
+<% if user_signed_in? %>
 
-        Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam", :public => "yes" %><br /><br />
+  <% if @team.nil? %>
+
+          Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam", :public => "yes" %><br /><br />
+
+  <% end %>
 
 <% end %>
 
