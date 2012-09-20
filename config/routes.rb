@@ -3,6 +3,15 @@ QRScantrak::Application.routes.draw do
 
   get "home/index"
 
+  match "/tags/error/" => "tags#error_not_admin"
+
+  match "tags/:id/tagFound" => "tags#tagFound"
+  match 'tags/:id/tagFoundQuizAnswered' => "tags#tagFoundQuizAnswered", :via => :post
+
+  match 'tags/:id/scanSuccess' => 'tags#scanSuccess'
+
+
+
   #Home teams creation
   match '/createTeam' => "home#createTeam"
   match 'teams/AddPlayersToMyTeam' => 'teams#publicAddNewUsersToTeam'
@@ -52,13 +61,6 @@ QRScantrak::Application.routes.draw do
   root :to => "home#index"
 
 
-
-  match "/tags/error/" => "tags#error_not_admin"
-
-  match "tags/:id/tagFound" => "tags#tagFound"
-  match 'tags/:id/tagFoundQuizAnswered' => "tags#tagFoundQuizAnswered", :via => :post
-
-  match 'tags/:id/scanSuccess' => 'tags#scanSuccess'
 
 
 
