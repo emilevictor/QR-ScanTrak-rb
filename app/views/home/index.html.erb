@@ -8,8 +8,18 @@
 
 <% end %>
 
+<% if not user_signed_in? %>
+  
+  <div id="explanation">
+    <p>QR-ScanTrak is a software package which allows organisations and groups of people to organise and track large numbers of players in their own scavenger hunt.</p>
 
+    <p>QR-ScanTrak provides you with printable tags, which include a QR code. When the QR code is scanned, the person who scanned it may be asked a trivia question, or may be able to immediately claim points to go towards their team total. They are also able to check their team score at any time on their phone.</p>
 
-<br /><br />
+      <p>It allows you to manage players and their teams, see live leaderboards, watch as they appear live on a map and manage teams scores if you wish to run bases or activities.</p>
+
+      <p>QR-ScanTrak can be hosted by us or run on the server of your choice.</p>
+  </div>
+
+<% end %>
 
 <%= render 'menu/menu' %>
