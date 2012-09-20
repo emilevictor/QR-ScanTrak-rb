@@ -206,13 +206,13 @@ class TagsController < ApplicationController
   def new
     if current_user.try(:admin?)
       @tag = Tag.new
-      @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+      @tag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
 
 
       #Check for uniqueness in the tag url.
 
       while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.nil?)
-        @tag.uniqueUrl = (0...10).map{ ('a'..'z').to_a[rand(26)] }.join
+        @tag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
       end
 
       if Rails.env.production?
