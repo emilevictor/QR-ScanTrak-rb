@@ -16,7 +16,7 @@ class TagsController < ApplicationController
       #host = request.host_with_port
       #@tags.each do |tag|
         #if Rails.env.production?
-          #qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
+          #qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
 
         #else
           #qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
@@ -50,7 +50,7 @@ class TagsController < ApplicationController
 
 
         if Rails.env.production?
-          qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + @tag.uniqueUrl + "/tagFound"
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
 
         else
           qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
@@ -216,7 +216,7 @@ class TagsController < ApplicationController
       end
 
       if Rails.env.production?
-        qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + @tag.uniqueUrl + "/tagFound"
+        qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
 
       else
         qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
@@ -316,7 +316,7 @@ class TagsController < ApplicationController
     
     tagsLocation = ""
     if Rails.env.production?
-      tagsLocation = "http://" + request.host_with_port + "/scantrak/tags/print"
+      tagsLocation = "http://" + request.host_with_port + "/tags/print"
     else
       tagsLocation = "http://" + request.host_with_port + "/tags/print"
     end
@@ -346,7 +346,7 @@ class TagsController < ApplicationController
       host = request.host_with_port
       @tags.each do |tag|
         if Rails.env.production?
-          qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
 
         else
           qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
