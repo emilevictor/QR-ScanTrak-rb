@@ -7,11 +7,15 @@ class Tag < ActiveRecord::Base
 	geocoded_by :address
 	belongs_to :user
 
+	validates_presence_of :user
+
+
 	#has_and_belongs_to_many :teams
 	has_many :scans, :dependent => :destroy
 	has_many :teams, :through => :scans
 
  	validates :uniqueUrl, :uniqueness => true
+ 	validates :uniqueUrl, :presence => true
  	validates :points, :presence => true
 
  	after_validation :geocode

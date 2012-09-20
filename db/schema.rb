@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120918014908) do
+ActiveRecord::Schema.define(:version => 20120920075320) do
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120918014908) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "comment"
-    t.integer  "madeBy"
+    t.integer  "user_id"
   end
 
   add_index "scans", ["tag_id", "team_id"], :name => "index_scans_on_tag_id_and_team_id", :unique => true
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120918014908) do
     t.string   "last_name"
     t.boolean  "admin",                  :default => false
     t.text     "comments"
+    t.integer  "tag_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

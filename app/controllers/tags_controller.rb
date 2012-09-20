@@ -13,22 +13,22 @@ class TagsController < ApplicationController
       @qrCodes = []
       @tags = Tag.paginate(:page => params[:page])
 
-      host = request.host_with_port
-      @tags.each do |tag|
-        if Rails.env.production?
-          qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
+      #host = request.host_with_port
+      #@tags.each do |tag|
+        #if Rails.env.production?
+          #qrCodeString = "http://" + request.host_with_port + "/scantrak/tags/" + tag.uniqueUrl + "/tagFound"
 
-        else
-          qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
+        #else
+          #qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
 
 
-        end
-        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 10)
-        @qrCodes.push(@indivQR)
+        #end
+        #@indivQR = RQRCode::QRCode.new(qrCodeString, :size => 10)
+        #@qrCodes.push(@indivQR)
 
         #tag.createdByUser = User.find(tag.createdBy).email
 
-      end
+      #end
       
       respond_to do |format|
         format.html # index.html.erb
@@ -45,7 +45,7 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
-      @tag = Tag.where(:uniqueUrl => params[:id]).first
+      @tag = Tag.find(params[:id])
       if not @tag.nil?
 
 
@@ -253,12 +253,14 @@ class TagsController < ApplicationController
   def create
     if current_user.try(:admin?)
       @tag = Tag.new(params[:tag])
-      @tag.user_id = current_user.id
       #Pngqr.encode 
+      @tag.user = current_user
+
+      #current_user.tags << @tag
+      #current_user.save
 
       respond_to do |format|
         if @tag.save
-          current_user.tags << @tag
           format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
           format.json { render json: @tag, status: :created, location: @tag }
         else
@@ -277,7 +279,7 @@ class TagsController < ApplicationController
   def update
     if current_user.try(:admin?)
       @tag = Tag.find(params[:id])
-
+      @tag.user = current_user
       respond_to do |format|
         if @tag.update_attributes(params[:tag])
           format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }

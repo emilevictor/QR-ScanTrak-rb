@@ -42,7 +42,7 @@
         tag.user.email
             #User.find(tag.user_id).email 
           end%></td>
-    <td class="indivTD"><%= link_to 'Show', :controller => "tags", :action => "show", :id => tag.uniqueUrl %></td>
+    <td class="indivTD"><%= link_to 'Show', :controller => "tags", :action => "show", :id => tag.id %></td>
     <td class="indivTD"><%= link_to 'Edit', edit_tag_path(tag) %></td>
     <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
