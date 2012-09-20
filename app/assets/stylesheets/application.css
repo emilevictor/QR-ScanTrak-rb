@@ -187,3 +187,12 @@ li {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+#adminSeparator {
+	width:205px;
+	height:15px;
+	text-align:center;
+	background-color:#ff0000;
+	color:#FFFFFF;
+	padding:5px;
+}

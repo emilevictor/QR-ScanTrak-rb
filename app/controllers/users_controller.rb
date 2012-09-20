@@ -66,8 +66,8 @@ class UsersController < ApplicationController
         if @user.update_attributes(params[:user])
           #format.html { redirect_to @user, notice: 'User was successfully updated.' }
           #format.json { head :no_content }
-          flash[:notice] = "Player successfully updated."
-          redirect_to :controller => 'users', :action => 'show', :id => @user.id
+          format.html { redirect_to @user, notice: 'Player was successfully updated.' }
+          format.json { head :no_content }
         else
           #format.html { redirect_to @user, alert: 'Error: user not successfully updated.' }
           #format.json { render json: @user.errors, status: :unprocessable_entity }
