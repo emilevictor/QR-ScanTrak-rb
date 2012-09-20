@@ -1,0 +1,14 @@
+<% if current_user.try(:admin?) %>
+
+  <% content_for :rightMenu do %>
+  <div id="adminSeparator">Administrator:</div>
+    <ul class="rightMenuGame">
+      <li><%= link_to "Teams", teams_path %></li>
+      <li><%= link_to "Tags", :controller => "tags", :action => "index" %></li>
+      <li><%= link_to "Live Leaderboard", teams_leaderboard_path %></li>
+      <li><%= link_to "View/Edit Players", users_path %></li>
+
+    </ul>
+  <% end %>
+
+<% end %>

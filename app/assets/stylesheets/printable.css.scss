@@ -1,0 +1,41 @@
+/************** PRINT TAGS PAGE ***************/
+body {
+    font-family: 'Orienta', sans-serif;
+}
+
+.indivTag {
+    width:500px;
+    background-color:cccccc;
+    border: 3px solid;
+    margin:5px;
+    text-align:center;
+    padding: 0px auto;
+}
+
+.qrcodePrintTag {
+  padding:10px;
+}
+
+.tagTitle {
+  margin:20px auto;
+}
+
+.instructional {
+  margin:0px auto;
+}
+
+.key {
+  size:18px;
+  margin: 0px auto;
+}
+
+table.qrcodeMedium{
+  margin: 0px auto;
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+
+td.blackMedium { background-color: #000; width:2px; height: 2px; border-width:0px}
+td.whiteMedium { background-color: #fff; width: 2px; height: 2px; border-width:0px}
