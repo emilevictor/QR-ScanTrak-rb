@@ -196,3 +196,16 @@ li {
 	color:#FFFFFF;
 	padding:5px;
 }
+
+
+/****** FOOTER ******/
+
+#footer {
+	height:4em;
+	width:1200px;
+	background-color:#82d435;
+	text-align:center;
+	overflow: hidden;
+	margin:0px auto;
+	padding:0px;
+}
