@@ -1,6 +1,8 @@
 QRScantrak::Application.routes.draw do
 
 
+  resources :supports
+
   get "home/index"
 
   match "/tags/error/" => "tags#error_not_admin"
