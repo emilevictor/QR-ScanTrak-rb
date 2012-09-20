@@ -20,6 +20,15 @@ body {
   margin:20px auto;
 }
 
+@media all {
+  .page-break  { display: none; }
+}
+
+@media print {
+  .page-break  { display: block; page-break-before: always; }
+}
+
+
 .instructional {
   margin:0px auto;
 }
