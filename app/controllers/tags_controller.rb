@@ -359,7 +359,7 @@ class TagsController < ApplicationController
       end
       
       respond_to do |format|
-        format.html # index.html.erb
+        format.html {render :layout => "printable"}# index.html.erb
         format.json { render json: @tags }
       end
   end
