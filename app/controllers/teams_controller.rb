@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class TeamsController < ApplicationController
+  before_filter :authenticate_user!
   include BCrypt
 
   # GET /teams

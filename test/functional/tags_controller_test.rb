@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class TagsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
     @tag = tags(:one)
   end
@@ -9,7 +10,7 @@ class TagsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:tags)
-  end
+  end 
 
   test "should get new" do
     get :new
@@ -18,13 +19,13 @@ class TagsControllerTest < ActionController::TestCase
 
   test "should create tag" do
     assert_difference('Tag.count') do
-      post :create, tag: { QRCode: @tag.QRCode, address: @tag.address, content: @tag.content, createdBy: @tag.createdBy, latitude: @tag.latitude, longitude: @tag.longitude, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, unique: @tag.unique, uniqueUrl: @tag.uniqueUrl }
+      post :create, tag: { name: @tag.name, address: @tag.address, content: @tag.content, user: @tag.user, latitude: @tag.latitude, longitude: @tag.longitude, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl, points: @tag.points }
     end
 
     assert_redirected_to tag_path(assigns(:tag))
   end
 
-  test "should show tag" do
+  test "should show tag" do 
     get :show, id: @tag
     assert_response :success
   end
@@ -35,7 +36,7 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should update tag" do
-    put :update, id: @tag, tag: { QRCode: @tag.QRCode, address: @tag.address, content: @tag.content, createdBy: @tag.createdBy, latitude: @tag.latitude, longitude: @tag.longitude, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, unique: @tag.unique, uniqueUrl: @tag.uniqueUrl }
+    put :update, id: @tag, tag: { address: @tag.address, content: @tag.content, user: @tag.user, latitude: @tag.latitude, longitude: @tag.longitude, points: @tag.points, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl }
     assert_redirected_to tag_path(assigns(:tag))
   end
 

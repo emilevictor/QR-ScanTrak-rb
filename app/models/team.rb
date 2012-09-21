@@ -2,11 +2,11 @@ class Team < ActiveRecord::Base
   attr_accessible :description, :name, :password
 
 
-
   has_many :users, :dependent => :nullify
   has_many :scans
   has_many :tags, :through => :scans
-  #has_and_belongs_to_many :tags
+
+  belongs_to :game, :dependent => :destroy
 
   validates :name, :presence => true
   validates :password, :presence => true

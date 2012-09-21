@@ -1,6 +1,8 @@
 QRScantrak::Application.routes.draw do
 
 
+
+
   resources :supports
 
   get "home/index"
@@ -56,6 +58,8 @@ QRScantrak::Application.routes.draw do
     resources :teams
 
     resources :tags
+
+    resources :games
   end
 
   # Administration access to modify users.

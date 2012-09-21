@@ -1,27 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  unique: MyString
-  uniqueUrl: MyString
-  QRCode: MyString
-  quizQuestion: MyText
-  quizAnswer: MyString
+  name: Test Tag 1
+  uniqueUrl: 3n2n323n2n32n23
+  quizQuestion: What is the capital of Australia?
+  quizAnswer: Canberra
   content: MyText
   latitude: 9.99
   longitude: 9.99
   address: MyString
-  createdBy: 1
+  user: 1
+  points: 323
 
 two:
   name: MyString
-  unique: MyString
-  uniqueUrl: MyString
-  QRCode: MyString
-  quizQuestion: MyText
-  quizAnswer: MyString
+  uniqueUrl: 01bv8091284bv90128b4v
+  quizQuestion: What is the capital of Australia?
+  quizAnswer: Canberra
   content: MyText
   latitude: 9.99
   longitude: 9.99
   address: MyString
-  createdBy: 1
+  user: 1
+  points: 934

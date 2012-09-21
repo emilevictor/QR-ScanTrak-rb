@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   has_many :created_teams, :class_name => "Team"
 
+  has_and_belongs_to_many :games
+
+  
+
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :admin, :password_confirmation,

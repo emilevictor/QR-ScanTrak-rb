@@ -1,0 +1,35 @@
+<h1>Listing games</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Organisation</th>
+    <th>Players</th>
+    <th>Contact details</th>
+    <th>Description</th>
+    <th>Payment Expires</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+    <td><%= game.name %></td>
+    <td><%= game.organisation %></td>
+    <td><%= game.users.count %>/<%= game.maxNumberOfPlayers %></td>
+    <td><%= game.contactDetails %></td>
+    <td><%= game.description %></td>
+    <td><%= game.paymentExpires %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Game', new_game_path %>
+
+<%= render "menu/menu" %>

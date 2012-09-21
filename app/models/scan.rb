@@ -4,6 +4,7 @@ class Scan < ActiveRecord::Base
   has_many :users, :through => :team
   belongs_to :user
   belongs_to :tag #requires has_many :scans on tag
+  belongs_to :game, :dependent => :destroy
 
 
 end

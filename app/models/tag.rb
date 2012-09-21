@@ -6,6 +6,7 @@ class Tag < ActiveRecord::Base
  	 :name, :quizAnswer, :points, :quizQuestion, :uniqueUrl
 	geocoded_by :address
 	belongs_to :user
+  	belongs_to :game, :dependent => :destroy
 
 	validates_presence_of :user
 

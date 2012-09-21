@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-
+	before_filter :authenticate_user!
 	def index
 		    if not current_user.try(:admin?)
 

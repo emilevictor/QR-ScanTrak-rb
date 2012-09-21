@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920075320) do
+ActiveRecord::Schema.define(:version => 20120921033930) do
+
+  create_table "games", :force => true do |t|
+    t.string   "name"
+    t.string   "organisation"
+    t.integer  "maxNumberOfPlayers"
+    t.text     "contactDetails"
+    t.text     "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "password"
+    t.date     "paymentExpires"
+    t.boolean  "requiresPassword"
+  end
+
+  create_table "games_users", :id => false, :force => true do |t|
+    t.integer "game_id", :null => false
+    t.integer "user_id", :null => false
+  end
+
+  add_index "games_users", ["game_id", "user_id"], :name => "index_games_users_on_game_id_and_user_id", :unique => true
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"

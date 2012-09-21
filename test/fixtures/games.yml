@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  organisation: MyString
+  maxNumberOfPlayers: 1
+  contactDetails: MyText
+  description: MyText
+
+two:
+  name: MyString
+  organisation: MyString
+  maxNumberOfPlayers: 1
+  contactDetails: MyText
+  description: MyText
