@@ -1,5 +1,9 @@
-<% if not current_user.currentGame().nil? %>
-        <div id="gameName">
-          Logged in as: <%= current_user.email %><br />Current Game: <%= current_user.currentGame().name %>. (<%= link_to 'Click to switch', games_listPlayersGames_path %>).
-        </div>
+<% if user_signed_in? %>
+
+	<% if not current_user.currentGame().nil? %>
+	        <div id="gameName">
+	          Logged in as: <%= current_user.email %><br />Current Game: <%= current_user.currentGame().name %>. (<%= link_to 'Click to switch', games_listPlayersGames_path %>).
+	        </div>
+	<% end %>
+
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921043539) do
+ActiveRecord::Schema.define(:version => 20120922045818) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20120921043539) do
     t.datetime "updated_at", :null => false
     t.text     "comment"
     t.integer  "user_id"
+    t.integer  "game_id"
   end
 
   add_index "scans", ["tag_id", "team_id"], :name => "index_scans_on_tag_id_and_team_id", :unique => true
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120921043539) do
     t.integer  "points"
     t.string   "qr_code_uid"
     t.string   "qr_code_name"
+    t.integer  "game_id"
   end
 
   create_table "tags_teams", :id => false, :force => true do |t|

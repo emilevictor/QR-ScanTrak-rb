@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   attr_accessible :description, :name, :password
 
 
-  has_many :users, :dependent => :nullify, :through => :game
+  has_many :users, :dependent => :nullify
   has_many :scans
   has_many :tags, :through => :scans
 
@@ -39,11 +39,11 @@ def getPlacement(leaderboard)
 end
 
 	#returns a sorted array of hashes, containing 
-	def self.getLeaderboard()
+	def self.getLeaderboard(me)
 		leaderboardArray = Array.new
 
 		index = 0
-		@teams = current_user.currentGame().teams.all
+		@teams = me.currentGame().teams.all
 
 		@teams.each do |team|
 			leaderboardArray[index] = {:id => team.id, :name => team.name, :score => team.getTotalScore}

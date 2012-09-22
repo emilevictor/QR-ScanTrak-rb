@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -38,8 +39,7 @@ class User < ActiveRecord::Base
       @game = games.find(default_game_id)
     rescue Exception => exc
       if games.first.nil?
-        flash[:alert] = "You're not in a game."
-        redirect_to games_joinAGame_path
+        return nil
       end
       default_game_id = games.first.id
       return game.first     

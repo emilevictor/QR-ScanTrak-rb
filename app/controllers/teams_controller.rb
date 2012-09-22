@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     if current_user.try(:admin?)
-      @teams = Team.all
+      @teams = current_user.currentGame.teams.all
 
       respond_to do |format|
         format.html # index.html.erb
@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
     if current_user.try(:admin?)
       @user = current_user
       @team = @user.currentGame().teams.find(params[:id])
-      @leaderboard = Team.getLeaderboard
+      @leaderboard = Team.getLeaderboard(current_user)
       @scans = @user.currentGame().scans.where(:team_id => @team.id)
       @placement = @team.getPlacement(@leaderboard)
       @scans = @team.scans.paginate(:page => params[:page])
@@ -60,7 +60,7 @@ class TeamsController < ApplicationController
   #Current leaderboard, static
 
   def staticLeaderboard
-    @leaderboard = Team.getLeaderboard
+    @leaderboard = Team.getLeaderboard(current_user)
     respond_to do |format|
       format.html
       format.json {render json: @leaderboard}
@@ -73,7 +73,6 @@ class TeamsController < ApplicationController
     #nothing here right now, just in case we need extra information later.
       respond_to do |format|
         format.html
-
       end
     else
       flash[:alert] = "You must be an administrator to view the leaderboard."
@@ -84,8 +83,8 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
       if current_user.try(:admin?)
-    @team = Team.find(params[:id])
-  end
+        @team = Team.find(params[:id])
+      end
   end
 
   # POST /teams
@@ -101,7 +100,7 @@ class TeamsController < ApplicationController
 
 
       @team = Team.new(params[:team])
-
+      @user = current_user
 
       #encrypt provided password
       @team.password = BCrypt::Password.create(@team.password)
@@ -110,16 +109,28 @@ class TeamsController < ApplicationController
         if @team.save
           if not current_user.try(:admin?)
             @team.users << @user
-            if not current_user.currentGame().nil?
-              @team.game = current_user.currentGame()
+            if not @user.currentGame().nil?
+              @user.currentGame().teams << @team
+
+              #current_user.currentGame().save
+              #@team.save
+              #@team.game = current_user.currentGame()
             else
               flash[:notice] = "You need to be in a game for that to work!"
               redirect_to home_index_path
             end
+          else
+            if not current_user.currentGame().nil?
+              @user.currentGame().teams << @team
+            else
+              flash[:alert] = "You are currently not in a game, you need to join one first."
+              redirect_to home_index_path
+            end
+
           end
           
-          current_user.created_teams << @team
-          current_user.save
+          @user.created_teams << @team
+          @user.save
           format.html { redirect_to @team, notice: 'Team was successfully created.' }
           format.json { render json: @team, status: :created, location: @team }
         else
@@ -138,7 +149,8 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit/addUsers
   def addUsers
     if current_user.try(:admin?)
-      @team = Team.find(params[:id])
+      @team = current_user.currentGame().teams.find(params[:id])
+      #@team = Team.find(params[:id])
       @users = User.all
 
       render view: "addUsers"
@@ -150,7 +162,8 @@ class TeamsController < ApplicationController
     #Check that the user is logged in, is in a team, and that the
     #team has less then Settings.maxTeamMembers players.
     if user_signed_in?
-      @team = Team.find(current_user.team.id)
+      @team = current_user.currentGame().teams.find(current_user.team.id)
+      #@team = Team.find(current_user.team.id)
 
       if @team.users.count < Settings.maxTeamMembers
 
@@ -184,7 +197,8 @@ class TeamsController < ApplicationController
       #user exists, let's just add them to the team.
       if @user.team.nil?
         #If user is not already in a team
-        @team = Team.find(params[:team_id])
+        @team = current_user.currentGame().teams.find(params[:team_id])
+        #@team = Team.find(params[:team_id])
         if @team.users.count >= Settings.maxTeamMembers
             #If the team is already full
           flash[:alert] = "Your team is full, you can't add more members."
@@ -217,7 +231,8 @@ class TeamsController < ApplicationController
 
   # POST /teams/1/edit/addUsers
   def addUsersToTeam
-    @team = Team.find(params[:id])
+    #@team = Team.find(params[:id])
+    @team = current_user.currentGame().teams.find(params[:id])
     #puts "HELLO?"
     params.each do |key,value|
       if (splitKey = key.split(" "))[0] == "USERID"
@@ -240,9 +255,11 @@ class TeamsController < ApplicationController
   def checkTeamScore
     if user_signed_in? and not current_user.team_id.nil?
       @user = current_user
-      @team = Team.find(@user.team_id)
-      @leaderboard = Team.getLeaderboard
-      @scans = Scan.where(:team_id => @team.id)
+      @team = current_user.currentGame().teams.where(:user_id => @user.id).first
+      #@team = Team.find(@user.team_id)
+      @leaderboard = Team.getLeaderboard(@user)
+      @scans = current_user.currentGame().scans.where(:team_id => @team.id)
+      #@scans = Scan.where(:team_id => @team.id)
       @placement = @team.getPlacement(@leaderboard)
       @scans = @team.scans.paginate(:page => params[:page])
 
@@ -264,28 +281,28 @@ class TeamsController < ApplicationController
   # PUT /teams/1.json
   def update
         if current_user.try(:admin?)
-    @team = Team.find(params[:id])
+          @team = current_user.currentGame().teams.find(params[:id])
 
-    respond_to do |format|
-      #if the password has been changed, recompute it.
-      if params[:team][:password] != @team.password
-        params[:team][:password] = BCrypt::Password.create(params[:team][:password])
-      end
+          respond_to do |format|
+            #if the password has been changed, recompute it.
+            if params[:team][:password] != @team.password
+              params[:team][:password] = BCrypt::Password.create(params[:team][:password])
+            end
 
-      if @team.update_attributes(params[:team])
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+            if @team.update_attributes(params[:team])
+              format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+              format.json { head :no_content }
+            else
+              format.html { render action: "edit" }
+              format.json { render json: @team.errors, status: :unprocessable_entity }
+            end
+          end
+        end
   end
 
   # Allows those who created teams to administer those who are in those teams.
   def removeTeamMembers
-    @team = current_user.team
+    @team = current_user.currentGame().teams.where(:user_id => current_user.id)
     #If the user is signed in, AND is in a team, AND created the team.
     if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).first.empty?
 
@@ -316,7 +333,8 @@ class TeamsController < ApplicationController
   #TODO: make this safe so that people can't just willy nilly delete people from other teams.
   # POST TO ME!
   def remove_user_from_team
-   team = Team.find(params[:teamID])
+    team = current_user.currentGame().teams.find(params[:teamID])
+   #team = Team.find(params[:teamID])
      
     numberRemoved = 0
     params.each do |key,value|

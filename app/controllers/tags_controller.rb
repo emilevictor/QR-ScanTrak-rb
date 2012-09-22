@@ -12,7 +12,7 @@ class TagsController < ApplicationController
   def index
     if current_user.try(:admin?)
       @qrCodes = []
-      @tags = Tag.paginate(:page => params[:page])
+      @tags = current_user.currentGame().tags.paginate(:page => params[:page])
 
       #host = request.host_with_port
       #@tags.each do |tag|

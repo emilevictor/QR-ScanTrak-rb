@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
   			#@team = Team.find(@user.team_id)
         @game = Game.find(@user.default_game_id)
-        @team = @game.teams.find(:user_id => @user.id)
+        @team = @game.teams.where(:user_id => @user.id)
 
   		end
   	end
