@@ -25,6 +25,22 @@
   <%= @game.description %>
 </p>
 
+<h2>Printed Tag Settings:</h2>
+<ul>
+<% if @game.showGameInfoOnPrintedTags %>
+<li>Printed tags show game info (to allow general public to join in)</li>
+<% end %>
+<% if @game.showLogoOnPrintedTags %>
+<li>Logo shown on printed tags</li>
+<% end %>
+<% if @game.showPasswordOnPrintedTags %>
+<li>Password shown on printed tags</li>
+<% end %>
+<% if @game.addQRScanTrakLogoOnPrintedTags %>
+<li>QR Scantrak advertising shown on printed tags.</li>
+<% end %>
+</ul>
+
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>

@@ -13,11 +13,13 @@ body {
 }
 
 .qrcodePrintTag {
-  padding:10px;
+  padding:5px;
 }
 
 .tagTitle {
-  margin:20px auto;
+  position:relative;
+  top:-30px;
+  margin:10px auto;
 }
 
 @media all {
@@ -31,6 +33,13 @@ body {
 
 .instructional {
   margin:0px auto;
+}
+
+.gameInfo
+{
+  margin:0px auto;
+  width:450px;
+  padding-bottom:15px;
 }
 
 .key {
@@ -58,6 +67,8 @@ html, body {
 #map_canvas {
   height: 100%;
 }
+
+
 
 @media print {
   html, body {
