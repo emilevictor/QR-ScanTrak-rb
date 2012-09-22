@@ -102,7 +102,7 @@ class TagsController < ApplicationController
       @user = current_user
 
       #Team of the current user.
-      if not @user.team.empty?
+      if not @user.currentGame.teams.where(:user_id => @user.id).empty?
         @team = @user.currentGame.teams.where(:user_id => @user.id).first
       else
         flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
