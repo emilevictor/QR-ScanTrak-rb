@@ -22,7 +22,7 @@
       <li><%= link_to 'Manually enter tag codes', :controller => 'tags', :action => 'manualScan' %></li>
 
       <% end %>
-    <li><%= link_to'Edit registration', :controller => 'users', :action => 'edit', :id => current_user.id %></li>
+    <li><%= link_to'Edit registration', edit_user_registration_path %></li>
       <% if current_user.try(:admin?) %>
       <li><%= link_to('Administrator Panel', admin_path) %></li>
 
