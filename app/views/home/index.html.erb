@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 
-  <% if not current_user.games.any? %>
+  <% if current_user.currentGame.nil? %>
 
     <div id="joinAGameExplanation">
 

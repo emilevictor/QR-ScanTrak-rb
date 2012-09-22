@@ -26,6 +26,8 @@ class TeamsController < ApplicationController
     if current_user.try(:admin?)
       @user = current_user
       @team = @user.currentGame().teams.where(:user_id => @user.id).first
+
+
       @leaderboard = Team.getLeaderboard(current_user)
       @scans = @user.currentGame().scans.where(:team_id => @team.id)
       @placement = @team.getPlacement(@leaderboard)
@@ -104,9 +106,8 @@ class TeamsController < ApplicationController
         if @team.save
           if not current_user.try(:admin?)
             @team.users << @user
-            current_user.currentGame().teams << @team
           end
-          
+          current_user.currentGame().teams << @team
           current_user.created_teams << @team
           current_user.save!
           format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -260,7 +261,7 @@ class TeamsController < ApplicationController
   def update
         if current_user.try(:admin?)
           @team = current_user.currentGame().teams.find(params[:id])
-
+          current_user.currentGame().teams << @team
           respond_to do |format|
             #if the password has been changed, recompute it.
             if params[:team][:password] != @team.password
