@@ -4,6 +4,7 @@ require 'rqrcode'
 
 class TagsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :handleAdminWithNoGame
   #before_filter :authenticate_admin!
   # GET /tags
   # GET /tags.json
@@ -12,7 +13,19 @@ class TagsController < ApplicationController
   def index
     if current_user.try(:admin?)
       @qrCodes = []
-      @tags = current_user.currentGame().tags.paginate(:page => params[:page])
+      if not current_user.currentGame().nil?
+        if not current_user.currentGame().tags.nil?
+          @tags = current_user.currentGame().tags.paginate(:page => params[:page]) 
+        else
+          flash[:alert] = "There are no tags yet, so you need to create the first one!"
+          redirect_to new_tag_path and return
+        end
+        
+      else
+        flash[:alert] = "You aren't in a game yet, so you need to create one."
+        redirect_to new_game_path and return
+      end
+      
 
       #host = request.host_with_port
       #@tags.each do |tag|
@@ -260,39 +273,38 @@ class TagsController < ApplicationController
     end
   end
 
-  # POST /tags
-  # POST /tags.json
-  def create
-    if current_user.try(:admin?)
-      @tag = Tag.new(params[:tag])
-      #Pngqr.encode 
-      @tag.user = current_user
+  # # POST /tags
+  # # POST /tags.json
+  # def create
+  #   if current_user.try(:admin?)
+  #     @tag = current_user.currentGame().tags.build(params[:tag])
+  #     #Pngqr.encode 
+  #     @tag.user = current_user
 
-      #current_user.tags << @tag
-      #current_user.save
+  #     puts "\n\n\n\n\n\n\n\n\n\n\n\n #{@current_user.currentGame().tags.all.to_s}\n\n\n\n\n\n\n\n\n\n\n"
 
-      @tag.game = current_user.currentGame()
 
-      respond_to do |format|
-        if @tag.save
-          format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-          format.json { render json: @tag, status: :created, location: @tag }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @tag.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      flash[:notice] = 'You need admin privileges to go there.'
-      redirect_to :controller => "home", :action => "index"
-    end
-  end
+  #     respond_to do |format|
+  #       if @tag.save
+  #         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+  #         format.json { render json: @tag, status: :created, location: @tag }
+  #       else
+  #         format.html { render action: "new" }
+  #         format.json { render json: @tag.errors, status: :unprocessable_entity }
+  #       end
+  #     end
+  #   else
+  #     flash[:notice] = 'You need admin privileges to go there.'
+  #     redirect_to :controller => "home", :action => "index"
+  #   end
+  # end
 
   # PUT /tags/1
   # PUT /tags/1.json
   def update
     if current_user.try(:admin?)
       @tag = Tag.find(params[:id])
+      current_user.currentGame().tags << @tag
       @tag.user = current_user
       respond_to do |format|
         if @tag.update_attributes(params[:tag])
@@ -435,6 +447,15 @@ class TagsController < ApplicationController
       end
     end
 
+  end
+
+  private
+
+  def handleAdminWithNoGame()
+    if current_user.currentGame().nil?
+      flash[:alert] = "You can't do anything with tags until you join a game."
+      redirect_to new_game_path and return
+    end
   end
 
 

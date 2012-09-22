@@ -43,6 +43,24 @@
     <%= f.label :password, "Password (If above checkbox blank, none required)" %><br />
     <%= f.password_field :password %>
     </div>
+
+    <h2>Settings for printed tags:</h2>
+    <div class="field">
+      <%= f.label :showGameInfoOnPrintedTags, "Show game info on tags" %>
+      <%= f.check_box :showGameInfoOnPrintedTags %>
+    </div>
+    <div class="field">
+      <%= f.label :showLogoOnPrintedTags, "Show organisation's logo on printed tags" %>
+      <%= f.check_box :showLogoOnPrintedTags %>
+    </div>
+    <div class="field">
+      <%= f.label :showPasswordOnPrintedTags, "Show the password on printed tags" %>
+      <%= f.check_box :showPasswordOnPrintedTags %>
+    </div>
+    <div class="field">
+      <%= f.label :addQRScanTrakLogoOnPrintedTags, "Show the scantrak logo on printed tags" %>
+      <%= f.check_box :addQRScanTrakLogoOnPrintedTags %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922052653) do
+ActiveRecord::Schema.define(:version => 20120922082145) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -19,11 +19,15 @@ ActiveRecord::Schema.define(:version => 20120922052653) do
     t.integer  "maxNumberOfPlayers"
     t.text     "contactDetails"
     t.text     "description"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.string   "password"
     t.date     "paymentExpires"
     t.boolean  "requiresPassword"
+    t.boolean  "showGameInfoOnPrintedTags",      :default => false
+    t.boolean  "showLogoOnPrintedTags",          :default => false
+    t.boolean  "showPasswordOnPrintedTags",      :default => false
+    t.boolean  "addQRScanTrakLogoOnPrintedTags", :default => false
   end
 
   create_table "games_users", :id => false, :force => true do |t|

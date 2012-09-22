@@ -5,8 +5,8 @@ class Tag < ActiveRecord::Base
  	attr_accessible :address, :content, :createdBy, :latitude, :longitude,
  	 :name, :quizAnswer, :points, :quizQuestion, :uniqueUrl
 	geocoded_by :address
-	belongs_to :user
-  	belongs_to :game, :dependent => :destroy
+	belongs_to :user, :autosave => true
+  	belongs_to :game, :autosave => true
 
 	validates_presence_of :user
 
