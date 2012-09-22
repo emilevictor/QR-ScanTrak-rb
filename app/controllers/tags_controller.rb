@@ -94,7 +94,7 @@ class TagsController < ApplicationController
       @tag = Tag.where(:uniqueUrl => params[:id]).first
 
       #Check that the user is playing this game
-      if not @tag.game == currentUser.currentGame()
+      if not @tag.game == current_user.currentGame()
         flash[:alert] = "You haven't signed up for the game that that tag is for!"
         redirect_to game_joinAGame_path
       end
