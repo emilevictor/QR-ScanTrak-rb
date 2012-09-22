@@ -2,8 +2,13 @@ class HomeController < ApplicationController
   def index
   	if user_signed_in?
   		@user = current_user
-      @team = @user.currentGame().teams.where(:user_id => @user.id).first
-  		@game = current_user.currentGame()
+      if not @user.currentGame().nil?
+        @team = @user.currentGame().teams.where(:user_id => @user.id).first
+        @game = current_user.currentGame()
+      else
+
+      end
+      
   	end
   end
 
