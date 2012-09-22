@@ -147,7 +147,7 @@ class TagsController < ApplicationController
       #Check that the user hasn't scanned this yet.
       @user = current_user
       #Team of the current user.
-      @team = @user.currentGame().teams.where(:user_id => @user.id)
+      @team = @user.currentGame().teams.where(:user_id => @user.id).first
 
       @tag = Tag.where(:uniqueUrl => params[:id]).first
 
