@@ -17,9 +17,6 @@
         <li>
           <%= link_to 'Remove Team Members', teams_removeTeamMembers_path %>
         </li>
-        <li>
-          <%= link_to 'Delete Team', :controller => 'teams', :action => 'destroy', :id => @team.id, :confirm => "Are you ABSOLUTELY sure you want to delete your team?" %>
-        </li>
       <% end %>
 
       <li><%= link_to 'Manually enter tag codes', :controller => 'tags', :action => 'manualScan' %></li>
@@ -30,6 +27,8 @@
       <li><%= link_to('Administrator Panel', admin_path) %></li>
 
     <% end %>
+
+    <li><%= link_to('Live Leaderboard', teams_leaderboard_path) %></li>
     <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
   </ul>

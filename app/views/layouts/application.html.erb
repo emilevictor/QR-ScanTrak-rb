@@ -13,7 +13,8 @@
 
 </head>
 <body>
-
+	<%= render 'menu/menu' %>
+	<%= render 'home/status' %>
 	<div id="wrapper">
 
 		<div id="blueHeader">
@@ -33,6 +34,7 @@
 				<%= render 'home/status' %>
 				<p id="notice"><%= notice %></p>
 				<p id="alert"><%= alert %></p>
+				
 				<%= yield %>
 			</div>
 		</div>

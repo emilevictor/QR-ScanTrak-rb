@@ -16,7 +16,7 @@ Press Ctrl+F (or Cmd+F) to search!
 				<%= label_tag(user.id.to_s,"#{user.first_name} #{user.last_name} (#{user.email})") %>
 				</td>
 				
-					<% if not user.team.nil? %>
+					<% if not user.teams.m? %>
 						<td><%= user.team.id %></td> <td><%= user.team.name %></td>
 
 					<% end %>

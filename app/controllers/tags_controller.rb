@@ -79,15 +79,24 @@ class TagsController < ApplicationController
   def tagFound
     if user_signed_in?
       @tag = Tag.where(:uniqueUrl => params[:id]).first
-      @user = User.find(current_user.id)
+
+      #Check that the user is playing this game
+      if not @tag.game == currentUser.currentGame()
+        flash[:alert] = "You haven't signed up for the game that that tag is for!"
+        redirect_to game_joinAGame_path
+      end
+
+      @user = current_user
+
       #Team of the current user.
-      if not @user.team_id.nil?
-        @team = Team.find(@user.team_id)
+      if not @user.team.empty?
+        @team = @user.currentGame.teams.where(:user_id => @user.id).first
       else
         flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
         #redirect_to :controller => "home", :action => "index"
       end
 
+      #If you *are* in a team
       if not @team.nil?
 
         if user_signed_in? and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
@@ -123,9 +132,9 @@ class TagsController < ApplicationController
 
     if user_signed_in?
       #Check that the user hasn't scanned this yet.
-      @user = User.find(current_user.id)
+      @user = current_user
       #Team of the current user.
-      @team = Team.find(@user.team_id)
+      @team = @user.currentGame().teams.where(:user_id => @user.id)
 
       @tag = Tag.where(:uniqueUrl => params[:id]).first
 
@@ -140,10 +149,10 @@ class TagsController < ApplicationController
 
 
           @scan = Scan.new
-          
-          @scan.game = current_user.currentGame()
 
           @scan.save
+
+          @scan.game = current_user.currentGame()
 
           @team.scans << @scan
 
@@ -158,19 +167,17 @@ class TagsController < ApplicationController
           redirect_to :controller => "tags", :action => "tagFound", :id => @tag.uniqueUrl
         end
 
-      elsif current_user.admin? and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
+      elsif current_user.try(:admin?) and Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
         if (params[:answer] == @tag.quizAnswer) or (@tag.quizQuestion.empty?)
           #cool... They got the answer correct or there was no question.
           #Now we can create a scan,
           #add it to their team.
 
-
-
           @scan = Scan.new
 
-          @scan.game = current_user.currentGame()
-          
           @scan.save
+
+          @scan.game = current_user.currentGame()
 
           @team.scans << @scan
 
@@ -348,7 +355,8 @@ class TagsController < ApplicationController
     #if the current user is an admin
 
       @qrCodes = []
-      @tags = Tag.where(:game_id => current_user.currentGame().id).paginate(:page => params[:page])
+      @tags = current_user.currentGame().tags.paginate(:page => params[:page])
+      #@tags = Tag.where(:game_id => current_user.currentGame().id).paginate(:page => params[:page])
 
       host = request.host_with_port
       @tags.each do |tag|
@@ -376,9 +384,9 @@ class TagsController < ApplicationController
   def manualScan
     if user_signed_in?
 
-      if not current_user.team.nil?
+      if not current_user.currentGame().teams.where(:user_id => current_user.id).empty?
         #user is in a team
-        @team = current_user.team
+        @team = current_user.currentGame().teams.where(:user_id => current_user.id).first
         render view: "manualScan"
       else
         flash[:alert] = "You are not a member of a team!"

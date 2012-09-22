@@ -5,8 +5,11 @@ class HomeController < ApplicationController
   		if not @user.nil? and not @user.team_id.nil?
 
   			#@team = Team.find(@user.team_id)
-        @game = Game.find(@user.default_game_id)
-        @team = @game.teams.where(:user_id => @user.id)
+        @game = current_user.currentGame()
+        if not @game.nil?
+          @team = @game.teams.where(:user_id => @user.id).first
+        end
+        
 
   		end
   	end
@@ -16,7 +19,7 @@ class HomeController < ApplicationController
 
   	@user = current_user
 
-	if not @user.nil? and @user.team_id.nil?
+	if not @user.nil? and @user.currentGame().teams.where(:user_id => @user.id).empty?
 
     	@team = Team.new
 

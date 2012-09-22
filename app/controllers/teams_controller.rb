@@ -69,15 +69,10 @@ class TeamsController < ApplicationController
   end
 
   def liveLeaderboard
-    if current_user.try(:admin?)
     #nothing here right now, just in case we need extra information later.
       respond_to do |format|
         format.html
       end
-    else
-      flash[:alert] = "You must be an administrator to view the leaderboard."
-      redirect_to home_index_path
-    end
   end
 
   # GET /teams/1/edit
@@ -96,11 +91,11 @@ class TeamsController < ApplicationController
     flash[:alert] = ""
 
 
-    if (not @user.nil? and @user.team_id.nil?) or current_user.try(:admin?)
+    if (not @user.nil? and @user.currentGame().teams.where(:user_id => @user.id).empty?) or current_user.try(:admin?)
 
 
       @team = Team.new(params[:team])
-      @user = current_user
+
 
       #encrypt provided password
       @team.password = BCrypt::Password.create(@team.password)
@@ -109,28 +104,11 @@ class TeamsController < ApplicationController
         if @team.save
           if not current_user.try(:admin?)
             @team.users << @user
-            if not @user.currentGame().nil?
-              @user.currentGame().teams << @team
-
-              #current_user.currentGame().save
-              #@team.save
-              #@team.game = current_user.currentGame()
-            else
-              flash[:notice] = "You need to be in a game for that to work!"
-              redirect_to home_index_path
-            end
-          else
-            if not current_user.currentGame().nil?
-              @user.currentGame().teams << @team
-            else
-              flash[:alert] = "You are currently not in a game, you need to join one first."
-              redirect_to home_index_path
-            end
-
+            current_user.currentGame().teams << @team
           end
           
-          @user.created_teams << @team
-          @user.save
+          current_user.created_teams << @team
+          current_user.save
           format.html { redirect_to @team, notice: 'Team was successfully created.' }
           format.json { render json: @team, status: :created, location: @team }
         else
@@ -162,7 +140,7 @@ class TeamsController < ApplicationController
     #Check that the user is logged in, is in a team, and that the
     #team has less then Settings.maxTeamMembers players.
     if user_signed_in?
-      @team = current_user.currentGame().teams.find(current_user.team.id)
+      @team = current_user.currentGame().teams.where(:user_id => current_user.id).first
       #@team = Team.find(current_user.team.id)
 
       if @team.users.count < Settings.maxTeamMembers
@@ -195,7 +173,7 @@ class TeamsController < ApplicationController
       redirect_to :controller => 'teams', :action => 'publicAddNewUsersToTeam'
     else
       #user exists, let's just add them to the team.
-      if @user.team.nil?
+      if @user.currentGame().teams.where(:user_id => @user.id).empty?
         #If user is not already in a team
         @team = current_user.currentGame().teams.find(params[:team_id])
         #@team = Team.find(params[:team_id])
@@ -253,7 +231,7 @@ class TeamsController < ApplicationController
 
   #Check team score
   def checkTeamScore
-    if user_signed_in? and not current_user.team_id.nil?
+    if user_signed_in? and not current_user.teams.empty?
       @user = current_user
       @team = current_user.currentGame().teams.where(:user_id => @user.id).first
       #@team = Team.find(@user.team_id)
@@ -302,9 +280,9 @@ class TeamsController < ApplicationController
 
   # Allows those who created teams to administer those who are in those teams.
   def removeTeamMembers
-    @team = current_user.currentGame().teams.where(:user_id => current_user.id)
+    @team = current_user.currentGame().teams.where(:user_id => current_user.id).first
     #If the user is signed in, AND is in a team, AND created the team.
-    if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).first.empty?
+    if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).empty?
 
 
 

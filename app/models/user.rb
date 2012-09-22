@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 
 
   has_many :tags, :through => :games
-  belongs_to :team, :inverse_of => :users
+  has_and_belongs_to_many :teams
   has_many :scans, :through => :games
 
-  has_many :created_teams, :class_name => "Team"
+  has_many :created_teams, :class_name => "Team", :dependent => :destroy
 
   has_and_belongs_to_many :games
 
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
         return nil
       end
       default_game_id = games.first.id
-      return game.first     
+      return games.first     
     end
     
 

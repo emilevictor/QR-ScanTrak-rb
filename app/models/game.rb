@@ -10,8 +10,8 @@ class Game < ActiveRecord::Base
   validates_presence_of :name
 
   has_and_belongs_to_many :users
-  has_many :tags
-  has_many :scans
-  has_many :teams
+  has_many :tags, :dependent => :destroy
+  has_many :scans, :dependent => :destroy
+  has_many :teams , :dependent => :destroy
 
 end

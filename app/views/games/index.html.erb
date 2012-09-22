@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Organisation</th>
     <th>Players</th>
@@ -16,6 +17,7 @@
 
 <% @games.each do |game| %>
   <tr>
+    <td><%= game.id %></td>
     <td><%= game.name %></td>
     <td><%= game.organisation %></td>
     <td><%= game.users.count %>/<%= game.maxNumberOfPlayers %></td>
@@ -34,4 +36,3 @@
 
 <%= link_to 'New Game', new_game_path %>
 
-<%= render "menu/menu" %>
