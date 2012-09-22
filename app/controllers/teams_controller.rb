@@ -25,9 +25,9 @@ class TeamsController < ApplicationController
   def show
     if current_user.try(:admin?)
       @user = current_user
-      @team = Team.find(params[:id])
+      @team = @user.currentGame().teams.find(params[:id])
       @leaderboard = Team.getLeaderboard
-      @scans = Scan.where(:team_id => @team.id)
+      @scans = @user.currentGame().scans.where(:team_id => @team.id)
       @placement = @team.getPlacement(@leaderboard)
       @scans = @team.scans.paginate(:page => params[:page])
 
@@ -110,6 +110,12 @@ class TeamsController < ApplicationController
         if @team.save
           if not current_user.try(:admin?)
             @team.users << @user
+            if not current_user.currentGame().nil?
+              @team.game = current_user.currentGame()
+            else
+              flash[:notice] = "You need to be in a game for that to work!"
+              redirect_to home_index_path
+            end
           end
           
           current_user.created_teams << @team
@@ -144,7 +150,7 @@ class TeamsController < ApplicationController
     #Check that the user is logged in, is in a team, and that the
     #team has less then Settings.maxTeamMembers players.
     if user_signed_in?
-      @team = Team.find(current_user.team_id)
+      @team = Team.find(current_user.team.id)
 
       if @team.users.count < Settings.maxTeamMembers
 

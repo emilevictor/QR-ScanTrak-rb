@@ -43,6 +43,13 @@ QRScantrak::Application.routes.draw do
 
   match 'teams/:id/edit/addUsersToTeam' => 'teams#addUsersToTeam', :via => :post
 
+
+  match 'games/joinAGame' => 'games#joinAGame'
+  match 'games/listPlayersGames' => 'games#listPlayersGames'
+  match '/games/joinGameProcess' => "games#joinGameProcess", :via => :post
+  match 'games/:id/makeDefaultGame/' => 'games#makeDefaultGame'
+
+
   scope "/admin" do
     #must be first line for production environment to work
 
@@ -58,7 +65,7 @@ QRScantrak::Application.routes.draw do
     resources :teams
 
     resources :tags
-
+    
     resources :games
   end
 

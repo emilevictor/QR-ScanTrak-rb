@@ -1,0 +1,20 @@
+<div id="playersCurrentGames">
+		<ul id="gamesList">
+	<% @games.each do |game| %>
+
+		<li><%= game.name %> 
+
+			<% if not current_user.default_game_id == game.id %>
+			(<%= link_to 'Make this my current game', :controller => "games", :action => "makeDefaultGame", :id => game.id %>)
+
+			<% else %>
+			(Currently playing this game)
+			<% end %>
+		</li>
+
+
+
+
+	<% end %>
+</ul>
+</div>

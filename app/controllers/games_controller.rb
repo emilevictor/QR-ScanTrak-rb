@@ -1,6 +1,88 @@
 class GamesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_user_is_admin
+  before_filter :check_user_is_admin, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  
+
+  # USER ONLY JAZZ
+
+  def joinAGame
+
+  end
+
+  def makeDefaultGame
+    current_user.default_game_id = params[:id].to_i
+
+    puts "\n\n\n\n\n"
+
+    puts "#{current_user.default_game_id} #{params[:id].to_i}"
+
+    puts "\n\n\n\n\n"
+
+    current_user.save
+    flash[:notice] = "Set your default game"
+    redirect_to games_listPlayersGames_path
+  end
+
+  def listPlayersGames
+    @games = current_user.games
+  end
+
+  def joinGameProcess
+    #If the name given was an integer
+    if params[:gameID].to_i.is_a? Integer
+
+      begin
+
+        @game = Game.find(params[:gameID].to_i)
+
+      rescue Exception => ex
+        @game = nil
+      end
+
+      if not @game.nil?
+
+        if not @game.users.where(id: current_user.id).any?
+
+          if @game.requiresPassword
+            if params[:password].eql?@game.password
+              @game.users << current_user
+              current_user.default_game_id = @game.id
+              current_user.save
+              flash[:notice] = "You joined the game #{@game.name}"
+              redirect_to home_index_path
+            else
+              flash[:alert] = "The password for that game is wrong!"
+              redirect_to games_joinAGame_path
+              return
+            end
+          else
+            @game.users << current_user
+            current_user.default_game_id = @game.id
+            current_user.save
+          end
+          
+        else
+          flash[:notice] = "All good, you're already in that game."
+          redirect_to home_index_path
+        end
+
+      else
+        flash[:alert] = "A game with that ID doesn't exist. Try again?"
+        redirect_to games_joinAGame_path
+      end
+
+
+
+
+    else
+
+    end
+
+  end
+
+
+  # ADMIN ONLY JAZZ
+
   # GET /games
   # GET /games.json
   def index

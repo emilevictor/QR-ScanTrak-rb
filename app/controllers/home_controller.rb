@@ -4,7 +4,9 @@ class HomeController < ApplicationController
   		@user = current_user
   		if not @user.nil? and not @user.team_id.nil?
 
-  			@team = Team.find(@user.team_id)
+  			#@team = Team.find(@user.team_id)
+        @game = Game.find(@user.default_game_id)
+        @team = @game.teams.find(:user_id => @user.id)
 
   		end
   	end

@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   attr_accessible :description, :name, :password
 
 
-  has_many :users, :dependent => :nullify
+  has_many :users, :dependent => :nullify, :through => :game
   has_many :scans
   has_many :tags, :through => :scans
 
@@ -43,7 +43,9 @@ end
 		leaderboardArray = Array.new
 
 		index = 0
-		Team.all.each do |team|
+		@teams = current_user.currentGame().teams.all
+
+		@teams.each do |team|
 			leaderboardArray[index] = {:id => team.id, :name => team.name, :score => team.getTotalScore}
 			index += 1
 		end

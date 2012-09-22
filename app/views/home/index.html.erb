@@ -1,8 +1,39 @@
 <% if user_signed_in? %>
 
-  <% if @team.nil? %>
+  <% if not current_user.games.any? %>
 
-          Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam", :public => "yes" %><br /><br />
+    <div id="joinAGameExplanation">
+
+      In order to play a QR ScanTrak game, you need to provide us with the Game ID, and optionally a password. You can get this from a game administrator or any tags that you find.<br /><br />
+
+      <%= render 'games/joinAGame' %>
+
+    </div>
+
+  <% else %>
+
+    <% if not current_user.currentGame().nil? %>
+
+      <div id="gameInfo">
+
+
+        <% #The following query finds out whether I am in a team, which belongs to my game %>
+        <% if @team.nil? %>
+
+                Looks like you're not in a team yet. <%= link_to 'Create a team here', :controller => "home", :action => "createTeam", :public => "yes" %><br /><br />
+
+
+
+        <% end %>
+      </div>
+
+
+    <% else %>
+
+      You need to choose 
+
+    <% end %>
+
 
   <% end %>
 

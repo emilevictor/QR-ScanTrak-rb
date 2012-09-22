@@ -141,6 +141,8 @@ class TagsController < ApplicationController
 
           @scan = Scan.new
           
+          @scan.game = current_user.currentGame()
+
           @scan.save
 
           @team.scans << @scan
@@ -165,6 +167,8 @@ class TagsController < ApplicationController
 
 
           @scan = Scan.new
+
+          @scan.game = current_user.currentGame()
           
           @scan.save
 
@@ -260,6 +264,8 @@ class TagsController < ApplicationController
       #current_user.tags << @tag
       #current_user.save
 
+      @tag.game = current_user.currentGame()
+
       respond_to do |format|
         if @tag.save
           format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
@@ -342,7 +348,7 @@ class TagsController < ApplicationController
     #if the current user is an admin
 
       @qrCodes = []
-      @tags = Tag.paginate(:page => params[:page])
+      @tags = Tag.where(:game_id => current_user.currentGame().id).paginate(:page => params[:page])
 
       host = request.host_with_port
       @tags.each do |tag|
