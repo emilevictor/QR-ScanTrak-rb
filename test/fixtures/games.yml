@@ -6,6 +6,7 @@ one:
   maxNumberOfPlayers: 299
   contactDetails: MyText
   description: MyText
+  users: one
 
 two:
   name: MyString
@@ -13,3 +14,4 @@ two:
   maxNumberOfPlayers: 200
   contactDetails: MyText
   description: MyText
+  users: one

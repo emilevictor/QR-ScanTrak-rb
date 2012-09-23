@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class TagsControllerTest < ActionController::TestCase
-
   setup do
     @tag = tags(:one)
     sign_in :user, users(:one)
@@ -19,19 +18,32 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should create tag" do
+    @tag = Hash.new
+    @tag[:name] = "TestTag"
+    @tag[:address] = "Hurrdurr"
+    @tag[:points] = 33
+    @tag[:uniqueUrl] = "124lj124klj12lkh1g"
     assert_difference('Tag.count') do
-      post :create, tag: { name: @tag.name, address: @tag.address, content: @tag.content, user: @tag.user, latitude: @tag.latitude, longitude: @tag.longitude, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl, points: @tag.points, user: @tag.user }
+      post :create, tag: @tag
     end
-
-    @tag.valid?
-
-    puts @tag.errors
 
     assert_redirected_to tag_path(assigns(:tag))
   end
 
   test "should show tag" do 
-    get :show, id: @tag
+
+    @tag = Tag.new
+    @tag.name = "TestTag"
+    @tag.address = "Hurrdurr"
+    @tag.points = 33
+    @tag.uniqueUrl = "124lj124klj12lkh1g"
+    @tag.user = User.first
+    if not @tag.valid?
+      puts @tag.errors
+    end
+    @tag.save
+
+    get :show, id: Tag.first.id
     assert_response :success
   end
 
@@ -41,7 +53,7 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should update tag" do
-    put :update, id: @tag, tag: { address: @tag.address, content: @tag.content, user: @tag.user, latitude: @tag.latitude, longitude: @tag.longitude, points: @tag.points, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl }
+    put :update, id: @tag, tag: { address: @tag.address, content: @tag.content, latitude: @tag.latitude, longitude: @tag.longitude, points: @tag.points, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl }
     assert_redirected_to tag_path(assigns(:tag))
   end
 

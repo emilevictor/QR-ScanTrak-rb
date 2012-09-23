@@ -49,4 +49,10 @@ class GamesControllerTest < ActionController::TestCase
 
     assert_redirected_to games_path
   end
+
+  #3. When a user is signed in and is joining a game, the next page that they are
+  #   redirected to should not be a fail screen
+
+  
+
 end
