@@ -3,7 +3,7 @@ class Tag < ActiveRecord::Base
 
 	
  	attr_accessible :address, :content, :createdBy, :latitude, :longitude,
- 	 :name, :quizAnswer, :points, :quizQuestion, :uniqueUrl
+ 	 :name, :quizAnswer, :points, :quizQuestion, :uniqueUrl, :id
 	geocoded_by :address
 	belongs_to :user, :autosave => true
   	belongs_to :game, :autosave => true
