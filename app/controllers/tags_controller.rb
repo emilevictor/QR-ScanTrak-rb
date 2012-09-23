@@ -233,25 +233,11 @@ class TagsController < ApplicationController
       @tag = Tag.new
       @tag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
 
-
       #Check for uniqueness in the tag url.
 
       while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.nil?)
         @tag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
       end
-
-      if Rails.env.production?
-        qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
-
-      else
-        qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
-      end
-
-
-      #Generate the QR code with rqrcode_png
-      qr_code_img = RQRCode::QRCode.new(qrCodeString, :size => 10, :level => :h ).to_img
-      qr_code_img = qr_code_img.resize(320,320)
-      @tag.qr_code = qr_code_img.to_string
 
       respond_to do |format|
         format.html # new.html.erb
@@ -282,7 +268,18 @@ class TagsController < ApplicationController
        @tag.user = current_user
 
        #puts "\n\n\n\n\n\n\n\n\n\n\n\n #{@current_user.currentGame().tags.all.to_s}\n\n\n\n\n\n\n\n\n\n\n"
+        if Rails.env.production?
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
 
+        else
+          qrCodeString = "http://" + request.host_with_port + "/tags/" + @tag.uniqueUrl + "/tagFound"
+        end
+
+
+        #Generate the QR code with rqrcode_png
+        qr_code_img = RQRCode::QRCode.new(qrCodeString, :size => 10, :level => :h ).to_img
+        qr_code_img = qr_code_img.resize(320,320)
+        @tag.qr_code = qr_code_img.to_string
 
        respond_to do |format|
          if @tag.save
@@ -306,6 +303,7 @@ class TagsController < ApplicationController
       @tag = Tag.find(params[:id])
       current_user.currentGame().tags << @tag
       @tag.user = current_user
+      
       respond_to do |format|
         if @tag.update_attributes(params[:tag])
           format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }

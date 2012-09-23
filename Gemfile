@@ -49,3 +49,12 @@ gem "rails_config"
 
 # To use debugger
 gem 'debugger'
+
+
+gem "rspec-rails", :group => [:test, :development]
+gem 'rb-fsevent', '~> 0.9.1'
+group :test, :development do
+  gem "factory_girl"
+  gem "capybara"
+  gem "guard-rspec"
+end

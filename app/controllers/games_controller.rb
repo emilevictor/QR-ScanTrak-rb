@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_user_is_admin, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_filter :check_user_is_admin, :only => [:show, :new, :edit, :create, :update, :destroy]
   
 
   # USER ONLY JAZZ
@@ -59,6 +59,9 @@ class GamesController < ApplicationController
             @game.users << current_user
             current_user.default_game_id = @game.id
             current_user.save
+            
+            flash[:notice] = "Successfully joined the game #{@game.name}"
+            redirect_to home_index_path and return
           end
           
         else
