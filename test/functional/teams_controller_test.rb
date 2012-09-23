@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class TeamsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
   setup do
     @team = teams(:one)
+    sign_in :user, users(:one)
   end
 
   test "should get index" do

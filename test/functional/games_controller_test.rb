@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class GamesControllerTest < ActionController::TestCase
+
   setup do
     @game = games(:one)
+    sign_in :user, users(:one)
   end
 
   test "should get index" do
@@ -17,6 +19,7 @@ class GamesControllerTest < ActionController::TestCase
   end
 
   test "should create game" do
+
     assert_difference('Game.count') do
       post :create, game: { contactDetails: @game.contactDetails, description: @game.description, maxNumberOfPlayers: @game.maxNumberOfPlayers, name: @game.name, organisation: @game.organisation }
     end

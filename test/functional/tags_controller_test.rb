@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class TagsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+
   setup do
     @tag = tags(:one)
+    sign_in :user, users(:one)
   end
 
   test "should get index" do
@@ -19,8 +20,12 @@ class TagsControllerTest < ActionController::TestCase
 
   test "should create tag" do
     assert_difference('Tag.count') do
-      post :create, tag: { name: @tag.name, address: @tag.address, content: @tag.content, user: @tag.user, latitude: @tag.latitude, longitude: @tag.longitude, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl, points: @tag.points }
+      post :create, tag: { name: @tag.name, address: @tag.address, content: @tag.content, user: @tag.user, latitude: @tag.latitude, longitude: @tag.longitude, name: @tag.name, quizAnswer: @tag.quizAnswer, quizQuestion: @tag.quizQuestion, uniqueUrl: @tag.uniqueUrl, points: @tag.points, user: @tag.user }
     end
+
+    @tag.valid?
+
+    puts @tag.errors
 
     assert_redirected_to tag_path(assigns(:tag))
   end

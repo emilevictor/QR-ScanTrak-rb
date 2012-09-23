@@ -251,7 +251,7 @@ class TagsController < ApplicationController
       #Generate the QR code with rqrcode_png
       qr_code_img = RQRCode::QRCode.new(qrCodeString, :size => 10, :level => :h ).to_img
       qr_code_img = qr_code_img.resize(320,320)
-      @tag.update_attribute :qr_code, qr_code_img.to_string
+      @tag.qr_code = qr_code_img.to_string
 
       respond_to do |format|
         format.html # new.html.erb
@@ -273,31 +273,31 @@ class TagsController < ApplicationController
     end
   end
 
-  # # POST /tags
-  # # POST /tags.json
-  # def create
-  #   if current_user.try(:admin?)
-  #     @tag = current_user.currentGame().tags.build(params[:tag])
-  #     #Pngqr.encode 
-  #     @tag.user = current_user
+   # POST /tags
+   # POST /tags.json
+   def create
+     if current_user.try(:admin?)
+       @tag = current_user.currentGame().tags.new(params[:tag])
+       #Pngqr.encode 
+       @tag.user = current_user
 
-  #     puts "\n\n\n\n\n\n\n\n\n\n\n\n #{@current_user.currentGame().tags.all.to_s}\n\n\n\n\n\n\n\n\n\n\n"
+       #puts "\n\n\n\n\n\n\n\n\n\n\n\n #{@current_user.currentGame().tags.all.to_s}\n\n\n\n\n\n\n\n\n\n\n"
 
 
-  #     respond_to do |format|
-  #       if @tag.save
-  #         format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-  #         format.json { render json: @tag, status: :created, location: @tag }
-  #       else
-  #         format.html { render action: "new" }
-  #         format.json { render json: @tag.errors, status: :unprocessable_entity }
-  #       end
-  #     end
-  #   else
-  #     flash[:notice] = 'You need admin privileges to go there.'
-  #     redirect_to :controller => "home", :action => "index"
-  #   end
-  # end
+       respond_to do |format|
+         if @tag.save
+           format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+           format.json { render json: @tag, status: :created, location: @tag }
+         else
+           format.html { render action: "new" }
+           format.json { render json: @tag.errors, status: :unprocessable_entity }
+         end
+       end
+     else
+       flash[:notice] = 'You need admin privileges to go there.'
+       redirect_to :controller => "home", :action => "index"
+     end
+   end
 
   # PUT /tags/1
   # PUT /tags/1.json

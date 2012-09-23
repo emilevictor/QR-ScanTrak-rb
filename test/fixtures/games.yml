@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: My Game
   organisation: MyString
-  maxNumberOfPlayers: 1
+  maxNumberOfPlayers: 299
   contactDetails: MyText
   description: MyText
 
 two:
   name: MyString
   organisation: MyString
-  maxNumberOfPlayers: 1
+  maxNumberOfPlayers: 200
   contactDetails: MyText
   description: MyText
