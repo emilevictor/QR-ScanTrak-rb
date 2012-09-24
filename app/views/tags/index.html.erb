@@ -7,6 +7,7 @@
 <ul id="tagsMenu">
 <li><%= link_to 'New Tag', new_tag_path %></li>
 <li><%= link_to 'Print All Tags', :controller => 'tags', :action => 'printTags' %></li>
+<li><%= link_to 'Generate Tags En Masse', tags_massGenerateTags_path %></li>
 </ul>
 
 <table id="tagsTable">
@@ -44,7 +45,7 @@
           end%></td>
     <td class="indivTD"><%= link_to 'Show', :controller => "tags", :action => "show", :id => tag.id %></td>
     <td class="indivTD"><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="indivTD"><%= link_to 'Destroy', tag, method: :delete, data: {  } %></td>
   </tr>
   <% currentQr = currentQr + 1 %>
 

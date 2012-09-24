@@ -1,0 +1,22 @@
+<h1>Mass generate tags for your game</h1>
+
+Generating tags en masse is a convenient way of quickly boosting the number of unique tags in your collection. Be warned though, they will have random naming - please check for inappropriate names after you are done. Our generator can get a little naughty.<br /><br />
+
+
+<%= form_tag("massGenerateTagsProcess", :method => "post") do %>
+
+<%= label_tag(:numberOfTags, "Number of tags to generate (max 50) ") %><br />
+
+<%= number_field_tag(:numberOfTags) %><br />
+
+<%= label_tag(:addressTag, "Address to give each tag") %><br />
+
+<%= text_area_tag(:addressTag) %><br />
+
+
+<br />
+<%= check_box_tag(:useNegativePoints) %><%= label_tag(:useNegativePoints, "Generate some tags with negative point values") %>
+<br />
+
+<%= submit_tag("Generate Tags", :confirm => "Please ensure that you have entered the right information, there is no going back!") %>
+<% end %>

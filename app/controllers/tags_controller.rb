@@ -450,14 +450,88 @@ class TagsController < ApplicationController
           @duplicateScans.push(value)
         end
 
-
-
-
-
       end
     end
 
   end
+
+  #Generates a given number of tags with certain customizable values
+  def massGenerateTags
+    if current_user.try(:admin?)
+
+
+    else
+      flash[:notice] = "You need to be an admin to do that."
+      redirect_to home_index_path
+    end
+  end
+
+  #The page that you see when you have finished processing generated tags!
+  def massGenerateTagsProcess
+    #debugger
+    currentTagNumber = 0
+    @tagsArray = []
+
+    if current_user.try(:admin?)
+
+      #If the number of tags is higher than 50, bring it down to 50.
+      if params[:numberOfTags].to_i > 50
+        @numberOfTags = 50
+      else
+        @numberOfTags = params[:numberOfTags].to_i
+      end
+
+      for i in 1..@numberOfTags
+        @tag = current_user.currentGame().tags.new
+
+        @tag.name = "Tag #{rand(1337)}"
+
+        @tag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
+
+        while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.nil?)
+         @newTag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
+        end
+
+        @tag.quizQuestion = ""
+        @tag.quizAnswer = ""
+        if Rails.env.production?
+          qrCodeString = "http://" + "qrscantrak.com" + "/tags/" + @tag.uniqueUrl + "/tagFound"
+        else
+          qrCodeString = "http://" + "localhost:3000" + "/tags/" + @tag.uniqueUrl + "/tagFound"
+        end
+
+
+        qr_code_img = RQRCode::QRCode.new(qrCodeString, :size => 10, :level => :h ).to_img
+        qr_code_img = qr_code_img.resize(320,320)
+        @tag.update_attribute :qr_code, qr_code_img.to_string
+        if params[:useNegativePoints] == "1"
+          @tag.points = rand(500)
+        else
+          @tag.points = -100 + rand(500)
+        end
+        
+
+        @tag.address = params[:addressTag]
+
+        if @tag.valid?
+          @tag.save
+          @tagsArray.push(@tag)
+        else
+          @errors = "#{@tag.errors}"
+        end
+
+
+      end
+
+    else
+      flash[:notice] = "You need to be an admin to do that."
+      redirect_to home_index_path
+    end
+
+
+  end
+
+
 
   private
 

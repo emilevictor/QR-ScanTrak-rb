@@ -1,0 +1,16 @@
+<% if not @errors.nil? %>
+	<%= @errors %>
+
+<% else %>
+
+	<h1>Finished processing tags.</h1>
+	<% if not @tagsArray.empty? %>
+		<ul>
+
+			<% @tagsArray.each do |tag| %>
+				<li><%= tag.name %> - <%= tag.uniqueUrl %> - Points: <%= tag.points %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+<% end %>

@@ -60,6 +60,9 @@ QRScantrak::Application.routes.draw do
 
     match 'teams/leaderboard' => 'teams#liveLeaderboard'
 
+    match 'tags/massGenerateTags' => 'tags#massGenerateTags'
+    match 'tags/massGenerateTagsProcess' => 'tags#massGenerateTagsProcess', :via => :post
+
 
     resources :users
     resources :teams
