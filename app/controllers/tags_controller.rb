@@ -94,7 +94,7 @@ class TagsController < ApplicationController
 
       #Check that the user is playing this game
       if not @tag.game == current_user.currentGame()
-        flash[:alert] = "You haven't signed up for the game that that tag is for, sign up, join in and have fun."
+        flash[:notice] = "You haven't signed up for the game that that tag belongs to. Sign up, join in and have fun."
         redirect_to games_joinAGame_path and return
       end
 
