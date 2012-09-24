@@ -1,13 +1,16 @@
 /************** PRINT TAGS PAGE ***************/
 body {
     font-family: 'Orienta', sans-serif;
+    font-size: 11pt;
 }
 
 .indivTag {
+  position:relative;
+  top:-20px;
     width:500px;
     background-color:cccccc;
-    border: 3px solid;
-    margin:5px;
+    border: 0px solid;
+    border-color:white;
     text-align:center;
     padding: 0px auto;
 }
@@ -32,17 +35,23 @@ body {
 
 
 .instructional {
+  position:relative;
+  top:-20px;
   margin:0px auto;
 }
 
 .gameInfo
 {
+  position:relative;
+  top:-20px;
   margin:0px auto;
   width:450px;
   padding-bottom:15px;
 }
 
 .key {
+  position:relative;
+  top:-20px;
   size:18px;
   margin: 0px auto;
 }

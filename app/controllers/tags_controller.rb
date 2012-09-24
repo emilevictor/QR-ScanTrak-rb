@@ -374,28 +374,11 @@ class TagsController < ApplicationController
 
     #PrintTags option
   def printTags
-    #if the current user is an admin
-
+ 
       @qrCodes = []
       @tags = current_user.currentGame().tags.paginate(:page => params[:page])
-      #@tags = Tag.where(:game_id => current_user.currentGame().id).paginate(:page => params[:page])
 
-      host = request.host_with_port
-      @tags.each do |tag|
-        if Rails.env.production?
-          qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
-
-        else
-          qrCodeString = "http://" + request.host_with_port + "/tags/" + tag.uniqueUrl + "/tagFound"
-
-
-        end
-        @indivQR = RQRCode::QRCode.new(qrCodeString, :size => 10)
-        @qrCodes.push(@indivQR)
-
-        #tag.createdByUser = User.find(tag.createdBy).email
-
-      end
+     
       
       respond_to do |format|
         format.html {render :layout => "printable"}# index.html.erb
