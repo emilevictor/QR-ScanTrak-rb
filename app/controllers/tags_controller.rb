@@ -468,7 +468,7 @@ class TagsController < ApplicationController
         @tag = current_user.currentGame().tags.new
 
         @tag.name = "Tag #{rand(1337)}"
-
+        @tag.user = current_user
         @tag.uniqueUrl = (0...20).map{ ('a'..'z').to_a[rand(26)] }.join
 
         while (!Tag.where(:uniqueUrl => @tag.uniqueUrl).first.nil?)
