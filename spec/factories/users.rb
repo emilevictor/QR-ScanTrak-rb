@@ -12,6 +12,15 @@ FactoryGirl.define do
 		addQRScanTrakLogoOnPrintedTags true
 	end
 
+	factory :otherGame, class: Game do
+		name "Some other game"
+		organisation "Someone Else"
+		showGameInfoOnPrintedTags true
+		showLogoOnPrintedTags true
+		showPasswordOnPrintedTags true
+		addQRScanTrakLogoOnPrintedTags true
+	end
+
 
 	factory :user, class: User do
 		first_name                  "FNAME"

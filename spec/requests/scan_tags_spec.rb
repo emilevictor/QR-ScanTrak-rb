@@ -45,6 +45,32 @@ describe "TagScanning" do
 
 	end
 
+	it "will ask you to join the right game if you scan a tag of a game that you don't belong to" do
+		@user = FactoryGirl.create(:user)
+	 	@team = FactoryGirl.create(:team)
+	 	@game = FactoryGirl.create(:UQGame)
+	 	@otherGame = FactoryGirl.create(:otherGame)
+	 	@user.teams = [@team]
+	 	@game.teams = [@team]
+		@tag = FactoryGirl.create(:tag)
+		@tag2 = FactoryGirl.create(:tag2)
+	 	@otherGame.tags = [@tag, @tag2]
+	 	@user.games = [@game]
+
+	 	#Log our user in
+		visit new_user_session_path
+	 	fill_in 'user_email', :with => @user.email
+	 	fill_in 'user_password', :with => 'password'
+	 	click_button 'Sign in'
+
+	 	#debugger
+	 	visit('/tags/'+@tag.uniqueUrl+'/tagFound/')
+
+	 	page.should have_content("Join an Existing Game")
+
+
+	end
+
 	it "will ask you to log in if you haven't, when you scan a tag" do
 		@tag = FactoryGirl.create(:tag)
 
