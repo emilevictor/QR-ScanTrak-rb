@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   	if user_signed_in?
   		@user = current_user
       if not @user.currentGame().nil?
-        @team = @user.currentGame().teams.where(:user_id => @user.id).first
+        @team = current_user.teams.where(:game_id => current_user.currentGame().id).first
         @game = current_user.currentGame()
       else
 

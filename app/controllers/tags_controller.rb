@@ -3,7 +3,6 @@ require 'rqrcode'
 
 
 class TagsController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :handleAdminWithNoGame
   #before_filter :authenticate_admin!
   # GET /tags
@@ -138,6 +137,7 @@ class TagsController < ApplicationController
       
 
     else
+      flash[:notice] = "Welcome to QR Scantrak. If this is your first time playing the game, create an account and check out the description on the front page!"
       redirect_to new_user_session_path
 
     end
@@ -408,7 +408,7 @@ class TagsController < ApplicationController
 
       if not current_user.currentGame().teams.where(:user_id => current_user.id).empty?
         #user is in a team
-        @team = current_user.currentGame().teams.where(:user_id => current_user.id).first
+        @team = @user.teams.where(:game_id => @user.currentGame().id).first
         render view: "manualScan"
       else
         flash[:alert] = "You are not a member of a team!"
@@ -462,10 +462,16 @@ class TagsController < ApplicationController
   private
 
   def handleAdminWithNoGame()
-    if current_user.currentGame().nil?
-      flash[:alert] = "You can't do anything with tags until you join a game."
-      redirect_to new_game_path and return
+    if user_signed_in?
+        if current_user.try(:admin?)
+          if current_user.currentGame().nil?
+            flash[:alert] = "You can't do anything with tags until you join a game."
+            redirect_to new_game_path and return
+          end   
+        end
+
     end
+
   end
 
 

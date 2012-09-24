@@ -53,5 +53,103 @@ describe "UserLogsIn" do
 		page.should have_content(@user.email)
 	end
 
+	it "allows you to register" do
+		visit(new_user_registration_path)
+
+		fill_in 'user_email', :with => 'asdf@asdf.com'
+		fill_in 'First name', :with => 'ACME'
+		fill_in 'Last name', :with => 'LastName'
+		fill_in 'Password', :with => 'password'
+		fill_in 'Password confirmation', :with => 'password'
+		click_button "Sign up"
+
+		page.should have_content("In order to play a QR ScanTrak game")
+
+	end
+
+	it "will allow you to create a full team" do
+		#debugger
+		@user = FactoryGirl.create(:user)
+		@user2 = FactoryGirl.create(:user)
+		@user3 = FactoryGirl.create(:user)
+		@user4 = FactoryGirl.create(:user)
+		@user5 = FactoryGirl.create(:user)
+	 	@team = FactoryGirl.create(:team)
+	 	@game = FactoryGirl.create(:UQGame)
+	 	@user.created_teams = [@team]
+	 	@user.teams = [@team]
+	 	@game.teams = [@team]
+	 	@user.games = [@game]
+
+	 	#Log our user in
+		visit new_user_session_path
+	 	fill_in 'user_email', :with => @user.email
+	 	fill_in 'user_password', :with => 'password'
+	 	click_button 'Sign in'
+
+	 	#page.should have_content(@team.name)
+	 	visit(teams_AddPlayersToMyTeam_path)
+
+	 	@number = Settings.maxTeamMembers-@team.users.count
+	 	page.should have_content("You have " + (Settings.maxTeamMembers-@team.users.count).to_s + " slots left")
+
+	 	fill_in 'email', :with => @user2.email
+	 	click_button 'Add User'
+
+	 	page.should have_content(@user2.email)
+	 	page.should have_content(@user.email)
+
+	 	visit(teams_AddPlayersToMyTeam_path)
+
+	 	@number = @number - 1
+	 	page.should have_content("You have " + (@number).to_s + " slots left")
+
+	 	fill_in 'email', :with => @user3.email
+	 	click_button 'Add User'
+
+	 	page.should have_content(@user3.email)
+
+	 	visit(teams_AddPlayersToMyTeam_path)
+
+	 	fill_in 'email', :with => @user4.email
+	 	click_button 'Add User'
+
+	 	page.should have_content(@user4.email)
+
+	 	visit(teams_AddPlayersToMyTeam_path)
+
+	 	fill_in 'email', :with => @user5.email
+	 	click_button 'Add User'
+
+	 	page.should have_content(@user5.email)
+
+
+	 	#Trying to add a player who already exists
+	 	visit(teams_AddPlayersToMyTeam_path)
+
+	 	page.should have_content("Your team is full")
+
+
+
+	 	#Now we start removing players
+
+	 	visit(teams_removeTeamMembers_path)
+
+	 	check("USERID_" + @user2.id.to_s)
+
+	 	click_button("Remove")
+
+	 	page.should have_content("Successfully removed members from team")
+
+	 	#Go back to the team score page
+
+	 	visit(teams_checkScore_path)
+
+	 	page.should_not have_content(@user2.email)
+
+
+
+	end
+
 
 end

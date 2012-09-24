@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
   def show
     if current_user.try(:admin?)
       @user = current_user
-      @team = @user.currentGame().teams.where(:user_id => @user.id).first
+      @team = current_user.teams.where(:game_id => current_user.currentGame().id).first
 
 
       @leaderboard = Team.getLeaderboard(current_user)
@@ -141,7 +141,8 @@ class TeamsController < ApplicationController
     #Check that the user is logged in, is in a team, and that the
     #team has less then Settings.maxTeamMembers players.
     if user_signed_in?
-      @team = current_user.currentGame().teams.where(:user_id => current_user.id).first
+
+      @team = current_user.teams.where(:game_id => current_user.currentGame().id).first
       #@team = Team.find(current_user.team.id)
 
       if @team.users.count < Settings.maxTeamMembers
@@ -174,7 +175,7 @@ class TeamsController < ApplicationController
       redirect_to :controller => 'teams', :action => 'publicAddNewUsersToTeam'
     else
       #user exists, let's just add them to the team.
-      if @user.currentGame().teams.where(:user_id => @user.id).empty?
+      if current_user.currentGame().teams.where(:user_id => @user.id).empty?
         #If user is not already in a team
         @team = current_user.currentGame().teams.find(params[:team_id])
         #@team = Team.find(params[:team_id])
@@ -281,7 +282,8 @@ class TeamsController < ApplicationController
 
   # Allows those who created teams to administer those who are in those teams.
   def removeTeamMembers
-    @team = current_user.currentGame().teams.where(:user_id => current_user.id).first
+    @user = current_user
+    @team = @user.teams.where(:game_id => @user.currentGame().id).first
     #If the user is signed in, AND is in a team, AND created the team.
     if user_signed_in? and not @team.nil? and not current_user.created_teams.where(:id => @team.id).empty?
 
