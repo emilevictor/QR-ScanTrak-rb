@@ -55,13 +55,15 @@ describe "UserLogsIn" do
 
 	it "allows you to register" do
 		visit(new_user_registration_path)
+		within('#content') do
+			fill_in 'user_email', :with => 'asdf@asdf.com'
+			fill_in 'First name', :with => 'ACME'
+			fill_in 'Last name', :with => 'LastName'
+			fill_in 'Password', :with => 'password'
+			fill_in 'Password confirmation', :with => 'password'
+			click_button "Sign up"
+		end
 
-		fill_in 'user_email', :with => 'asdf@asdf.com'
-		fill_in 'First name', :with => 'ACME'
-		fill_in 'Last name', :with => 'LastName'
-		fill_in 'Password', :with => 'password'
-		fill_in 'Password confirmation', :with => 'password'
-		click_button "Sign up"
 
 		page.should have_content("In order to play a QR ScanTrak game")
 
