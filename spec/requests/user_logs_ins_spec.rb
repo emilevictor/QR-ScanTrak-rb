@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'factory_girl'
+require 'ruby-debug'
 
 describe "UserLogsIn" do
 	 it "prompts you for a game if you are not in one" do

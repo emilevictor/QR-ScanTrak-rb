@@ -102,8 +102,11 @@ class TagsController < ApplicationController
       @user = current_user
 
       #Team of the current user.
-      if not @user.currentGame.teams.where(:user_id => @user.id).empty?
-        @team = @user.currentGame.teams.where(:user_id => @user.id).first
+      #If the current user's team is in the current game
+
+
+      if not @user.teams.where(:game_id => @user.currentGame().id).empty?
+        @team = @user.teams.where(:game_id => @user.currentGame().id).first
       else
         flash[:alert] = "You just tried to scan a tag, but you aren't in a team yet! Join a team first."
         #redirect_to :controller => "home", :action => "index"
@@ -147,14 +150,23 @@ class TagsController < ApplicationController
       #Check that the user hasn't scanned this yet.
       @user = current_user
       #Team of the current user.
-      @team = @user.currentGame().teams.where(:user_id => @user.id).first
+      @team = @user.teams.where(:game_id => @user.currentGame().id).first
+
+      if @team.nil?
+        flash[:notice] = "You aren't in a team yet, so you need to join a new one to scan a tag."
+        redirect_to home_index_path and return
+      end
 
       @tag = Tag.where(:uniqueUrl => params[:id]).first
 
       #Check that tag hasn't been scanned yet.
-      if Scan.where(:team_id => @team.id, :tag_id => @tag.id).first.nil?
-        
-        if (params[:answer] == @tag.quizAnswer) or (@tag.quizQuestion.empty?)
+      if Scan.where(:team_id => @team.id, :tag_id => @tag.id).empty?
+        if params[:answer].nil?
+          answer = ""
+        else
+          answer = params[:answer]
+        end
+        if (answer == @tag.quizAnswer) or (@tag.quizQuestion.empty?)
           #cool... They got the answer correct or there was no question.
           #Now we can create a scan,
           #add it to their team.

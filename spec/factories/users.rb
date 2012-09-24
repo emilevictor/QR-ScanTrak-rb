@@ -50,10 +50,10 @@ FactoryGirl.define do
 
 	factory :team, class: Team do
 		#Put this team in the UQ game.
-		association :game, factory: :UQGame
 		name "My Team"
 		password "password"
 		description "Description"
+
 	end
 
 

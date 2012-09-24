@@ -49,6 +49,7 @@ gem "rails_config"
 
 # To use debugger
 gem 'debugger'
+gem "database_cleaner", "~> 0.8.0"
 
 
 gem "rspec-rails", :group => [:test, :development]

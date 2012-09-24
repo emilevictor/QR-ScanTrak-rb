@@ -232,9 +232,9 @@ class TeamsController < ApplicationController
 
   #Check team score
   def checkTeamScore
-    if user_signed_in? and not current_user.currentGame.teams.where(:user_id => current_user.id).empty?
+    if user_signed_in? and not current_user.teams.where(:game_id => current_user.currentGame().id).empty?
       @user = current_user
-      @team = current_user.currentGame().teams.where(:user_id => @user.id).first
+      @team = @user.teams.where(:game_id => @user.currentGame().id).first
       #@team = Team.find(@user.team_id)
       @leaderboard = Team.getLeaderboard(@user)
       @scans = current_user.currentGame().scans.where(:team_id => @team.id)
