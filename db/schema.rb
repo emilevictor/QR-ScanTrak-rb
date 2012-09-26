@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922082145) do
+ActiveRecord::Schema.define(:version => 20120926060813) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20120922082145) do
     t.boolean  "showLogoOnPrintedTags",          :default => false
     t.boolean  "showPasswordOnPrintedTags",      :default => false
     t.boolean  "addQRScanTrakLogoOnPrintedTags", :default => false
+    t.string   "shortID"
   end
 
   create_table "games_users", :id => false, :force => true do |t|

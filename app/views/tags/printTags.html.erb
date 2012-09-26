@@ -12,7 +12,7 @@
 
 		<% if current_user.currentGame().showGameInfoOnPrintedTags %>
 			<p class="gameInfo">
-				Want to join in? Go to <%= Settings.websiteAddress %> and join game <%= current_user.currentGame().id %><% if current_user.currentGame().showPasswordOnPrintedTags and not current_user.currentGame().password == "" %>, the password is "<%= current_user.currentGame().password %>"<% end %>. This game is brought to you by <%= current_user.currentGame().organisation %>.
+				Want to join in? Go to <%= Settings.websiteAddress %> and join game "<%= current_user.currentGame().shortID %>"<% if current_user.currentGame().showPasswordOnPrintedTags and not current_user.currentGame().password == "" %>, the password is "<%= current_user.currentGame().password %>"<% end %>. This game is brought to you by <%= current_user.currentGame().organisation %>.
 			</p>
 		<% end %>
 

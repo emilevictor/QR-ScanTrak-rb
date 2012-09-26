@@ -29,7 +29,8 @@ class GamesController < ApplicationController
 
   def joinGameProcess
     #If the name given was an integer
-    if params[:gameID].to_i.is_a? Integer
+    #debugger
+    if params[:gameID].to_i != 0
 
       begin
 
@@ -68,7 +69,7 @@ class GamesController < ApplicationController
           flash[:notice] = "All good, you're already in that game."
           redirect_to home_index_path
         end
-
+        #If this happens, it must be the code.
       else
         flash[:alert] = "A game with that ID doesn't exist. Try again?"
         redirect_to games_joinAGame_path
@@ -78,7 +79,49 @@ class GamesController < ApplicationController
 
 
     else
+      begin
 
+        @game = Game.where(:shortID => params[:gameID]).first
+
+      rescue Exception => ex
+        @game = nil
+      end
+      
+
+      if not @game.nil?
+
+        if not @game.users.where(id: current_user.id).any?
+
+          if @game.requiresPassword
+            if params[:password].eql?@game.password
+              @game.users << current_user
+              current_user.default_game_id = @game.id
+              current_user.save
+              flash[:notice] = "You joined the game #{@game.name}"
+              redirect_to home_index_path
+            else
+              flash[:alert] = "The password for that game is wrong!"
+              redirect_to games_joinAGame_path
+              return
+            end
+          else
+            @game.users << current_user
+            current_user.default_game_id = @game.id
+            current_user.save
+            
+            flash[:notice] = "Successfully joined the game #{@game.name}"
+            redirect_to home_index_path and return
+          end
+          
+        else
+          flash[:notice] = "All good, you're already in that game."
+          redirect_to home_index_path
+        end
+        #If this happens, it must be the code.
+      else
+        flash[:alert] = "A game with that ID doesn't exist. Try again?"
+        redirect_to games_joinAGame_path
+      end
     end
 
   end

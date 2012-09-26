@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
    :maxNumberOfPlayers, :name, :organisation,
    :paymentExpires, :requiresPassword, :password, :showGameInfoOnPrintedTags,
    :showLogoOnPrintedTags, :showPasswordOnPrintedTags,
-   :addQRScanTrakLogoOnPrintedTags
+   :addQRScanTrakLogoOnPrintedTags, :shortID
 
   #When a user logs in, they will be presented with a choice of game
   #They must either visit a link which will associate them with that game

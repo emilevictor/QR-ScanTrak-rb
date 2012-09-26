@@ -4,6 +4,7 @@
   <tr>
     <th>ID</th>
     <th>Name</th>
+    <th>ShortID</th>
     <th>Organisation</th>
     <th>Players</th>
     <th>Contact details</th>
@@ -19,6 +20,7 @@
   <tr>
     <td><%= game.id %></td>
     <td><%= game.name %></td>
+    <td><%= game.shortID %></td>
     <td><%= game.organisation %></td>
     <td><%= game.users.count %>/<%= game.maxNumberOfPlayers %></td>
     <td><%= game.contactDetails %></td>

@@ -1,6 +1,6 @@
 <div id="joinAGame">
 	<%= form_tag(games_joinGameProcess_path, :method => "post") do %>
-		<%= label_tag(:gameID, "Enter a game ID") %><br />
+		<%= label_tag(:gameID, "Enter a game ID (number) or code (e.g. \"STALKERSPACE\")") %><br />
 
 		<%= text_field_tag(:gameID) %><br />
 		<%= label_tag(:password, "Password (if provided, may be left blank)") %><br />
