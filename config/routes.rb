@@ -1,13 +1,9 @@
 QRScantrak::Application.routes.draw do
-
-
-
-
-  resources :supports
+  devise_for :users
 
   get "home/index"
 
-  match "/tags/error/" => "tags#error_not_admin"
+  match "tags/error/" => "tags#error_not_admin"
 
   match "tags/:id/tagFound" => "tags#tagFound"
   match 'tags/:id/tagFoundQuizAnswered' => "tags#tagFoundQuizAnswered", :via => :post
@@ -22,7 +18,7 @@ QRScantrak::Application.routes.draw do
 
   match 'teams/addPlayerToMyTeam' => 'teams#publicAddNewUsersToTeamProcessor'
 
-  devise_for :users
+
   
   match 'teams/checkScore' => 'teams#checkTeamScore'
 
@@ -31,8 +27,8 @@ QRScantrak::Application.routes.draw do
   #Removing team members
   match '/teams/remove_user_from_team/:teamID' => 'teams#remove_user_from_team'
 
-  match '/tags/manualScan' => 'tags#manualScan'
-  match '/tags/processScans' => 'tags#manualScanProcess'
+  match 'tags/manualScan' => 'tags#manualScan'
+  match 'tags/processScans' => 'tags#manualScanProcess'
 
   match '/admin' => 'admin#index'
   match '/admin/mapOfTags' => 'admin#mapOfTags'

@@ -69,6 +69,27 @@ describe "UserLogsIn" do
 
 	end
 
+	# it "allows you to access the edit registration page" do
+	# 	@user = FactoryGirl.create(:user2)
+	# 	@game = FactoryGirl.create(:UQGame)
+
+	# 	#Log our user in
+	# 	visit new_user_session_path
+	#  	fill_in 'user_email', :with => @user.email
+	#  	fill_in 'user_password', :with => 'password'
+	#  	click_button 'Sign in'
+
+	#  	#Check that the page is asking us for the new game
+	#  	page.should have_content("Enter a game ID")
+	#  	#Join the game
+	#  	fill_in 'gameID', :with => @game.id
+	#  	click_button 'Join Game'
+	 	
+	# 	visit(edit_user_registration_path)
+	# 	response.should be_success
+
+	# end
+
 	it "will allow you to create a full team" do
 		#debugger
 		@user = FactoryGirl.create(:user)
