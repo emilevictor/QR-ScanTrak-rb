@@ -1,0 +1,31 @@
+<h2>Scans for this game</h2>
+
+<% content_for :head do %>
+    <%= javascript_include_tag 'tags/tagsChangeWidth.js' %>
+<% end %>
+
+<table id="scansTable">
+  <tr>
+    <th>Scan ID</th>
+    <th>Team ID</th>
+    <th>Tag ID</th>
+    <th>Comments</th>
+  </tr>
+<% currentQr = 0 %>
+<% @scans.each do |scan| %>
+  <tr>
+    <td class="indivTD"><%= scan.id %></td>
+    <td class="indivTD"><%= scan.team_id %></td>
+    <td class="indivTD"><%= scan.tag_id %></td>
+    <td class="indivTD"><%= scan.comment %></td>
+    <td class="indivTD"><%= link_to 'Show', :controller => "scans", :action => "show", :id => scan.id %></td>
+    <td class="indivTD"><%= link_to 'Edit', edit_scan_path(scan) %></td>
+    <td class="indivTD"><%= link_to 'Destroy', scan, method: :delete, data: {  } %></td>
+  </tr>
+  <% currentQr = currentQr + 1 %>
+
+<% end %>
+</table>
+
+<br />
+
