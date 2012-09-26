@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
   	@user = current_user
 
-	if not @user.nil? and @user.currentGame().teams.where(:user_id => @user.id).empty?
+	if not @user.nil? and current_user.teams.where(:game_id => current_user.currentGame().id).empty?
 
     	@team = Team.new
 

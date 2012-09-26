@@ -25,8 +25,7 @@ class TeamsController < ApplicationController
   def show
     if current_user.try(:admin?)
       @user = current_user
-      @team = current_user.teams.where(:game_id => current_user.currentGame().id).first
-
+      @team = current_user.currentGame().teams.find(params[:id])
 
       @leaderboard = Team.getLeaderboard(current_user)
       @scans = @user.currentGame().scans.where(:team_id => @team.id)

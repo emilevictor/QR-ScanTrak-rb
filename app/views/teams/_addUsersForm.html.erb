@@ -16,8 +16,9 @@ Press Ctrl+F (or Cmd+F) to search!
 				<%= label_tag(user.id.to_s,"#{user.first_name} #{user.last_name} (#{user.email})") %>
 				</td>
 				
-					<% if not user.teams.empty? %>
-						<td><%= user.teams.where(:game_id => current_user.currentGame().id).first.id %></td> <td><%= user.teams.where(:game_id => current_user.currentGame().id).first.name %></td>
+					<% if not user.teams.empty? and not user.teams.where(:game_id => current_user.currentGame().id).empty? %>
+						<td><%= user.teams.where(:game_id => current_user.currentGame().id).first.id %></td>
+						<td><%= user.teams.where(:game_id => current_user.currentGame().id).first.id %></td>
 
 					<% end %>
 				
