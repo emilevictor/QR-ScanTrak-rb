@@ -204,6 +204,42 @@ li {
 	width:400px;
 }
 
+/******* Front page! *******/
+
+#recentScansDiv
+{
+	width:400px;
+	float:left;
+	margin-right:20px;
+}
+
+.tag_name
+{
+	border-width:0px;
+}
+
+.team_name {
+	border-width:0px;
+
+}
+
+.points_scans
+{
+	border-width:0px;
+
+}
+
+#liveLeaderboardDiv
+{
+	width:500px;
+	float:left;
+}
+
+#theLiveStuff
+{
+	margin:20px;
+}
+
 /****** FOOTER ******/
 
 #footer {

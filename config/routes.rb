@@ -59,6 +59,7 @@ QRScantrak::Application.routes.draw do
     match 'tags/massGenerateTags' => 'tags#massGenerateTags'
     match 'tags/massGenerateTagsProcess' => 'tags#massGenerateTagsProcess', :via => :post
 
+    match 'scans/lastNScansForThisGame/:limit' => "scans#lastNScansForThisGame"
 
     resources :users
     resources :teams

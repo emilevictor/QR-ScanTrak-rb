@@ -391,7 +391,7 @@ class TagsController < ApplicationController
 
       if not current_user.currentGame().teams.where(:user_id => current_user.id).empty?
         #user is in a team
-        @team = @user.teams.where(:game_id => @user.currentGame().id).first
+        @team = current_user.teams.where(:game_id => current_user.currentGame().id).first
         render view: "manualScan"
       else
         flash[:alert] = "You are not a member of a team!"
@@ -418,7 +418,9 @@ class TagsController < ApplicationController
 
         @tag = Tag.where(:uniqueUrl => tempValue).first
         if @tag.nil?
-          @failedScans.push(value)
+          if not tempValue == ""
+            @failedScans.push(value)
+          end
           next
         end
 
