@@ -34,9 +34,36 @@ describe "AdminTests" do
 
 	 	@newNumberOfTags.should_not eql @numberOfTags
 
-	 	
+	end
 
+	it "allows you to create a game" do
+		@user = FactoryGirl.create(:adminUser)
+		visit ('/admin/games')
+		page.should have_content("You need to sign in")
 
+	 	fill_in 'user_email', :with => @user.email
+	 	fill_in 'user_password', :with => 'password'
+	 	click_button 'Sign in'
+
+	 	page.should have_content("Listing games")
+
+	 	click_link 'New Game'
+
+	 	page.should have_content("New game")
+
+	 	fill_in 'game_name', :with => "game"
+	 	fill_in 'game_organisation', :with => "gameorganisation"
+	 	fill_in 'game_shortID', :with => "ASDF"
+	 	fill_in 'game_maxNumberOfPlayers', :with => 33
+	 	check("game_showGameInfoOnPrintedTags")
+	 	check("game_showLogoOnPrintedTags")
+	 	check("game_showPasswordOnPrintedTags")
+	 	check("game_addQRScanTrakLogoOnPrintedTags")
+	 	click_button 'Create'
+
+	 	page.should have_content("ASDF")
+
+ 	
 	end
 
 end

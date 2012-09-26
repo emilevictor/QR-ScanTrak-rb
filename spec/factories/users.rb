@@ -6,6 +6,7 @@ FactoryGirl.define do
 	factory :UQGame, class: Game do
 		name "UQ Stalkerspace"
 		organisation "UQ"
+		shortID "UQGAME"
 		showGameInfoOnPrintedTags true
 		showLogoOnPrintedTags true
 		showPasswordOnPrintedTags true
