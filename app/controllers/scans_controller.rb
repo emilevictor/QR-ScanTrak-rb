@@ -46,4 +46,22 @@ class ScansController < ApplicationController
 		end
 	end
 
+
+	  # DELETE /tags/1
+  # DELETE /tags/1.json
+  def destroy
+    if current_user.try(:admin?)
+      @scan = Scan.find(params[:id])
+      @scan.destroy
+
+      respond_to do |format|
+        format.html { redirect_to scans_url }
+        format.json { head :no_content }
+      end
+    else
+      flash[:notice] = 'You need admin privileges to go there.'
+      redirect_to :controller => "home", :action => "index"
+    end
+  end
+
 end
