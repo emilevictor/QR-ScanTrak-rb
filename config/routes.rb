@@ -10,7 +10,7 @@ QRScantrak::Application.routes.draw do
 
   match 'tags/:id/scanSuccess' => 'tags#scanSuccess'
 
-
+  match '/about' => 'home#about'
 
   #Home teams creation
   match '/createTeam' => "home#createTeam"

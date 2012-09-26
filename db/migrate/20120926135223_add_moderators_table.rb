@@ -1,0 +1,12 @@
+class AddModeratorsTable < ActiveRecord::Migration
+  def change
+  	create_table :moderators_games, :id => false do |t|
+	  t.references :game, :null => false
+	  t.references :user, :null => false
+	end
+
+	# Adding the index can massively speed up join tables. Don't use the
+	# unique if you allow duplicates.
+	add_index(:moderators_games, [:game_id, :user_id], :unique => true)
+  end
+end

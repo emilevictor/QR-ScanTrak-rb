@@ -29,6 +29,7 @@
     <% end %>
 
     <li><%= link_to('Live Leaderboard', teams_leaderboard_path) %></li>
+    <li><%=link_to 'What is ScanTrak?', about_path %></li>
     <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
   </ul>
@@ -37,7 +38,7 @@
 
   <% if not user_signed_in? %>
       <ul class="rightMenuGame">
-        <li><a href="#">What is ScanTrak?</a></li>
+        <li><%=link_to 'What is ScanTrak?', about_path %></li>
         <li><a href="#">Pricing</a></li>
         <li><a href="#">Arrange a Demo</a></li>
 

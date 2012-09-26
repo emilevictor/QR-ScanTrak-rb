@@ -15,8 +15,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :games
 
-  
-
+  has_and_belongs_to_many :moderated_games, :class_name => 'Game', :join_table => 'moderators_games', :association_foreign_key => 'game_id'
   
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :admin, :password_confirmation,
@@ -53,4 +52,14 @@ class User < ActiveRecord::Base
       return @game
     end
   end
+
+  def moderates_this_game(currentGame)
+    
+    if not moderated_games.where(:id => currentGame.id).empty?
+      return true
+    else
+      return false
+    end
+  end
+
 end

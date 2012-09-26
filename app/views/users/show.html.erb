@@ -19,6 +19,21 @@
 
 <%= @user.comments %>
 
+<% if @user.moderated_games.count > 0 %>
+	<h2>Moderated games:</h2>
+
+	<ul>
+	<% @user.moderated_games.each do |game| %>
+		<li>(<%= game.id %>) <%= game.name %></li>
+
+	<% end %>
+	</ul>
+
+<% end %>
+
+
+
+
 <h2>Tags Scanned</h2>
 <ul id="tagsList">
 <% @user.tags.each do |tag| %>

@@ -16,4 +16,6 @@ class Game < ActiveRecord::Base
   has_many :scans, :dependent => :destroy
   has_many :teams , :dependent => :destroy
 
+  has_and_belongs_to_many :moderators, :class_name => 'User', :join_table => 'moderators_games', :association_foreign_key => 'user_id'
+
 end

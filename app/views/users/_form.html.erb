@@ -33,6 +33,15 @@
     <%= f.check_box :admin %>
   </div>
 
+  <div class="field">
+    <%= f.label :userIsModerator, "This user moderates the current game (#{current_user.currentGame().name})" %><br />
+    <% if @user.moderates_this_game(current_user.currentGame()) %>
+      <%= check_box_tag :userIsModerator, 'yes', true %>
+    <% else %>
+      <%= check_box_tag :userIsModerator, 'yes', false %>
+    <% end %>
+  </div>
+
   
   <div class="actions">
     <%= f.submit %>

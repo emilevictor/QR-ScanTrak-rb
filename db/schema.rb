@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926060813) do
+ActiveRecord::Schema.define(:version => 20120926135223) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(:version => 20120926060813) do
   end
 
   add_index "games_users", ["game_id", "user_id"], :name => "index_games_users_on_game_id_and_user_id", :unique => true
+
+  create_table "moderators_games", :id => false, :force => true do |t|
+    t.integer "game_id", :null => false
+    t.integer "user_id", :null => false
+  end
+
+  add_index "moderators_games", ["game_id", "user_id"], :name => "index_moderators_games_on_game_id_and_user_id", :unique => true
 
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
