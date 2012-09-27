@@ -2,7 +2,7 @@ tmp/
 log/*
 public/system/
 *.log
-
+*.sublime*
 
 config/settings.local.yml
 config/settings/*.local.yml

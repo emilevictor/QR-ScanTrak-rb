@@ -11,6 +11,7 @@ class Team < ActiveRecord::Base
   validates :name, :presence => true
   validates :password, :presence => true
   validates :description, :presence => true
+  validates_length_of :name, :maximum => 35, :message => "Your team name is longer than 35 characters, shorten it up a bit."
 
 def getTotalScore
 
