@@ -5,6 +5,4 @@ class Scan < ActiveRecord::Base
   belongs_to :user, :autosave => true
   belongs_to :tag, :autosave => true #requires has_many :scans on tag
   belongs_to :game, :autosave => true
-
-
 end

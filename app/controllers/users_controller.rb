@@ -5,7 +5,6 @@ class UsersController < ApplicationController
       if current_user.try(:admin?)
 
         #Paginate users
-
         @users = User.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:page => params[:page])
 
       else
