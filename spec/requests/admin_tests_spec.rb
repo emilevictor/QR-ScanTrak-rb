@@ -1,4 +1,5 @@
 require 'spec_helper'
+include Warden::Test::Helpers
 
 describe "AdminTests" do
   
@@ -11,11 +12,7 @@ describe "AdminTests" do
 
 	 	@numberOfTags = Tag.all.count
 
-		#Log our user in
-		visit new_user_session_path
-	 	fill_in 'user_email', :with => @user.email
-	 	fill_in 'user_password', :with => 'password'
-	 	click_button 'Sign in'
+		login_as @user, scope: :user
 
 	 	visit('/admin/tags/massGenerateTags')
 
@@ -38,6 +35,8 @@ describe "AdminTests" do
 
 	it "allows you to create a game" do
 		@user = FactoryGirl.create(:adminUser)
+
+		
 		visit ('/admin/games')
 		page.should have_content("You need to sign in")
 

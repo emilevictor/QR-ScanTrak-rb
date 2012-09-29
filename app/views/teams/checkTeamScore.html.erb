@@ -5,7 +5,7 @@
 <br />
 <span class="largeNumber"><%= if not @placement.nil? 
 	@placement.ordinalize 
-	end %></span><span class="pointsTxt"> place</span>
+	end %></span><span class="pointsTxt"> place. <%unless @tiedWith.nil? %> Tied with <%=Team.find(@tiedWith.to_i).name%><% end %></span>
 
 <br /><br />
 

@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'factory_girl'
 require 'ruby-debug'
 
+include Warden::Test::Helpers
+
 describe "TagScanning" do
 
 	it "will not crash and burn when you scan a tag and you are in a team" do
@@ -16,11 +18,7 @@ describe "TagScanning" do
 	 	@game.tags = [@tag, @tag2]
 	 	@user.games = [@game]
 
-	 	#Log our user in
-		visit new_user_session_path
-	 	fill_in 'user_email', :with => @user.email
-	 	fill_in 'user_password', :with => 'password'
-	 	click_button 'Sign in'
+	 	login_as @user, scope: :user
 
 	 	#debugger
 	 	visit('/tags/'+@tag.uniqueUrl+'/tagFound/')
@@ -45,6 +43,66 @@ describe "TagScanning" do
 
 	end
 
+	it "correctly tracks placements" do
+		@user = FactoryGirl.create(:user)
+		@user2 = FactoryGirl.create(:user)
+	 	@team = FactoryGirl.create(:team)
+	 	@team2 = FactoryGirl.create(:team)
+	 	@game = FactoryGirl.create(:UQGame)
+	 	@user.teams = [@team]
+	 	@user2.teams = [@team2]
+	 	@game.teams = [@team, @team2]
+		@tag = FactoryGirl.create(:tag)
+		@tag2 = FactoryGirl.create(:tag2)
+	 	@game.tags = [@tag, @tag2]
+	 	@user.games = [@game]
+	 	@user2.games = [@game]
+
+	 	login_as @user, scope: :user
+
+	 	#debugger
+	 	visit('/tags/'+@tag.uniqueUrl+'/tagFound/')
+
+	 	page.should have_content("You are the first team")
+	 	page.should_not have_content("You are not an admin")
+
+	 	click_button 'Claim'
+
+	 	visit('/tags/'+@tag2.uniqueUrl+'/tagFound/')
+
+	 	page.should have_content("You are the first team")
+	 	page.should_not have_content("You are not an admin")
+
+	 	click_button 'Claim'
+
+	 	#Log user 1 out, log user 2 in, claim points
+
+	 	logout(@user)
+
+	 	login_as @user2, scope: :user
+
+	 	#debugger
+	 	visit('/tags/'+@tag.uniqueUrl+'/tagFound/')
+
+	 	page.should have_content("You are the 2nd team")
+	 	page.should_not have_content("You are the first team")
+
+	 	click_button 'Claim'
+
+	 	visit('/tags/'+@tag2.uniqueUrl+'/tagFound/')
+
+	 	page.should have_content("You are the 2nd team")
+	 	page.should_not have_content("You are the first team")
+
+	 	click_button 'Claim'
+
+	 	page.should have_content("Tied with #{@team.name}")
+
+
+
+
+	end
+
 	it "will ask you to join the right game if you scan a tag of a game that you don't belong to" do
 		@user = FactoryGirl.create(:user)
 	 	@team = FactoryGirl.create(:team)
@@ -57,11 +115,7 @@ describe "TagScanning" do
 	 	@otherGame.tags = [@tag, @tag2]
 	 	@user.games = [@game]
 
-	 	#Log our user in
-		visit new_user_session_path
-	 	fill_in 'user_email', :with => @user.email
-	 	fill_in 'user_password', :with => 'password'
-	 	click_button 'Sign in'
+	 	login_as @user, scope: :user
 
 	 	#debugger
 	 	visit('/tags/'+@tag.uniqueUrl+'/tagFound/')

@@ -32,11 +32,22 @@ def getNumberOfScans
 end
 
 def getPlacement(leaderboard)
-	#leaderboard = Team.getLeaderboard()
-	ourTeam = leaderboard.select {|f| f["id"] = self.id}
-	placementMinusOne = leaderboard.index(ourTeam[0])
-	placement = placementMinusOne + 1
-	return placement
+
+
+	leaderboard.each do |team|
+		if team[:team_id] == self.id
+			return team[:placement]
+		end
+	end
+
+end
+
+def tiedWith(leaderboard)
+	leaderboard.each do |team|
+		if team[:team_id] == self.id
+			return team[:tiedWith]
+		end
+	end
 end
 
 	#returns a sorted array of hashes, containing 
@@ -47,11 +58,30 @@ end
 		@teams = me.currentGame().teams.all
 
 		@teams.each do |team|
-			leaderboardArray[index] = {:id => team.id, :name => team.name, :score => team.getTotalScore}
+			leaderboardArray[index] = {:team_id => team.id, :name => team.name, :score => team.getTotalScore}
 			index += 1
 		end
 
 		leaderboardArray = leaderboardArray.sort_by {|hsh| hsh[:score]}.reverse
+
+		placement = 1
+
+		#Provide placements (including ties)
+		for i in 0...leaderboardArray.length
+			if i == 0
+				leaderboardArray[i][:placement] = placement
+				next
+			end
+			if leaderboardArray[i-1][:score] == leaderboardArray[i][:score]
+				leaderboardArray[i][:placement] = placement
+				leaderboardArray[i][:tiedWith] = leaderboardArray[i-1][:team_id]
+				leaderboardArray[i-1][:tiedWith] = leaderboardArray[i][:team_id]
+			else
+				placement = placement + 1
+				leaderboardArray[i][:placement] = placement
+			end
+
+		end
 
 		#leaderboardArray = Array.new(leaderboardHash.size)
 

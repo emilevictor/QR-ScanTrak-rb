@@ -60,7 +60,7 @@ FactoryGirl.define do
 
 	factory :team, class: Team do
 		#Put this team in the UQ game.
-		name "My Team"
+		sequence(:name) { |n| "Team #{n}" }
 		password "password"
 		description "Description"
 

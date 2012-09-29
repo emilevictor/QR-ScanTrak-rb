@@ -232,15 +232,15 @@ class TeamsController < ApplicationController
 
   #Check team score
   def checkTeamScore
+    #If the user is signed in and is part of a team in this game.
     if user_signed_in? and not current_user.teams.where(:game_id => current_user.currentGame().id).empty?
       @user = current_user
       @team = @user.teams.where(:game_id => @user.currentGame().id).first
-      #@team = Team.find(@user.team_id)
       @leaderboard = Team.getLeaderboard(@user)
       @scans = current_user.currentGame().scans.where(:team_id => @team.id)
-      #@scans = Scan.where(:team_id => @team.id)
       @placement = @team.getPlacement(@leaderboard)
       @scans = @team.scans.paginate(:page => params[:page])
+      @tiedWith = @team.tiedWith(@leaderboard)
 
       respond_to do |format|
         format.json {render json: {placement: @placement, scans: @scans, team:@team, tags: @tags}}
