@@ -18,7 +18,7 @@ function hitStaticLeaderboard()
 		$("#liveLeaderboardFrontScreen").append(headings)
 		for (i = 0; i < data.length; i++)
 		{
-			var lineToAppend = "<tr><td class='placement'>"+parseInt(i+1)+"</td><td class='teamName'>"+data[i].name+"</td><td class='points'>"+parseInt(data[i].score)+"</td></tr>"
+			var lineToAppend = "<tr><td class='placement'>"+parseInt(data[i].placement)+"</td><td class='teamName'>"+data[i].name+"</td><td class='points'>"+parseInt(data[i].score)+"</td></tr>"
 
 			$("#liveLeaderboardFrontScreen").append(lineToAppend);
 		}
