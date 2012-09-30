@@ -196,6 +196,15 @@ li {
 	padding:5px;
 }
 
+#moderatorSeparator {
+	width:205px;
+	height:15px;
+	text-align:center;
+	background-color:blue;
+	color:#FFFFFF;
+	padding:5px;
+}
+
 #gameName {
 	font-size:10pt;
 	position:relative;

@@ -20,6 +20,8 @@ def getTotalScore
 	@scans.each do |scan|
 		if not scan.tag.nil?
 			scanSum += scan.tag.points
+		elsif scan.thisIsAPointModification and not scan.modPoints.nil?
+			scanSum += scan.modPoints
 		end
 	end
 

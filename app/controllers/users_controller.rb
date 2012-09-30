@@ -61,8 +61,8 @@ class UsersController < ApplicationController
         #if params[:user][:password] != @user.password
         # # params[:user][:password] = BCrypt::Password.create(params[:user][:password])
         #end
-       
-        if params[:userIsModerator] == "true"
+        
+        if params[:userIsModerator] == "yes"
           @user.moderated_games << current_user.currentGame()
           @user.save
         end

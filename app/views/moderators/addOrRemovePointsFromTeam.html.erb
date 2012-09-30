@@ -1,0 +1,20 @@
+<h1>Add or Remove Points From a Team</h1>
+
+
+<br /><br />
+
+
+<%= form_tag("/moderators/processPoints", :method => "post") do %>
+	<%= label_tag :teamID, "Enter the ID of the team" %><br />
+	<%= number_field_tag :teamID %><br /><br />
+
+	<%= label_tag :points, "Number of points to give or remove" %><br />
+	<%= number_field_tag :points %><br /><br />
+
+	<%= label_tag :comments, "Please provide comments for this point modificiation." %> <br />
+	<%= text_area_tag :comments %><br /><br />
+
+
+<%= submit_tag("Add/remove points from team") %>
+<% end %>
+

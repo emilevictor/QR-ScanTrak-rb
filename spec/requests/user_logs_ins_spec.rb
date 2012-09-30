@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'factory_girl'
 require 'ruby-debug'
+include Warden::Test::Helpers
 
 describe "UserLogsIn" do
 	 it "prompts you for a game if you are not in one" do

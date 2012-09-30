@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+
+	<% if not current_user.moderated_games.where(:id => current_user.currentGame()).empty? %>
+
+		<% content_for :rightMenu do %>
+			  <div id="moderatorSeparator">Moderator:</div>
+			      <ul class="rightMenuGame">
+			      		<li><%= link_to "Add/Remove Points From Team", addOrRemovePointsFromTeam_path %></li>
+
+			      </ul>
+
+
+		<% end %>
+
+	<% end %>
+
+<% end %>

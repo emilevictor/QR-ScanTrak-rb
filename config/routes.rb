@@ -45,6 +45,10 @@ QRScantrak::Application.routes.draw do
   match '/games/joinGameProcess' => "games#joinGameProcess", :via => :post
   match 'games/:id/makeDefaultGame/' => 'games#makeDefaultGame'
 
+  scope "/moderators" do
+    match 'addOrRemovePointsFromTeam' => 'moderators#addOrRemovePointsFromTeam'
+    match 'processPoints' => 'moderators#processPoints'
+  end
 
   scope "/admin" do
     #must be first line for production environment to work

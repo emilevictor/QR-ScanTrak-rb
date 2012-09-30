@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926135223) do
+ActiveRecord::Schema.define(:version => 20120930044547) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -48,11 +48,13 @@ ActiveRecord::Schema.define(:version => 20120926135223) do
   create_table "scans", :force => true do |t|
     t.integer  "team_id"
     t.integer  "tag_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.text     "comment"
     t.integer  "user_id"
     t.integer  "game_id"
+    t.integer  "modPoints"
+    t.boolean  "thisIsAPointModification", :default => false
   end
 
   add_index "scans", ["tag_id", "team_id"], :name => "index_scans_on_tag_id_and_team_id", :unique => true
