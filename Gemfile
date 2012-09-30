@@ -61,4 +61,4 @@ group :test, :development do
 end
 
 #Backups
-gem "backup"
+gem "backup", "~> 3.0.25"
