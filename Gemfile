@@ -60,5 +60,3 @@ group :test, :development do
   gem "guard-rspec"
 end
 
-#Backups
-gem "backup", "~> 3.0.25"
